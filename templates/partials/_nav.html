@@ -1,0 +1,172 @@
+{% load static %}
+<div class="top-header d-none d-lg-block">
+  <div class="header-inner container">
+
+    
+
+    <div class="header-center"></div>
+<div class="header-left">
+      <div class="catalog-link">
+         <img src="{% static 'img/katalog.png' %}" alt="Katalog" class="catalog-icon">
+        <a href="/kataloglar" class="catalog-text">PROJE KATALOGLARI</a>
+      </div>
+    </div>
+    <div class="header-center-spacer"></div>
+      
+
+    <div class="header-right">
+      <div class="social-icons">
+        
+        <a href="#"><img src="{% static 'img/yt.png' %}" alt="Youtube" width="22" height="15"></a>
+          <a href="#"><img src="{% static 'img/fb.png' %}" alt="Facebook"></a>
+          <a href="#"><img src="{% static 'img/x.png' %}" alt="X"></a>
+          <a href="#"><img src="{% static 'img/link.png' %}" alt="LinkedIn"></a>
+          <a href="#"><img src="{% static 'img/in.png' %}" alt="Instagram"></a>
+      </div>
+
+      <div class="language-select">
+        <a href="#" class="lang-tr">TR</a>
+          <span>|</span>
+          <a href="#" class="lang-en">EN</a>
+      </div>
+
+      <div class="search-area">
+        <img src="{% static 'img/search.png' %}" alt="Arama">
+      </div>
+    </div>
+    
+  </div>
+</div>
+<nav class="main-nav">
+  <div class="nav-inner">
+
+    <!-- 1. Logo -->
+    <div class="logo-area">
+      <img src="{% static 'img/nav-zemin.png' %}" alt="Akliva" class="logo-area-img">
+      
+      <div class="logo-overlay">
+        <img src="{% static 'img/logo.png' %}" alt="Akliva Logo" class="logo-overlay-img">
+    </div>
+    </div>
+
+    <!-- 2. Menü (sadece masaüstü) -->
+    <div class="menu-area-wrapper d-none d-lg-inline-flex">
+      <ul class="navbar-nav flex-row menu-area">
+        <li class="nav-item"><a href="/" class="nav-link active">Anasayfa</a></li>
+        <li class="nav-item"><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
+        <li class="nav-item"><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
+        <li class="nav-item"><a href="/projeler" class="nav-link">Projeler</a></li>
+        <li class="nav-item"><a href="/kariyer" class="nav-link">Kariyer</a></li>
+      </ul>
+    </div>
+
+    <!-- 3. Müşteri Hizmetleri -->
+    <div class="contact-area-wrapper d-none d-lg-inline-flex">
+      <div class="contact-area">
+        <div class="contact-visual">
+          <img src="{% static 'img/musteri_zemin.png' %}" alt="Zemin" class="zemin-img">
+          <img src="{% static 'img/musteri_ikon.png' %}" alt="İkon" class="ikon-img">
+        </div>
+        <div class="contact-text">
+          <div class="customer-service">Müşteri Hizmetleri</div>
+          <div class="phone-number">0 332 355 22 23</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Hamburger Menü (mobilde görünür) -->
+    <button class="navbar-toggler d-lg-none" type="button" id="hamburgerToggle">
+      <img src="{% static 'img/hamburger_white.png' %}" alt="Menü" class="hamburger-icon">
+    </button>
+
+  </div>
+
+</nav>
+
+<!-- Mobil Sidebar ve Arka Plan -->
+<div class="mobile-overlay"></div>
+<div class="mobile-sidebar">
+  <div class="sidebar-header">
+    <button class="close-sidebar" aria-label="Menüyü Kapat">&times;</button>
+  </div>
+  <ul class="mobile-menu">
+    <li><a href="/">Anasayfa</a></li>
+    <li><a href="/hakkimizda">Hakkımızda</a></li>
+    <li><a href="/hizmetler">Hizmetler</a></li>
+    <li><a href="/projeler">Projeler</a></li>
+    <li><a href="/kariyer">Kariyer</a></li>
+  </ul>
+  <div class="mobile-contact-area" style="margin-top: 30px; padding: 10px 12px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <a href="tel:03323552223" style="text-decoration: none; display: flex; align-items: center;">
+      <img src="{% static 'img/musteri_ikon.png' %}" alt="Telefon" style="width: 24px; height: 24px; margin-right: 10px; filter: invert(100%);">
+      <div style="display: flex; flex-direction: column; color: #fff;">
+        <span style="font-size: 0.9rem; font-weight: 500;">Müşteri Hizmetleri</span>
+        <span style="font-size: 0.85rem; opacity: 0.85;">0 332 355 22 23</span>
+      </div>
+    </a>
+  </div>
+</div>
+{% block extra_js %} 
+<script> 
+  document.addEventListener("DOMContentLoaded", function () { 
+    const nav = document.querySelector(".main-nav"); 
+    const header = document.querySelector(".top-header"); 
+
+    window.addEventListener("scroll", () => { 
+      if (window.scrollY > 0) { 
+        nav.classList.add("fixed"); 
+        header.classList.add("hidden"); 
+      } else { 
+        nav.classList.remove("fixed"); 
+        header.classList.remove("hidden"); 
+      } 
+    }); 
+
+    // Mobil sidebar menü kontrolü 
+    const toggleBtn = document.getElementById("hamburgerToggle"); 
+    const sidebar = document.querySelector(".mobile-sidebar"); 
+    const overlay = document.querySelector(".mobile-overlay"); 
+    const closeBtn = document.querySelector(".close-sidebar"); 
+
+    if (toggleBtn && sidebar && overlay) { 
+      toggleBtn.addEventListener("click", () => { 
+        sidebar.classList.add("open"); 
+        overlay.classList.add("active"); 
+      }); 
+
+      overlay.addEventListener("click", () => { 
+        sidebar.classList.remove("open"); 
+        overlay.classList.remove("active"); 
+      }); 
+
+      closeBtn.addEventListener("click", () => { 
+        sidebar.classList.remove("open"); 
+        overlay.classList.remove("active"); 
+      }); 
+    } 
+  }); 
+</script> 
+
+{% endblock %}
+<script> 
+document.addEventListener("DOMContentLoaded", function () { 
+const nav = document.querySelector(".main-nav"); 
+const header = document.querySelector(".top-header"); // YENİ: Top Header'ı seç
+
+window.addEventListener("scroll", () => { 
+if (window.scrollY > 0) { 
+ nav.classList.add("fixed"); 
+        if (header) { // Kontrol ekleyerek hata oluşmasını engeller
+   header.classList.add("hidden"); // YENİ: Top Header'ı gizle
+        }
+  } else { 
+ nav.classList.remove("fixed"); 
+        if (header) { // Kontrol ekleyerek hata oluşmasını engeller
+   header.classList.remove("hidden"); // YENİ: Top Header'ı göster
+        }
+  } 
+ }); 
+
+ // ... Geri kalan mobil menü scripti aynı ...
+ }); 
+</script>

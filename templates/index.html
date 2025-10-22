@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ana Sayfa - Akliva İnşaat{% endblock %}
+
+{% block content %}
+    
+    {% include 'partials/_banner.html' %}             <!-- Hero görsel -->
+    
+    {% include 'partials/_projeler.html' %}           <!-- Diğer Projeler -->
+   
+   {% include 'partials/_kurumsal.html' %}           <!-- Proje Özellikleri -->
+   {% include 'partials/_hakkimizda.html' %}           <!-- hakkımızda -->
+   {% include 'partials/_tanitim.html' %}           <!-- tanıtım -->
+   {% include 'partials/_medya.html' %}           <!-- medya -->
+   {% include 'partials/_habervebultenler.html' %}           <!-- haberler ve bültenler -->
+   {% include 'partials/_gorusler.html' %} 
+   
+{% endblock %}

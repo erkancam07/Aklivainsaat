@@ -1,0 +1,97 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_hakkimizda.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="base-hakkimizda">
+    <!--fluid -->
+    <div class="container-fluid"> 
+        <!--Row -->
+        <div class="row ana_satir">
+
+            <!--içerik -->
+            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 hakkimizda-content">
+
+                <!-- iç Row 1. satır-->
+                <div class="row ust_satir">
+                    
+                    <!-- 1-1. bölüm -->
+                    <div class="col-12 col-lg-6 sektor-deneyim">
+                        <div class="people-logo">
+                            <img src="{% static 'img/people.png' %}" alt="İnsan Simgesi">
+                        </div>
+                        <div class="deneyim-yil">20+Yıl</div>
+                        <div class="deneyim-text">Sektör <br> Deneyimi</div>
+                    </div>
+                    <!-- /1-1. bölüm -->
+                    <!-- 1-2. bölüm -->
+                    <div class="col-12 col-lg-6 biten-projeler">
+                        
+                        <div class="ucgen-logo">
+                            <div class="logo-wrapper">
+                            <img src="{% static 'img/ucgenler-sekli.png' %}" alt="Üçgenler Şekli" class="arka-logo">
+                            <img src="{% static 'img/onay-isreti.png' %}" alt="Onay İşareti" class="ust-logo">
+                            </div>
+                        </div>
+
+                        <div class="basari-yil">10+Yıl</div>
+                        <div class="basari-text">Başarıyla <br> Tamamlanan Projeler</div>
+
+                    </div>
+                    <!-- /1-2. bölüm -->
+                </div>
+                <!-- /iç Row 1. satır-->
+
+                 <!-- iç Row 2. satır-->
+                <div class="row alt_satir">
+                    <div class="col-12 col-lg-4 menmnuniyet">
+                        <div class="memnuniyet-logo">
+                            <img src="{% static 'img/memnuniyet.png' %}" alt="Memnuniyet" class="memnuniyet-icon">
+                        </div>        
+                        <div class="memnuniyet-text-wrapper">
+                            <div class="memnuniyet-oran">%100 Memnuniyet</div>
+                            <div class="memnuniyet-aciklama">Müşteri Odaklı</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 calisan-sayisi">
+                         <div class="calisan-logo">
+                            <img src="{% static 'img/calisan.png' %}" alt="Çalışan" class="calisan-icon">
+                        </div>
+                        <div class="calisan-text-wrapper">
+                            <div class="calisan-oran">50+ Çalışan</div>
+                            <div class="calisan-aciklama">Uzman Kadro</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 kalite">
+                        <div class="kalite-logo">
+                            <img src="{% static 'img/guven.png' %}" alt="Güven" class="kalite-icon">
+                        </div>
+                        <div class="kalite-text-wrapper">
+                            <div class="kalite-oran">Güven & Kalite</div>
+                            <div class="kalite-aciklama">Kurumsal İlkemiz</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /iç Row 2. satır-->
+                    <div class="bottom-divider-wrapper-hakkimizda">
+          <div class="bottom-divider-line-hakkimizda"></div>
+            </div>
+            <!-- /içerik -->
+             
+        </div>    
+        </div>
+        <!--/Row -->
+         
+    </div>
+    <!--/fluid -->
+
+
+</section>
+{% endblock %}
+
+
+
+
+{% block extra_js %}
+{% endblock %}

@@ -1,0 +1,173 @@
+/* ========================================= */
+/* 1. ÜST HEADER GENEL YAPISI */
+/* ========================================= */
+.top-header {
+  background-color: #343434; /* Zemin rengi */
+  height: 52px; /* Sabit yükseklik */
+  width: 100%;
+  position: relative; /* Sabitleme için position: fixed de kullanabilirsiniz */
+  display: flex; /* İçindeki content'i ortalamak için Flex kullanmaya devam */
+  align-items: center;
+  z-index: 1000;
+}
+
+.top-header-content {
+  display: grid; 
+  
+  /* 3 SÜTUNLU YAPI */
+  /* Auto: İçerik kadar yer kapla, 1fr: Kalan boşluğu doldur */
+  grid-template-columns: auto 1fr auto; 
+  
+  align-items: center; /* Dikeyde ortalama */
+  width: 100%;
+  height: 100%; 
+  padding: 0 24px 0 580px; 
+  column-gap: 20px; /* Sütunlar arası boşluk */
+}
+
+/* Tüm alt öğelerin dikeyde ortalanması ve taşmaması için */
+.top-left,
+.top-center,
+.top-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 0; /* İçerik taşsa bile esnemeyi sağlar */
+}
+
+/* Sütun Hizalamaları (Grid içinde) */
+.top-left {
+  justify-content: flex-start; /* Sola yasla */
+ 
+}
+.top-center {
+  justify-content: center; /* Ortala */
+}
+.top-right {
+  justify-content: flex-end; /* Sağa yasla */
+  gap: 12px; /* İçindeki öğeler (sosyal, dil, arama) arası boşluk */
+  flex-wrap: nowrap; /* ! ÖNEMLİ: Bu, mobil dahil hiçbir zaman alt satıra inme */
+ 
+}
+
+/* ========================================= */
+/* 2. STİL ÖZELLİKLERİ VE BOŞLUKLAR */
+/* ========================================= */
+
+/* --- PROJE KATALOGLARI (top-left) --- */
+.catalog-link {
+  color: #B1B1B1;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* ikon ile metin arasında boşluk */
+  white-space: nowrap; /* Alt satıra inmesini engeller */
+}
+.catalog-link img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(80%) sepia(0%) saturate(0%) hue-rotate(0deg); /* #B1B1B1 efekti */
+}
+
+
+/* --- SOSYAL İKONLAR (social-icons) --- */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* İkonlar arası boşluk */
+  flex-wrap: nowrap; /* Alt satıra inmesini engeller */
+}
+.social-icons img {
+  width: 22px; /* Varsayılan Masaüstü Genişliği */
+  height: 15px; /* Varsayılan Masaüstü Yüksekliği */
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+/* --- DİL SEÇİCİ ve ARAMA --- */
+.language-selector {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.language-selector span {
+  color: #FFFFFF;
+}
+.lang-tr {
+  color: #F69930;
+  font-weight: 600;
+  margin-right: 6px; 
+}
+.lang-en {
+  color: #FFFFFF;
+  font-weight: 300;
+  margin-left: 6px; 
+}
+.search-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ========================================= */
+/* 3. MOBİL RESPONSIVE DÜZEN (max-width: 768px) */
+/* ========================================= */
+@media (max-width: 768px) {
+    
+    .top-header {
+        height: 35px; /* Mobilde header yüksekliğini düşür */
+    }
+
+    .top-header-content {
+        /* Tekrar Grid: Yine auto 1fr auto kullanıyoruz ancak mobil 
+           içeriğe göre min/max değerleri ayarlıyoruz. 
+           (Alternatif: Gerekirse 1fr yapıp top-center'ı display: none yapabilirsiniz.) */
+        grid-template-columns: auto 1fr auto; 
+        column-gap: 8px; /* Boşluğu daralt */
+        padding: 0 12px;
+    }
+    
+    /* İÇERİKLERİN KÜÇÜLTÜLMESİ (Tek satırda kalmak için kritik) */
+
+    /* --- Sol Alan (Katalog) --- */
+    .catalog-link {
+      font-size: 12px; /* Fontu küçült */
+      gap: 4px; 
+    }
+    .catalog-link img {
+      width: 14px; /* İkonu küçült */
+      height: 14px;
+    }
+
+    /* --- Sağ Alan (Sosyal, Dil, Arama) --- */
+    .top-right {
+        gap: 6px; /* Sağdaki tüm öğeler arası boşluğu küçült */
+    }
+    
+    /* Sosyal İkonları Küçült */
+    .social-icons {
+        gap: 4px; /* İkonlar arası boşluğu küçült */
+    }
+    .social-icons img {
+        width: 14px; /* İkonları küçült */
+        height: 10px; 
+    }
+
+    /* Dil Seçici ve Arama İkonu Küçült */
+    .language-selector,
+    .language-selector span,
+    .lang-tr,
+    .lang-en {
+      font-size: 12px;
+    }
+    .search-icon img {
+      width: 14px;
+      height: 14px;
+    }
+    
+    /* Gereksiz görülen alanlar mobilde gizlenebilir */
+    /* .top-center { display: none; } */
+}

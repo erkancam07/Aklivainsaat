@@ -1,0 +1,51 @@
+/* style.css */
+
+/* Kök değişkenler (Tüm projede kullanılacak renkler ve fontlar) */
+:root {
+    --primary-color: #F69930; /* Ana vurgu rengi (SARI/TURUNCU) */
+    --secondary-color: #343434; /* İkincil/Metin rengi (KOYU GRİ) */
+    --background-color: #f8f9fa; /* Açık arka plan rengi */
+    --font-family: 'DM Sans', sans-serif;
+}
+
+/* Genel body ve HTML ayarları */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    color: var(--secondary-color);
+    background-color: #fff;
+    
+   
+    
+}
+/* 1. Top Header'ı saran ana elementin tüm dikey boşluklarını sıfırla */
+header.main-header {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1; /* Satır yüksekliğini sıfırlayarak boşluk oluşmasını engelle */
+    display: block;
+}
+a {
+  text-decoration: none;
+}
+.top-header {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* 3. Banner alanının üst boşluğunu sıfırla */
+#full-banner-area {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    /* Bu ikisi genellikle boşluğu kaldırır. */
+}
+.banner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+}
+@media (max-width: 768px) {
+  
+}

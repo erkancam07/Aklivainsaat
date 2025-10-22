@@ -1,0 +1,210 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_medya.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="medya-wrapper">
+  <div class="container-fluid">
+    <div class="row medya_ana_satir">
+      
+      <!-- Sol boşluk -->
+      <div class="col-12 col-lg-2"></div>
+
+      <!-- İçerik alanı -->
+      <div class="col-12 col-lg-10 medya-icerik-wrapper">
+        <div class="row">
+          
+          <!-- Logo ve Slogan -->
+            <div class="col-md-5 col-12  logo-medya d-flex align-items-center gap-3">
+              <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-img">
+              <span class="medya-text">MEDYA</span>
+            </div>
+            <div class="col-md-4 col-12  medya-slogan">
+              <p>Akliva’nın son haberleri, projeleri ve sektör gelişmeleriyle güncel kalın. Medya görünürlüğümüzü keşfedin ve her inşaat çalışmamızda nasıl yenilikçi çözümler sunduğumuzu görün..</p>
+            </div>
+            
+            <div class="col-md-3 d-none d-md-block  medya-slogan-bosalan">
+             
+            </div>
+
+          <!-- Slider başlık metni -->
+          <div class="col-12 slider-baslik-text">
+            <h2 class="slider-baslik-heading">Sahadan Genel Görüntüler</h2>
+          </div>
+
+          <!-- Slider alanı -->
+        <!--  {% comment %}  <div class="col-12 medya-slider">
+            {% for video in medya_videolar %}
+            <div class="slider-card">
+                <img src="https://img.youtube.com/vi/{{ video.video_id }}/hqdefault.jpg" alt="Kapak görseli">
+                
+                
+
+                <h3 class="slider-baslik">{{ video.baslik }}</h3>
+                <div class="slider-meta">
+                    <img src="{% static 'img/' %}{{ video.ikon }}" class="slider-icon" alt="ikon">
+                    <span class="slider-metin">{{ video.metin }}</span>
+                </div>
+            </div>
+            {% endfor %}
+          </div> {% endcomment %} -->
+
+            <div class="col-12 medya-slider">
+            {% for video in medya_videolar %}
+            <div class="slider-card" onclick="acVideo('{{ video.video_url }}')">
+                <div class="slider-video-wrapper">
+                    <img src="https://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg" alt="{{ video.baslik }}" class="slider-img">
+
+                </div>
+
+                <h3 class="slider-baslik">{{ video.baslik }}</h3>
+                <div class="slider-meta">
+                    <img src="{% static 'img/' %}{{ video.ikon }}" class="slider-icon" alt="ikon">
+                    <span class="slider-metin">{{ video.metin }}</span>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+            <div class="row ">
+                <div class="col-8 medya-progres">
+                    <div class="medya-progres-inner"></div>
+                </div>
+
+                <!-- Slider okları -->
+                <div class="col-1 nmedya-slider-buttons">
+                    <img src="{% static 'img/kucukSliderSol.svg' %}" id="sliderPrev" alt="Sol">
+                    <img src="{% static 'img/kucukSliderSag.svg' %}" id="sliderNext" alt="Sağ">
+                </div>
+                <!-- Boşluk -->
+                <div class="col-12 medya-videolar-button d-flex justify-content-center">
+                  <button class="tum-videolari-button">TÜM VİDEOLARI GÖRÜNTÜLEYİN</button>
+              </div>
+            </div>
+
+</div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="videoModal" class="video-modal">
+  <div class="video-modal-icerik">
+    <button class="video-kapat" onclick="kapatVideo()">×</button>
+    <iframe id="videoFrame" class="video-frame" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+ // 1. Video Modal İşlevleri (Global Erişim İçin 'window'a Bağlandı)
+    // Bu, HTML'deki 'onclick="acVideo(url)"' yapısının çalışmasını sağlar.
+    function initVideoModal() {
+        // Kontrolsüz global erişimden kaçınmak için fonksiyonları window objesine bağlıyoruz.
+        window.acVideo = function(url) {
+            const modal = document.getElementById("videoModal");
+            const frame = document.getElementById("videoFrame");
+            if (!modal || !frame) return; // Eleman yoksa hata vermeden dur.
+            frame.src = url + "?autoplay=1";
+            modal.style.display = "flex";
+        }
+
+        window.kapatVideo = function() {
+            const modal = document.getElementById("videoModal");
+            const frame = document.getElementById("videoFrame");
+            if (!modal || !frame) return; // Eleman yoksa hata vermeden dur.
+            frame.src = "";
+            modal.style.display = "none";
+        }
+
+        // Klavye ESC tuşu ile kapatma
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                window.kapatVideo();
+            }
+        });
+
+        // Modal'ın dışına tıklayarak kapatma
+        const modal = document.getElementById("videoModal");
+        if(modal) {
+             modal.addEventListener("click", function(e) {
+                if (e.target === this) {
+                    window.kapatVideo();
+                }
+            });
+        }
+    }
+
+    // 2. Medya Slider İşlevi (Tamamen İzole Edildi)
+    function initMedyaSlider() {
+        // Değişkenler artık bu fonksiyonun içindedir (lokaldir).
+        const slides = Array.from(document.querySelectorAll('.slider-card'));
+        const progress = document.querySelector('.medya-progres-inner');
+        
+        // Medya Slider'ının buton ID'leri, diğer slider'larla çakışıyorsa
+        // (örneğin Haberler Slider'ı ile), HTML'deki ID'leri değiştirmelisiniz!
+        // Varsayılan olarak 'sliderPrev' ve 'sliderNext' ID'lerini kullanıyoruz,
+        // ancak çakışmayı önlemek için bu ID'leri HTML'de 'medya_sliderPrev' vb. yapmanız önerilir.
+        const prevBtn = document.getElementById('sliderPrev'); 
+        const nextBtn = document.getElementById('sliderNext');
+
+        if (!slides.length || !progress || !prevBtn || !nextBtn) {
+            console.warn("Medya Slider elementleri bulunamadı. Slider başlatılmadı.");
+            return;
+        }
+
+        let currentIndex = 0; // Bu artık global değil, lokal değişkendir.
+
+        function updateSlider() {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'hidden');
+
+                if(i < currentIndex) {
+                    slide.classList.add('hidden');
+                } 
+                else if(i === currentIndex) {
+                    slide.classList.add('active');
+                } 
+            });
+
+            // Progress bar hesaplaması (1/N, 2/N, ..., N/N)
+            const percent = ((currentIndex + 1) / slides.length) * 100;
+            progress.style.width = percent + '%';
+        }
+
+        // Başlangıç ayarı
+        updateSlider();
+
+        // İleri butonu
+        nextBtn.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            if(currentIndex < slides.length - 1) {
+                currentIndex++; 
+                updateSlider();
+            }
+        });
+
+        // Geri butonu
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if(currentIndex > 0) {
+                currentIndex--; 
+                updateSlider();
+            }
+        });
+    }
+
+    // 3. Tüm işlevleri DOM tamamen yüklendiğinde çağır
+    document.addEventListener('DOMContentLoaded', () => {
+        initVideoModal();
+        initMedyaSlider();
+        
+        // Eğer Haberler Slider'ı varsa, o da buradan çağrılmalıdır:
+        // initHaberSlider();
+    });
+</script>
+
+
+{% endblock %}

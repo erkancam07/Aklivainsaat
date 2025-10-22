@@ -1,0 +1,108 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_banner.css' %}">
+{% endblock %}
+
+<section id="video-banner" class="position-relative overflow-hidden">
+  <!-- Video Slaytları -->
+   
+     {% comment %}    <div class="video-slider-wrapper position-relative">
+          {% for slide in slides %}       
+            <div class="video-slide {% if forloop.first %}active{% endif %}" 
+                data-title="{{ slide.title }}" 
+                data-subtitle="{{ slide.subtitle }}" 
+                data-button="{{ slide.button }}">
+              <iframe id="player-{{ forloop.counter }}" src="{{ slide.video_url }}&enablejsapi=1"></iframe>
+            </div>
+            {% endfor %}
+        </div> {% endcomment %}
+    
+
+  {% comment %} <div class="video-slide" data-title="Revapark Premium" data-subtitle="Yeni Etap Satışları Başladı" data-button="Detayları Gör">
+      <iframe src="https://www.youtube.com/embed/DXzDS2IO6aA?autoplay=1&mute=1&rel=0&playsinline=1"></iframe>
+    </div> {% endcomment %}
+
+    
+  <!-- banner bottom start -->
+ <div class="banner-bottom-content position-absolute bottom-0 start-0 end-0 z-index-2">
+  <div class="container-fluid">
+    <div class="row gx-0 align-items-end justify-content-between flex-wrap">
+      
+      <!-- 4 birim: Boş sütun (sadece genişlik için) -->
+      <div class="col-12 col-lg-4">
+        <!-- Boş bırakıldı -->
+      </div>
+
+      <!-- 3 birim: Buton ve yazılar -->
+      <div class="col-6 col-lg-5 mb-2">
+        <div id="slide-subtitle"></div>
+        <div id="slide-title"></div>
+        <div class="slider-arrows-wrapper d-flex">
+          <button id="slider-button">Projeyi İncele</button>
+          <img src="{% static 'img/sliderSol.png' %}" alt="Önceki Slayt" id="prev-slide" class="slider-arrow">
+          <img src="{% static 'img/sliderSag.png' %}" alt="Sonraki Slayt" id="next-slide" class="slider-arrow">
+        </div>
+      </div>
+
+      <!-- 5 birim: Kavisli görsel -->
+      <div class="col-6 col-lg-3 d-flex justify-content-end">
+        <div class="curved-overlay"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        
+</section>
+
+
+{% block extra_js %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".video-slide");
+  const subtitle = document.getElementById("slide-subtitle");
+  const title = document.getElementById("slide-title");
+  const button = document.getElementById("slide-button");
+
+  let currentIndex = 0;
+
+  function stopAllVideos() {
+    slides.forEach(slide => {
+      const iframe = slide.querySelector("iframe");
+      if (iframe) {
+        iframe.src = iframe.src; // autoplay'i sıfırlar, video durur
+      }
+    });
+  }
+
+  function showSlide(index) {
+    stopAllVideos(); // önce tüm videoları durdur
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+
+    const activeSlide = slides[index];
+    title.textContent = activeSlide.dataset.title;
+    subtitle.textContent = activeSlide.dataset.subtitle;
+    button.textContent = activeSlide.dataset.button;
+  }
+
+  document.getElementById("prev-slide").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  document.getElementById("next-slide").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  showSlide(currentIndex); // ilk slaytı göster
+});
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% comment %} İstersen slider geçişine fade efekti, swipe desteği veya otomatik geçiş ekleyebiliriz. Hazırsan bir sonraki adıma geçelim. {% endcomment %}
+
+<!-- Mobilde içerik alt alta gelir ve her blok tam genişlikte görünür → daha okunabilir.
+
+Tablet ve üzeri ekranlarda içerikler yan yana dizilir ve her biri belirli bir genişlik alır → daha dengeli görünüm. -->
+<!-- <div class="row">
+  <div class="col-12 col-md-5">Logo ve başlık</div>
+  <div class="col-12 col-md-4">Metin bloğu</div>
+  <div class="col-12 col-md-3">Boş alan veya görsel</div>
+</div> -->
+
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_medya.css' %}">
+{% endblock %}
+
+{% block content %}
+<section>
+    <!--fluid -->
+    <div class="container-fluid"> 
+        <!--Row -->
+        <div class="row medya_ana_satir">
+             <!-- Sol boşluk -->
+          <div class="col-12 col-lg-2"></div>
+           <!-- içerik -->
+          <div class="col-12 col-lg-10 medya-icerik-wrapper">
+            <div class="row">
+                
+            </div>
+          </div>
+
+
+            <!--içerik -->
+            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 hakkimizda-content">
+                <!-- iç Row 1. satır-->
+                <div class="row medya_ust_satir">
+
+                    <!-- 1-1. bölüm -->
+                    <div class="col-12 col-lg-6 sektor-deneyim">
+                        
+                    </div>
+                    <!-- /1-1. bölüm -->
+                    <!-- 1-2. bölüm -->
+                    <div class="col-12 col-lg-6 biten-projeler">
+
+                    </div>
+                    <!-- /1-2. bölüm -->
+                </div>
+                <!-- /iç Row 1. satır-->
+
+                 <!-- iç Row 2. satır-->
+                <div class="row medya_alt_satir">
+                    
+                    <div class="col-12 col-lg-4 calisan-sayisi">
+                    
+                    
+                    </div>
+                    <div class="col-12 col-lg-4 kalite">
+                       
+                       
+                    </div>
+                </div>
+                <!-- /iç Row 2. satır-->
+            </div>
+            <!-- /içerik -->
+             
+        </div>    
+        </div>
+        <!--/Row -->
+         
+    </div>
+    <!--/fluid -->
+
+</section>
+{% endblock %}
+
+
+
+
+{% block extra_js %}
+{% endblock %}
+
+

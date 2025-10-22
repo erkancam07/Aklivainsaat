@@ -1,0 +1,124 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_kurumsal.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="kurumsal-header position-relative">
+  <div class="container-fluid kurumsal-zemin position-relative px-0">
+    
+      <!-- Zemin görseli -->
+     <div class="zemin-wrapper position-relative">
+        <img src="{% static 'img/kurum_zemin1.svg' %}" class="zemin-svg zemin1">
+        <img src="{% static 'img/kurum_zemin2.svg' %}" class="zemin-svg zemin2">
+        <img src="{% static 'img/kurum_zemin3.svg' %}" class="zemin-svg zemin3">
+     </div>
+     <div class="row gy-0">
+          <!-- Sol boşluk -->
+          <div class="col-12 col-lg-2"></div>
+
+          <!-- Orta alan -->
+          <div class="col-12 col-lg-4">
+            <div class="kurumsal-header-block">
+                <img src="{% static 'img/grilogo.png' %}" class="kurumsal-logo me-3">
+                <h2 class="kurumsal-label">KURUMSAL</h2>
+            </div>
+                
+            <div class="kurumsal-slogan-1">
+              Akliva İnşaat, 20 yılı aşkın deneyimiyle güvenli ve modern yaşam alanları sunar.
+            </div>
+
+            <div class="kurumsal-slogan-2">
+              Akliva Yapı olarak 20 yılı aşkın deneyimimizle müşteri memnuniyetini en değerli ilkemiz kabul ediyoruz. Kaliteyi sürekli geliştirirken güven ve itibarı daima ön planda tutuyoruz. Yeni projelerimizle sizlere sadece konut değil, güvenli ve huzurlu yaşam alanları sunuyoruz.
+            </div>
+
+            <div class="kurumsal-button-wrapper">
+              <a href="#" class="kurumsal-button">Projeyi İncele</a>
+            </div>
+          </div>
+          <!-- Orta alan Bitimi-->
+
+          <!-- Sağ alan -->
+          <div class="col-12 col-lg-6">
+                  <div class="kurumsal-right-text">
+                      Akliva, mükemmeliyet, dürüstlük ve sürdürülebilir büyüme anlayışıyla hareket eder. Misyonumuz, zamanın testine dayanacak yüksek kaliteli inşaat çözümleri sunmaktır.
+                  </div>
+                  <div class="kurumsal-slider-wrapper">
+                      <button id="kurumsal_slider-left" class="slider-arrow slider-pos">
+                      <img src="{% static 'img/kucukSliderSol.svg' %}" alt="Sol Ok">
+                      </button>
+
+                      <button id="kurumsal_slider-right" class="slider-arrow slider-pos slider-right-btn">
+                      <img src="{% static 'img/kucukSliderSag.svg' %}" alt="Sağ Ok">
+                      </button>
+
+                      <div class="slider-content" id="slider-content">
+                      <img id="slider-image" src="{% static slider_images.0 %}" alt="Slider Görseli">
+                  </div>
+              
+          </div>
+        <!-- Sağ alan Bitimi-->
+      </div>   
+    
+        <div class="bottom-divider-wrapper-kurumsal">
+          <div class="bottom-divider-line-kurumsal"></div>
+        </div>    
+  </div>
+</section>
+{% endblock %}
+
+
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sliderImages = [
+    {% for img in slider_images %}
+      "{% static img %}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ];
+
+  if (sliderImages.length === 0) {
+    console.error("Slider görselleri listesi boş!");
+    return;
+  }
+
+  let currentIndex = 0;
+  const sliderImage = document.getElementById("slider-image");
+  const leftBtn = document.getElementById("kurumsal_slider-left");
+  const rightBtn = document.getElementById("kurumsal_slider-right");
+  const transitionDuration = 600;
+  let isAnimating = false;
+
+  if (!sliderImage || !leftBtn || !rightBtn) {
+    console.error("Slider bileşenleri bulunamadı!");
+    return;
+  }
+
+  function updateSlider(direction) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const animationOut = direction === 1 ? 'animate-right' : 'animate-left';
+    sliderImage.classList.add(animationOut);
+
+    setTimeout(() => {
+      let nextIndex = (currentIndex + direction) % sliderImages.length;
+      if (nextIndex < 0) nextIndex = sliderImages.length - 1;
+
+      currentIndex = nextIndex;
+      sliderImage.src = sliderImages[currentIndex];
+      sliderImage.classList.remove(animationOut);
+      void sliderImage.offsetWidth;
+
+      setTimeout(() => { isAnimating = false; }, transitionDuration);
+    }, transitionDuration);
+  }
+
+  leftBtn.addEventListener("click", () => updateSlider(-1));
+  rightBtn.addEventListener("click", () => updateSlider(1));
+});
+</script>
+{% endblock %}

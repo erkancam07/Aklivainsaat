@@ -1,0 +1,56 @@
+{% comment %} İstersen slider geçişine fade efekti, swipe desteği veya otomatik geçiş ekleyebiliriz. Hazırsan bir sonraki adıma geçelim. {% endcomment %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_tanitim.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid tanitim-wrapper">
+  <div class="row ana-satir">
+    
+    <!-- boş alan için -->
+     <div class="col-12 col-lg-2 "> </div>
+        <!-- slider alan -->
+    <div class="col-12 col-lg-4 video-wrapper">
+    <video class="video-player" controls poster="{% static 'img/video-kapak.jpg' %}">
+        <source src="{% static 'video/tanitim.mp4' %}" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+    </video>
+    </div>
+
+      
+
+    <!-- Sağ alan -->
+    <div class="col-12 col-lg-3 sag-alan">
+      <div class="row sag-icerik">
+        <div class="col-12 satir-baslik">
+            <h2 class="sag-baslik">AKLİVA TANITIM FİLMİ</h2>
+        </div>
+        <div class="col-12 satir-aciklama">
+          <p class="sag-aciklama">Kaliteyle güven inşa ediyoruz</p>
+        </div>
+        <div class="col-12 satir-slogan">
+          <p class="sag-slogan">Akliva İnşaat</p>
+        </div>
+      </div>
+    </div>
+    <!-- boş alan için -->
+    <div class="col-12 col-lg-3 ">  </div>
+    
+  </div>
+    <div class="bottom-divider-wrapper-tanitim">
+        <div class="bottom-divider-line-tanitim"></div>
+    </div>   
+
+</section>
+
+{% endblock %}
+
+
+
+
+{% block extra_js %}
+{% endblock %}
+
+

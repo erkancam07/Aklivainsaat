@@ -1,0 +1,381 @@
+/* Genel wrapper */
+.gorusler-wrapper {
+  padding: 0 24px;
+}
+
+.gorusler-baslik-slogan{
+  margin-bottom: 0;
+}
+
+/* Başlık ve slogan */
+.gorusler-logo-slogan {
+  padding-top: 50px;
+  padding-bottom: 80px;
+ 
+}
+.gorusler-logo-baslik_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-img {
+  width: 63px;
+  height: 29px;
+}
+.gorusler-logo-title {
+  font-family: DM Sans;
+  font-weight: 500;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.gorusler-slogan-text {
+  font-family: DM Sans;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 18px;
+  letter-spacing: -3%;
+  margin-bottom: 0;
+}
+
+/* Slider alanı */
+
+
+
+/* Büyük slider */
+.buyuk-slider-card {
+ /*  flex: 0 0 22.25%;
+  aspect-ratio: 340 / 413; */
+  width: 340px;
+  height: 413px;
+  flex: 0 0 auto;
+  aspect-ratio: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #F69930;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 15px;
+  color: #fff;
+  position: relative;
+ 
+  
+ 
+}
+.buyuk-slider-card:hover {
+  transform: scale(1.03); 
+   
+    
+    z-index: 100;
+}
+.buyuk-slider-card,
+.kucuk-card {
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
+    will-change: transform, box-shadow;
+}
+.buyuk-slider-card img {
+  width: 124px;
+  height: 124px;
+  
+  margin-bottom: 12px;
+ 
+}
+.personel-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.buyuk-slider-card .ad {
+  font-family: 'DM Sans';
+  font-weight: 600;
+  font-size: 24px;
+}
+.buyuk-slider-card .meslek-sehir {
+  font-family: 'DM Sans';
+  font-weight: 400;
+  font-size: 14px;
+  color: #D6790F;
+}
+.buyuk-slider-card .yildizlar img {
+  width: 19px;
+  height: 19px;
+  margin-right: 4px;
+}
+.buyuk-slider-card .mesaj {
+  font-family: 'DM Sans';
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 22px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.buyuk-slider-card .tarih {
+  position: absolute;
+  bottom: 5px;
+ 
+  font-size: 14px;
+  color: #D6790F;
+}
+
+
+.kucuk-slider-wrapper {
+  display: block;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 360px; /* küçük kart yüksekliği kadar sabit tut */
+  position: relative;
+  
+}
+
+/* Scroll alanı */
+.kusuk-slider-card-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  flex-wrap: nowrap;
+  padding-bottom: 8px;
+  position: relative;
+  padding: 15px;
+  
+}
+
+/* Küçük kartlar */
+.kucuk-card {
+  /* flex: 0 0 25.3%;
+  aspect-ratio: 283 / 344; */
+  width: 283px;
+  height: 344px;
+  flex: 0 0 auto;
+  background-color: #B1B1B1;
+  border-radius: 8px;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+
+  
+   transition: transform 0.3s ease;
+  will-change: transform;
+  z-index: 1;
+}
+
+.kucuk-card:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+.kucuk-card img.person {
+  width: 103px;
+  height: 103px;
+  margin-bottom: 12px;
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.kucuk-card .ad {
+  font-weight: 600;
+  font-size: 18px;
+}
+.kucuk-card .meslek-sehir {
+  font-size: 12px;
+  color: #808285;
+}
+.kucuk-card .yildizlar img {
+  width: 15px;
+  height: 15px;
+  margin-right: 2px;
+}
+.kucuk-card .mesaj {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+.kucuk-card .tarih {
+  position: absolute;
+  bottom: 5px;
+  
+  font-size: 14px;
+  color: #808285;
+}
+
+/* Progress ve oklar */
+.slider-proress-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-start;
+   box-sizing: border-box
+}
+
+.progress-arrows {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #B1B1B1;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.progress-bar-fill {
+  width: 50%;
+  height: 100%;
+  background-color: #F69930;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.arrow {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, border 0.3s ease-in-out;
+  
+  border-radius: 4px;
+  filter: brightness(0) saturate(100%);
+}
+
+.arrow:hover {
+  transform: scale(1.2) translateY(-2px);
+  filter: brightness(0) saturate(100%) sepia(1) hue-rotate(10deg) saturate(500%) brightness(1.1);
+  border-color: #F69930;
+}
+
+.arrow path {
+  transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
+  fill: #F69930;
+  stroke: transparent;
+}
+
+.arrow:hover path {
+  fill: #F69930;
+  stroke: #B1B1B1;
+}
+
+/*Animasyon */
+.buyuk-slider-card.animasyon {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+}
+.buyuk-slider-card.animasyon.geldi {
+  
+  opacity: 1;
+}
+.kucuk-card.kaybol {
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+/**/
+.slider-row {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  
+  margin-bottom: 108px;
+}
+
+.sag-kolon {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 1201px) {
+ .progress-bar {
+    max-width: 588px;
+    
+  }
+}
+
+
+@media (max-width: 1200px) {
+ .slider-proress-wrapper {
+    display: flex !important;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .progress-bar {
+    max-width: 100%;
+  }
+}
+ 
+
+/* Responsive */
+@media (max-width: 992px) {
+  .progress-bar {
+    width: 100%;
+     max-width: 588px;
+    
+  }
+.slider-row {
+    flex-direction: column;
+  }
+
+  .kucuk-slider-wrapper {
+    display: none !important;
+  }
+
+   .progress-arrows {
+    justify-content: flex-start;
+  }  
+  .buyuk-slider-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 16px;
+    box-sizing: border-box;;
+  }
+  .kucuk-card { 
+    flex: 0 0 48%;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .kucuk-slider-wrapper {
+    display: none !important;
+  }
+  .slider-proress-wrapper {
+    display: flex !important;
+    justify-content: center;
+    gap: 10px;
+  }
+  .buyuk-slider-card,
+  .kucuk-card {
+    max-width: 100%;
+    aspect-ratio: auto;
+  }
+  .kusuk-slider-card-scroll {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+}

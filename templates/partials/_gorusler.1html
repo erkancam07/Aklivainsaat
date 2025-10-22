@@ -1,0 +1,209 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_gorusler.css' %}">
+{% endblock %}
+ 
+{% block content %}
+<section>
+<div class="container-fluid gorusler-wrapper">
+  <div class="row">
+    
+    <!-- ✅ Sol boşluk divi -->
+    <div class="col-12 col-md-2">
+      <p>boşluk divi</p>
+    </div>
+
+    <!-- ✅ Sağ içerik -->
+    <div class="col-12 col-md-10">
+      
+      <!-- Başlık ve slogan -->
+      <div class="row gorusler-logo-slogan align-items-center">
+        <div class="col-12 col-md-6 gorusler-logo-baslik_wrapper">
+          <img src="{% static 'img/grilogo.svg' %}" alt="Logo" class="logo-img">
+          <span class="gorusler-logo-title">DEĞERLİ GÖRÜŞLER</span>
+        </div>
+        <div class="col-12 col-md-6 gorusler-baslik-slogan">
+          <p class="gorusler-slogan-text">Müşterilerimizin geri bildirimleri, mükemmeliyet anlayışımızı şekillendiriyor. Deneyimlerini okuyun ve Akliva’nın inşaat sektöründe neden güvenilen bir isim olduğunu keşfedin.</p>
+        </div>
+      </div>
+
+      <!-- Slider alanı -->
+        <div class="slider-proress-wrapper">
+          <div class="slider-row">
+          <!-- Sol: Büyük slider -->
+          <div class="buyuk-slider-card" id="buyukKart">
+            {% with gorusler.0 as item %}
+              <img src="{% static 'img/gorusler-personel-sari.svg' %}" alt="Kişi" class="personel-img">
+              <div class="ad">{{ item.ad }}</div>
+              <div class="meslek-sehir">{{ item.meslek }} • {{ item.sehir }}</div>
+              <div class="yildizlar">
+                {% for i in range5 %}
+                  {% if forloop.counter <= item.yildiz_sayisi %}
+                    <img src="{% static 'img/sari-yildiz.svg' %}" alt="Yıldız">
+                  {% else %}
+                    <img src="{% static 'img/sari-yildiz1.svg' %}" alt="Yıldız">
+                        {% endif %}
+                {% endfor %}
+                
+              </div>
+              <div class="mesaj">{{ item.mesaj }}</div>
+              <div class="tarih">{{ item.tarih }}</div>
+            {% endwith %}
+          </div>
+
+          <!-- Küçük kartlar: sadece masaüstünde görünür -->
+          <div class="sag-kolon">
+              <div class="kucuk-slider-wrapper">
+                <div class="kusuk-slider-card-scroll" id="kucukSlider">
+                  {% for item in gorusler|slice:"1:" %}
+                    <div class="kucuk-card">
+                      <img src="{% static 'img/gorusler-person-gri.svg' %}" alt="Kişi" class="person">
+                      <div class="ad">{{ item.ad }}</div>
+                      <div class="meslek-sehir">{{ item.meslek }} • {{ item.sehir }}</div>
+                      <div class="yildizlar">
+                        {% for i in "123"|make_list %}
+                          <img src="{% static 'img/beyaz-yildiz.svg' %}" alt="Yıldız">
+                        {% endfor %}
+                        {% for i in "12"|make_list %}
+                          <img src="{% static 'img/gri-yildiz.svg' %}" alt="Yıldız">
+                        {% endfor %}
+                      </div>
+                      <div class="mesaj">{{ item.mesaj }}</div>
+                      <div class="tarih">{{ item.tarih }}</div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- Oklar + progress bar: her zaman görünür -->
+              <div class="progress-arrows">
+                <div class="slider-proress-wrapper">
+                 
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill"></div>
+                  </div>
+                  <div class="arrows">
+                    <img src="{% static 'img/sliderSol.svg' %}" alt="Sol Ok" class="arrow prev" id="solOk">
+                    <img src="{% static 'img/sliderSag.svg' %}" alt="Sağ Ok" class="arrow next" id="sagOk">
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script type="application/json" id="gorusler-json">
+  {{ gorusler_json|safe }}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const buyukKart = document.getElementById("buyukKart");
+  const kucukSlider = document.getElementById("kucukSlider");
+  const nextBtn = document.getElementById("sagOk");
+  const prevBtn = document.getElementById("solOk");
+  const progressFill = document.querySelector(".progress-bar-fill");
+  const gorusler = JSON.parse(document.getElementById("gorusler-json").textContent);
+  const toplamKartSayisi = gorusler.length;
+
+  
+  let aktifIndex = 0;
+  let silinenKartlar = [];
+
+function updateProgressBar() {
+  const oran = ((aktifIndex + 1) / toplamKartSayisi) * 100;
+  progressFill.style.width = `${oran}%`;
+}
+
+  function renderBuyukKart(index) {
+    const item = gorusler[index];
+    buyukKart.classList.add("animasyon");
+    buyukKart.classList.remove("geldi");
+
+    setTimeout(() => {
+      buyukKart.innerHTML = `
+        <img src="/static/img/gorusler-personel-sari.svg" class="personel-img">
+        <div class="ad">${item.ad}</div>
+        <div class="meslek-sehir">${item.meslek} • ${item.sehir}</div>
+        <div class="yildizlar">${renderYildiz(item.yildiz_sayisi)}</div>
+        <div class="mesaj">${item.mesaj}</div>
+        <div class="tarih">${item.tarih}</div>
+      `;
+      buyukKart.classList.add("geldi");
+    }, 150);
+  }
+
+  function renderYildiz(sayi) {
+    let html = "";
+    for (let i = 1; i <= 5; i++) {
+      const src = i <= sayi ? "/static/img/sari-yildiz.svg" : "/static/img/sari-yildiz1.svg";
+      html += `<img src="${src}" alt="Yıldız">`;
+    }
+    return html;
+  }
+
+  function renderKucukKart(item) {
+    const div = document.createElement("div");
+    div.className = "kucuk-card";
+    div.innerHTML = `
+      <img src="/static/img/gorusler-person-gri.svg" class="person">
+      <div class="ad">${item.ad}</div>
+      <div class="meslek-sehir">${item.meslek} • ${item.sehir}</div>
+      <div class="yildizlar">${renderYildiz(item.yildiz_sayisi)}</div>
+      <div class="mesaj">${item.mesaj}</div>
+      <div class="tarih">${item.tarih}</div>
+    `;
+    return div;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    const kucukKartlar = kucukSlider.querySelectorAll(".kucuk-card");
+    if (aktifIndex < gorusler.length - 1 && kucukKartlar.length > 0) {
+      const silinecek = kucukKartlar[0];
+      silinecek.classList.add("kaybol");
+
+      setTimeout(() => {
+        silinenKartlar.push(silinecek);
+        kucukSlider.removeChild(silinecek);
+        aktifIndex++;
+        renderBuyukKart(aktifIndex);
+        updateProgressBar();
+      }, 300);
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (aktifIndex > 0 && silinenKartlar.length > 0) {
+      const geriKart = silinenKartlar.pop();
+      geriKart.classList.remove("kaybol");
+      geriKart.style.opacity = "0";
+      kucukSlider.insertBefore(geriKart, kucukSlider.firstChild);
+
+      setTimeout(() => {
+        geriKart.style.opacity = "1";
+      }, 50);
+
+      aktifIndex--;
+      renderBuyukKart(aktifIndex);
+      updateProgressBar();
+    }
+  });
+
+  renderBuyukKart(0);
+});
+</script>
+
+
+
+
+{% endblock %}

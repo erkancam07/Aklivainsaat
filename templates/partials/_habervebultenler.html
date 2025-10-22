@@ -1,0 +1,155 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_habervebultenler.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="haber-wrapper">
+  <div class="container">
+    <div class="row align-items-center logo-baslik-slogan">
+      <div class="col-12 col-md-6 d-flex align-items-center gap-3">
+        <div class="logo-container">
+          <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-img">
+        </div>
+        <span class="logo-title">HABERLER VE BÜLTENLER</span>
+      </div>
+      <div class="col-12 col-md-6">
+        <p class="slogan-text">
+          Akliva’nın son güncellemelerini, duyurularını ve sektör haberlerini takip edin. Bültenlerimiz, devam eden projeler ve şirket gelişmeleri hakkında size bilgiler sunar.
+        </p>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 col-md-7 px0 ">
+        <div class="haber-baslik-wrapper d-md-block mb-3"> <p class="section-heading">HABERLER</p>
+        </div>
+
+        <div class="haber-slider-container">
+          {% for haber in haberler %}
+            <div class="haber-card">
+              <img src="{% static 'img/' %}{{ haber.resim }}" class="haber-resim" alt="Haber görseli">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <img src="{% static 'img/konum1.png' %}" class="konum-icon" alt="Konum">
+                <span class="konum-text">{{ haber.konum }}</span>
+                <img src="{% static 'img/takvim-ikonu1.png' %}" class="takvim-icon" alt="Tarih">
+                <span class="konum-text">20.15.2025</span>
+              </div>
+              <h3 class="haber-baslik">{{ haber.baslik }}</h3>
+              <p class="haber-icerik">{{ haber.icerik }}</p>
+              <div class="haber-button-wrapper">
+              <button class="haber-button">DETAYLI İNCELE</button>
+            </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-12 d-flex align-items-center justify-content-between">
+            <div class="haber-progres flex-grow-1 me-3">
+              <div class="haber-progres-inner"></div>
+            </div>
+            <div class="haber-slider-buttons d-flex gap-2">
+              <img src="{% static 'img/sliderSol.png'%}" id="haber_sliderPrev" class="slider-arrow" alt="Sol">
+              <img src="{% static 'img/sliderSag.png'%}" id="haber_sliderNext" class="slider-arrow" alt="Sağ">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-5">
+        <div class="bulten-baslik-wrapper d-md-block mb-3 mt-4 mt-md-0"> 
+          <p class="section-heading">BÜLTENLER</p>
+        </div>
+        
+        <div class="bulten-card">
+          <div class="bulten-meta">
+            <img src="{% static 'img/konum1.svg' %}" class="konum-icon" alt="Konum">
+            <span class="konum-text">İstanbul</span>
+            <img src="{% static 'img/takvim-ikonu1.svg' %}" class="takvim-icon" alt="Tarih">
+            <span class="konum-text">20.15.2025</span>
+          </div>
+          <h3 class="bulten-baslik">Beyza Sitesi Projesi Konya Selçuklu'da Tamamlanıyor!</h3>
+          <button class="bulten-button">DETAYLI İNCELE</button>
+        </div>
+
+        <div class="bulten-card">
+          <div class="bulten-meta">
+            <img src="{% static 'img/konum1.svg' %}" class="konum-icon" alt="Konum">
+            <span class="konum-text">Ankara</span>
+            <img src="{% static 'img/takvim-ikonu1.svg' %}" class="takvim-icon" alt="Tarih">
+            <span class="konum-text">21.10.2025</span>
+          </div>
+          <h3 class="bulten-baslik">Bülten Başlığı 2</h3>
+          <button class="bulten-button">DETAYLI İNCELE</button>
+        </div>
+      </div>
+      </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sliderContainer = document.querySelector(".haber-slider-container");
+  const cards = document.querySelectorAll(".haber-card");
+  const prevBtn = document.getElementById("haber_sliderPrev");
+  const nextBtn = document.getElementById("haber_sliderNext");
+  const progressBar = document.querySelector(".haber-progres-inner");
+  
+  const gap = 21;
+  const cardWidth = window.innerWidth >= 1024
+  ? cards[0].offsetWidth + gap
+  : cards[0].offsetWidth;
+
+  const totalCards = cards.length;
+  const visibleCards = window.innerWidth >= 1024 ? 2 : 1;
+  let currentIndex = 0;
+
+function updateScroll() {
+  const isMobile = window.innerWidth < 1024;
+  const gap = 21;
+  const cardWidth = cards[0].offsetWidth;
+  const visibleCards = isMobile ? 1 : 2;
+  const maxIndex = totalCards - visibleCards;
+
+  let scrollX;
+
+  if (isMobile) {
+    const containerOffset = sliderContainer.getBoundingClientRect().left;
+    const cardOffset = cards[currentIndex].getBoundingClientRect().left;
+    const currentScroll = sliderContainer.scrollLeft;
+    scrollX = currentScroll + cardOffset - containerOffset;
+  } else {
+    scrollX = currentIndex * (cardWidth + gap);
+  }
+
+  sliderContainer.scrollTo({ left: scrollX, behavior: "smooth" });
+
+  const progressPercent = Math.min((currentIndex / maxIndex) * 100, 100);
+  progressBar.style.width = progressPercent + "%";
+}
+
+  nextBtn.addEventListener("click", () => {
+    const maxIndex = totalCards - visibleCards;
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateScroll();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateScroll();
+    }
+  });
+
+  updateScroll();
+  window.addEventListener("resize", () => {
+  updateScroll();
+});
+});
+</script>
+{% endblock %}

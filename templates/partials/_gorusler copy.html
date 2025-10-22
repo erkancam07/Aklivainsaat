@@ -1,0 +1,158 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_gorusler.css' %}">
+{% endblock %}
+
+{% block content %}
+<section>
+<div class="container-fluid gorusler-wrapper">
+  <div class="row">
+    <div class="col-12 col-md-2">
+      <p>boşluk divi</p>
+    </div>
+
+    <div class="col-12 col-md-10">
+      <div class="row gorusler-logo-slogan align-items-center">
+        <div class="col-12 col-md-6 gorusler-logo-baslik_wrapper">
+          <img src="{% static 'img/grilogo.svg' %}" alt="Logo" class="logo-img">
+          <span class="gorusler-logo-title">DEĞERLİ GÖRÜŞLER</span>
+        </div>
+        <div class="col-12 col-md-6 gorusler-baslik-slogan">
+          <p class="gorusler-slogan-text">Müşterilerimizin geri bildirimleri, mükemmeliyet anlayışımızı şekillendiriyor. Deneyimlerini okuyun ve Akliva’nın inşaat sektöründe neden güvenilen bir isim olduğunu keşfedin.</p>
+        </div>
+      </div>
+
+      <div class="slider-progress-wrapper">
+        <div class="buyuk-slider-container">
+          <div class="buyuk-slider-card" id="buyukKart"></div>
+        </div>
+
+        <div class="kucuk-slider-wrapper">
+          <div class="kusuk-slider-card-scroll" id="kucukSlider"></div>
+
+          <div class="progress-arrows">
+            <div class="progress-bar">
+              <div class="progress-bar-fill"></div>
+            </div>
+            <img src="{% static 'img/sliderSol.svg' %}" alt="Sol Ok" class="arrow prev" id="solOk">
+            <img src="{% static 'img/sliderSag.svg' %}" alt="Sağ Ok" class="arrow next" id="sagOk">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script type="application/json" id="gorusler-json">
+  {{ gorusler_json|safe }}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("Slider JS başladı");
+
+  const buyukKart = document.getElementById("buyukKart");
+  const kucukSlider = document.getElementById("kucukSlider");
+  const nextBtn = document.getElementById("sagOk");
+  const prevBtn = document.getElementById("solOk");
+  const progressFill = document.querySelector(".progress-bar-fill");
+  const gorusler = JSON.parse(document.getElementById("gorusler-json").textContent);
+  const toplamKartSayisi = gorusler.length;
+
+  let aktifIndex = 0;
+  let silinenKartlar = [];
+
+  function kisaMesaj(metin, limit = 100) {
+  return metin.length > limit ? metin.slice(0, limit) + "..." : metin;
+}
+
+  function updateProgressBar() {
+    const oran = ((aktifIndex + 1) / toplamKartSayisi) * 100;
+    progressFill.style.width = `${oran}%`;
+  }
+
+  function renderBuyukKart(index) {
+    const item = gorusler[index];
+    buyukKart.innerHTML = `
+      <img src="{% static 'img/gorusler-personel-sari.svg' %}" class="personel-img">
+      <div class="ad">${item.ad}</div>
+      <div class="meslek-sehir">${item.meslek} • ${item.sehir}</div>
+      <div class="yildizlar">${renderYildiz(item.yildiz_sayisi)}</div>
+      <div class="mesaj">${kisaMesaj(item.mesaj)}</div>
+      <div class="tarih">${item.tarih}</div>
+    `;
+  }
+
+  function renderYildiz(sayi) {
+    let html = "";
+    for (let i = 1; i <= 5; i++) {
+      const src = i <= sayi ? "{% static 'img/sari-yildiz.svg' %}" : "{% static 'img/sari-yildiz1.svg' %}";
+      html += `<img src="${src}" alt="Yıldız">`;
+    }
+    return html;
+  }
+
+  function renderKucukKart(item) {
+    const div = document.createElement("div");
+    div.className = "kucuk-card";
+    div.innerHTML = `
+      <img src="{% static 'img/gorusler-person-gri.svg' %}" class="person">
+      <div class="ad">${item.ad}</div>
+      <div class="meslek-sehir">${item.meslek} • ${item.sehir}</div>
+      <div class="yildizlar">${renderYildiz(item.yildiz_sayisi)}</div>
+      <div class="mesaj">${kisaMesaj(item.mesaj)}</div>
+      <div class="tarih">${item.tarih}</div>
+    `;
+    return div;
+  }
+
+  gorusler.slice(1).forEach(item => {
+    kucukSlider.appendChild(renderKucukKart(item));
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const kucukKartlar = kucukSlider.querySelectorAll(".kucuk-card");
+    if (aktifIndex < gorusler.length - 1 && kucukKartlar.length > 0) {
+      const silinecek = kucukKartlar[0];
+      silinecek.classList.add("kaybol");
+
+      setTimeout(() => {
+        silinenKartlar.push(silinecek);
+        kucukSlider.removeChild(silinecek);
+        aktifIndex++;
+        renderBuyukKart(aktifIndex);
+        updateProgressBar();
+      }, 300);
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+  if (aktifIndex > 0 && silinenKartlar.length > 0) {
+    const geriKart = silinenKartlar.pop();
+    geriKart.classList.add("kaybol");
+    kucukSlider.insertBefore(geriKart, kucukSlider.firstChild);
+
+    // Zorla reflow → animasyon tetiklenir
+    void geriKart.offsetWidth;
+
+    // Efekti kaldır → yumuşakça görünür hale gelir
+    setTimeout(() => {
+      geriKart.classList.remove("kaybol");
+    }, 30); // 1 frame gecikme yeterli
+
+    aktifIndex--;
+    renderBuyukKart(aktifIndex);
+    updateProgressBar();
+  }
+});
+
+
+  renderBuyukKart(0);
+  updateProgressBar();
+  console.log("Gelen veri:", gorusler);
+});
+</script>
+{% endblock %}

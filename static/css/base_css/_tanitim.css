@@ -1,0 +1,146 @@
+.ana-satir {
+    position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.tanitim-wrapper {
+    position: relative;
+  background-color: rgba(38, 38, 38, 1);
+  background-image: url("/static/img/tanitim-zemin.png");
+
+  background-repeat: no-repeat;
+  background-size: contain; /* veya cover */
+  background-position: right center; /* istediğin konuma göre ayarlanabilir */
+}
+
+/*Video Bölümü*/
+.video-wrapper {
+  max-width: 609px;
+  aspect-ratio: 609 / 343;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+}
+
+/*Sağ Alan*/
+.sag-alan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sag-baslik {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 55px;
+  letter-spacing: 0;
+  text-align: right;
+  vertical-align: middle;
+  color: rgba(147, 147, 147, 1);
+}
+
+.sag-aciklama {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 55px;
+  line-height: 55px;
+  letter-spacing: 0;
+  text-align: right;
+  vertical-align: middle;
+  color: rgba(147, 147, 147, 1);
+}
+
+.sag-slogan {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 35px;
+  letter-spacing: 0;
+  text-align: right;
+  vertical-align: middle;
+  color: rgba(246, 153, 48, 1);
+}
+
+.bottom-divider-wrapper-tanitim {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  border-radius: 5px;
+  overflow: visible; /* taşmayı engellemesin */
+  bottom: -3px;
+  z-index: 70;
+}
+
+.bottom-divider-line-tanitim {
+  position: relative;
+  top: 0;
+  width: 612px;
+  height: 6px;
+  bottom: 0;
+  background-color: #f69930;
+  border-radius: 5px;
+  margin-left: calc(100% *2 / 12);
+  display: block;
+}
+
+/* Responsiv ayarları */
+@media (max-width: 1200px) {
+  .sag-baslik {
+    font-size: 22px;
+    line-height: 40px;
+  }
+
+  .sag-aciklama {
+    font-size: 42px;
+    line-height: 45px;
+  }
+
+  .sag-slogan {
+    font-size: 32px;
+    line-height: 30px;
+  }
+  
+}
+@media (max-width: 991px) {
+  .tanitim-wrapper {
+    background-position: center bottom;
+    background-size: 100%;
+    padding-left: 10px;
+    padding-right: 20px;
+  }
+  .sag-icerik {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* satırları ortalar */
+    justify-content: center;
+  }
+
+  .satir-baslik,
+  .satir-aciklama,
+  .satir-slogan {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .sag-baslik,
+  .sag-aciklama,
+  .sag-slogan {
+    text-align: right;
+  }
+  
+}

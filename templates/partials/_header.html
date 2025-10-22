@@ -1,0 +1,43 @@
+{% load static %} 
+
+<header class="main-header">
+  <div class="top-header">
+    <div class="top-header-content">
+      
+      <!-- Sol: Katalog -->
+      <div class="top-left">
+        <a href="#" class="catalog-link">
+          <img src="{% static 'img/katalog.png' %}" alt="Katalog İkonu">
+          <span>PROJE KATALOGLARI</span>
+        </a>
+      </div>
+
+      <!-- Orta: boşluk veya logo -->
+      <div class="top-center">
+        <!-- İstersen logo veya başka içerik -->
+      </div>
+
+      <!-- Sağ: Sosyal + Dil + Arama -->
+      <div class="top-right">
+        <div class="social-icons">
+          <a href="#"><img src="{% static 'img/yt.png' %}" alt="Youtube" width="22" height="15"></a>
+          <a href="#"><img src="{% static 'img/fb.png' %}" alt="Facebook"></a>
+          <a href="#"><img src="{% static 'img/x.png' %}" alt="X"></a>
+          <a href="#"><img src="{% static 'img/link.png' %}" alt="LinkedIn"></a>
+          <a href="#"><img src="{% static 'img/in.png' %}" alt="Instagram"></a>
+        </div>
+
+        <div class="language-selector">
+          <a href="#" class="lang-tr">TR</a>
+          <span>|</span>
+          <a href="#" class="lang-en">EN</a>
+        </div>
+
+        <a href="#" class="search-icon">
+          <img src="{% static 'img/search.png' %}" alt="Arama">
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>

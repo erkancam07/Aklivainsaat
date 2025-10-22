@@ -1,0 +1,360 @@
+/*Logo ve başlıklar*/
+.haber-wrapper {
+  padding-top: 20px;
+  padding-bottom: 100px;
+  background-color: #F5F3F3;
+}
+.logo-baslik-slogan {
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+.logo-container {
+  position: relative;
+  width: 63.29px;
+  height: 29.74px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.logo-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 100%;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 100%
+  ); 
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  transform: skewX(-20deg) translateX(-100%);
+  animation: logoShineLine 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes logoShineLine {
+  0% {
+    transform: skewX(-20deg) translateX(-100%);
+  }
+  100% {
+    transform: skewX(-20deg) translateX(200%);
+  }
+}
+
+.logo-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  color: #000000;
+}
+
+.slogan-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: #939393;
+}
+
+/*başlıklar */
+.section-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #939393;
+}
+
+  /*Slider alanı*/
+  .haber-slider-container {
+    display: flex;
+    gap: 21px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .haber-slider-container::-webkit-scrollbar {
+    display: none;
+  }
+
+
+.haber-card {
+  flex: 0 0 48%;
+  max-width: 48%;
+  height: auto;
+  box-sizing: border-box;
+  height: 100%;
+  max-height: 459px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0px 1px 1px 0px #0000001A;
+  padding: 18px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.haber-resim {
+  width: 100%;
+  max-width: 310px;
+  height: 100%;
+  max-height: 210px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  align-self: center;
+}
+
+.konum-icon {
+  width: 18px;
+  height: 20px;
+}
+
+.takvim-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.konum-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  color: #B1B1B1;
+  vertical-align: middle;
+}
+
+.haber-baslik {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 26px;
+  letter-spacing: -0.03em;
+  color: #343434;
+  
+}
+
+.haber-icerik {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: #B1B1B1;
+  margin-bottom: 16px;
+}
+.haber-button-wrapper {
+  width: 100%;
+  max-width: 310px; /* masaüstü görünüm sınırı */
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+
+.haber-button {
+  width: 100%;
+  max-width: 310px;
+  height: 48px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: #B1B1B1;
+  border: none;
+  opacity: 1;
+  transform: rotate(0deg);
+  position: relative; /* Eğer top/left kullanılacaksa */
+  top: 0;
+  left: 0;
+ margin-bottom: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.haber-button:hover {
+  background-color: #F69930;
+}
+
+/*progress */
+.haber-progres {
+  width: 610px;
+  height: 4px;
+  background-color: #B1B1B1;
+  border-radius: 2px;
+  position: relative;
+  opacity: 1;
+}
+
+.haber-progres-inner {
+  height: 100%;
+  width: 0%;
+  background-color: #F69930;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.slider-arrow {
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid #B1B1B1
+}
+
+.slider-arrow:hover {
+  background-color: #F69930;
+}
+/*Bültenler*/
+.bulten-card {
+  width: 100%;
+  max-width: 345px;
+  height: 215px;
+  background-color: #B1B1B1;
+  border-radius: 10px;
+  
+  padding: 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 21px;
+  
+  
+}
+.bulten-card:hover {
+  background-color: #F69930;
+}
+
+/* Üst: Konum + Takvim */
+.bulten-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.bulten-meta .konum-icon,
+.bulten-meta .takvim-icon {
+  width: 18px;
+  height: 20px;
+}
+.bulten-meta .konum-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+/* Başlık */
+.bulten-baslik {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 26px;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* Buton */
+.bulten-button {
+  width: 100%;
+  max-width: 310px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #808285;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.bulten-button:hover {
+  background-color: #D6790F;
+}
+
+
+.haber-card,
+.bulten-card {
+  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
+    will-change: transform, box-shadow;
+}
+
+.haber-card:hover {
+    
+    transform: scale(1.03); 
+   
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    
+    z-index: 100; 
+}
+
+
+.bulten-card:hover {
+   
+    transform: scale(1.02);
+   
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+
+@media (max-width: 1024px) {
+  .haber-slider-container {
+    width: 100%;
+    max-width: 345px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .haber-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .haber-slider-container {
+    max-width: 345px; /* kart genişliği kadar */
+    margin: 0 auto;   /* ortalama */
+  }
+   .haber-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .bulten-card {
+    max-width: 100%;
+  }
+  .bulten-button {
+    max-width: 100%;
+  }
+}

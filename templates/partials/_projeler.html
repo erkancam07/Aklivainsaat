@@ -1,0 +1,296 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_projeler.css' %}">
+{% endblock %}
+
+<section id="projects-section" class="bg-light pt-5">
+  <div class="container-fluid bg-light position-relative">
+     
+    <div class="row">
+      
+      <!-- Sütun 1: Orijinal içerik (arkaplan siyah) -->
+      <div class="col-12 col-lg-2 content-col text-white">
+        
+      </div>
+
+      <!-- Sütun 2: Başlık ve açıklama -->
+      <div class="col-12 col-lg-4 content-col">
+        <!-- Satır 1: Logo + Başlık -->
+        <div class="d-flex align-items-center mb-4">
+            <div class="logo-glow-wrapper position-relative d-inline-block">
+              <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-glow-image me-4 fixed-logo-size">
+            </div>
+            <h2 class="fw-bold fs-4 m-0">PROJELER</h2>
+          </div>
+
+          <!-- Satır 2: Slogan 1 -->
+          <div class="mb-3" style="margin-top: 5rem;">
+            <h3 class="slogan-1">
+              Güvenle Yükselen <br> Projeler, Hayallerinize <br>Değer Katıyoruz.
+            </h3>
+          </div>
+
+          <!-- Satır 3: Slogan 2 -->
+          <div>
+            <p class="slogan-2">
+              Yaşam alanlarınızı modern mimari<br>ve sağlam yapılarla buluşturuyoruz
+            </p>
+          </div>
+      </div>
+
+      <!-- Sütun 3: Slider -->
+      <div class="col-12 col-lg-6 slider-col d-flex flex-column align-items-end px-lg-0"> 
+        <div class="slider-content-wrapper w-100">
+          
+          <!-- Açıklama -->
+          <p class="slider-description">
+            Aktiva, mükemmeliyet, dürüstlük ve sürdürülebilir büyüme <br>
+            anlayışıyla hareket eder. Misyonumuz, zamanın testine <br>
+            dayanacak yüksek kaliteli inşaat çözümleri sunmaktır.
+          </p>
+
+          <!-- Slider -->
+          <div class="slider-wrapper position-relative overflow-hidden ms-auto">
+            <div class="slider-track d-flex">
+              {% for i in slider_ids %}
+              <div class="project-card position-relative">
+                <!-- Proje Görseli -->
+                <img src="{% static 'img/slider' %}{{ i }}.jpg" alt="Proje {{ i }}" class="card-img-top project-image">
+
+                <!-- Bilgilendirici Notlar -->
+                <div class="project-info-overlay">
+                  <!-- Üst Sol: Konum -->
+                  <div class="project-location">
+                    <img src="{% static 'img/projeler-konum.png' %}" alt="Konum" class="icon">
+                    <span>Karatay / Konya</span>
+                  </div>
+
+                  <!-- Alt Bilgiler -->
+                  <h4 class="project-title">Revapark Konakları</h4>
+
+                  <div class="project-info-lines">
+                    <!-- Satır 1: Başlangıç + Daire -->
+                    <div class="info-line">
+                      <img src="{% static 'img/takvim-ikonu.png' %}" alt="Başlangıç" class="icon">
+                      <span>01.01.2024</span>
+                      <img src="{% static 'img/daire-ikonu.png' %}" alt="Daire" class="icon ms-3">
+                      <span>100 Daire</span>
+                    </div>
+
+                    <!-- Satır 2: Bitiş + Dükkan -->
+                    <div class="info-line">
+                      <img src="{% static 'img/takvim-ikonu.png' %}" alt="Bitiş" class="icon">
+                      <span>01.01.2024</span>
+                      <img src="{% static 'img/dukkan-ikonu.png' %}" alt="Dükkan" class="icon ms-3">
+                      <span>20 Dükkan</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sağ Alt Buton -->
+                <a href="#" class="project-button">PROJEYİ İNCELE</a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- İlerleme ve Oklar -->
+          <div class="d-flex align-items-center justify-content-start gap-3 w-100 pt-2 progress-and-arrows-group">
+            <span class="fw-bold" id="current-index-info">1 / 5</span>
+
+            <div class="d-flex align-items-center gap-2 flex-grow-1">
+              <div class="custom-progress-bar">
+                <div class="progress-indicator" id="progress-indicator" style="width: 20%;"></div>
+              </div>
+
+              <button id="slider-left" class="slider-arrow">
+                <img src="{% static 'img/kucukSliderSol.svg' %}" alt="Sol Ok">
+              </button>
+              <button id="slider-right" class="slider-arrow">
+                <img src="{% static 'img/kucukSliderSag.svg' %}" alt="Sağ Ok">
+              </button>
+            </div>
+          </div>
+
+          <!-- Filtreler -->
+          <div id="project-filter">
+            <a href="#" class="filter-link active">Tüm Projeler</a>
+            <a href="#" class="filter-link">Devam Eden Projeler</a>
+            <a href="#" class="filter-link">Tamamlanan Projeler</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-divider-wrapper-projeler">
+      <div class="bottom-divider-line-projeler"></div>
+    </div>    
+  </div>
+    
+</section>
+
+
+
+
+{% block extra_js %}
+<script>
+// Proje Slider Kodunun Tamamen İzole Edilmiş Hali
+    function initProjectSlider() {
+        // Değişkenler artık lokal kapsamda kalır.
+        const wrapper = document.querySelector(".slider-wrapper");
+        const track = document.querySelector(".slider-track");
+        
+        // ÖNEMLİ: Eğer bu ID'ler başka bir slider ile çakışıyorsa, 
+        // HTML'de bunları 'project-slider-left' vb. olarak değiştirin.
+        const leftBtn = document.getElementById("slider-left"); 
+        const rightBtn = document.getElementById("slider-right");
+        
+        const progressIndicator = document.getElementById("progress-indicator");
+        const currentIndexInfo = document.getElementById("current-index-info");
+        
+        const cards = track ? track.querySelectorAll(".project-card") : null;
+        if (!cards || cards.length === 0) return; // Eleman yoksa dur.
+
+        const cardCount = cards.length;
+        let currentIndex = 0;
+        
+        // CSS'ten gelen sabit değerler
+        const CARD_WIDTH = 610; 
+        const GAP = 32; 
+        
+        // Masaüstünde 1.7 kart görünür. Mobil'de 1 kart.
+        function getVisibleCardCount() {
+            if (window.innerWidth >= 992) {
+                return 1.7; 
+            }
+            return 1;
+        }
+        
+        // Tıklama başına kaydırma miktarı (adım)
+        function calculateStep() {
+            if (window.innerWidth >= 992) {
+                // MASAÜSTÜ: 1 tam kart ve 32px boşluk kadar kay.
+                return CARD_WIDTH + GAP; 
+            } else {
+                // MOBİL: Responsive genişlik + 32px boşluk kadar kay.
+                const firstCard = cards[0];
+                const dynamicWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+                return dynamicWidth + GAP;
+            }
+        }
+
+        function updateSlider() {
+            const wrapperWidth = wrapper.getBoundingClientRect().width;
+            const trackWidth = track.scrollWidth;
+            const visibleCount = getVisibleCardCount();
+            const step = calculateStep();
+            
+            let actualMaxIndex;
+            let totalSteps;
+            let offset;
+
+            if (window.innerWidth >= 992) {
+                // Masaüstü (1.7 Kart Görünür)
+                // actualMaxIndex, currentIndex'in alabileceği son tam kayma endeksidir.
+                actualMaxIndex = Math.floor(cardCount - visibleCount); 
+                // totalSteps, progress bar için toplam dilim sayısını belirler (0. adım dahil).
+                totalSteps = Math.max(1, actualMaxIndex + 1);
+                
+                if (currentIndex >= actualMaxIndex) {
+                    // SON ADIM: Kaymayı tam sona hizala (fazla kaymayı önler)
+                    offset = -(trackWidth - wrapperWidth - GAP);
+                    if (offset > 0) offset = 0; // Eğer kaydırmaya gerek yoksa 0'da kal.
+                } else {
+                    // DİĞER ADIMLAR: Normal 1 kart + gap kadar kay
+                    offset = -(currentIndex * step);
+                }
+
+            } else {
+                // Mobil (1 Kart Görünür)
+                actualMaxIndex = cardCount - 1; 
+                totalSteps = cardCount;
+                offset = -(currentIndex * step);
+            }
+            
+            // Transform uygula
+            track.style.transform = `translateX(${offset}px)`;
+            
+            // Butonları ve Progress Bar'ı Güncelleme
+            if (leftBtn) leftBtn.disabled = currentIndex === 0;
+            if (rightBtn) rightBtn.disabled = currentIndex >= actualMaxIndex;
+
+            if (progressIndicator && totalSteps > 0) {
+                // Progress bar, (Mevcut Index + 1) / Toplam Adım Sayısı * 100 oranında çalışır.
+                const progressPercent = ((currentIndex + 1) / totalSteps) * 100;
+                progressIndicator.style.width = `${progressPercent}%`;
+            }
+
+            if (currentIndexInfo) {
+                currentIndexInfo.textContent = `${currentIndex + 1} / ${Math.max(1, totalSteps)}`;
+            }
+        }
+
+        // Buton event'ları
+        if (rightBtn) {
+            rightBtn.addEventListener("click", () => {
+                const visibleCount = getVisibleCardCount();
+                const maxIndex = window.innerWidth >= 992 ? Math.floor(cardCount - visibleCount) : cardCount - 1;
+
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+        }
+
+        if (leftBtn) {
+            leftBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+        }
+
+        // Yeniden boyutlandırma (responsive)
+        window.addEventListener("resize", () => {
+            // Küçük bir gecikme eklemek, tarayıcının yeni boyutları işlemesine zaman tanır.
+            setTimeout(() => {
+                const visibleCount = getVisibleCardCount();
+                const newMaxIndex = window.innerWidth >= 992 ? Math.floor(cardCount - visibleCount) : cardCount - 1;
+                
+                // Index'i yeni maksimum değere göre ayarla
+                if (currentIndex > newMaxIndex) {
+                    currentIndex = newMaxIndex;
+                }
+                if (currentIndex < 0) {
+                    currentIndex = 0; 
+                }
+                updateSlider();
+            }, 100); 
+        });
+
+        // İlk yüklemede başlat
+        // Kodun çalışması için bir DOMContentLoaded olayına sarmalıyoruz, bu nedenle setTimeout'a gerek yok.
+        updateSlider();
+    }
+    
+    // Filtreleme Kodunun İzole Edilmiş Hali
+    function initFilterLinks() {
+        document.querySelectorAll('.filter-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.filter-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    }
+
+    // Tüm izole fonksiyonları DOM yüklendiğinde çağır.
+    document.addEventListener("DOMContentLoaded", function () {
+        initProjectSlider(); // Yeni Proje Slider'ı
+        initFilterLinks(); // Yeni Filtreleme
+        // initHaberSlider(); // Eğer varsa, diğer slider'ları da buradan çağırın
+    });
+</script>
+{% endblock %}
