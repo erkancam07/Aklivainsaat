@@ -6,7 +6,7 @@
 <section id="video-banner" class="position-relative overflow-hidden anim-sag">
   <!-- Video Slaytları -->
    
-     {% comment %}    <div class="video-slider-wrapper position-relative">
+        <div class="video-slider-wrapper position-relative">
           {% for slide in slides %}       
             <div class="video-slide {% if forloop.first %}active{% endif %}" 
                 data-title="{{ slide.title }}" 
@@ -15,7 +15,7 @@
               <iframe id="player-{{ forloop.counter }}" src="{{ slide.video_url }}&enablejsapi=1"></iframe>
             </div>
             {% endfor %}
-        </div> {% endcomment %}
+        </div>
     
 
   {% comment %} <div class="video-slide" data-title="Revapark Premium" data-subtitle="Yeni Etap Satışları Başladı" data-button="Detayları Gör">

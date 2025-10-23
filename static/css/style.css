@@ -46,6 +46,21 @@ a {
   margin: 0 auto;
   
 }
+/*sağ sol okları hover*/
+.arrow {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  transform: scale(1.15) rotate(-3deg);
+  filter: drop-shadow(0 4px 12px rgba(246, 153, 48, 0.3));
+}
+
+
 /*Her Bölüm için*/
 .anim-sol, .anim-sag {
   opacity: 0;

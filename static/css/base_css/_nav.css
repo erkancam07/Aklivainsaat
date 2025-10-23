@@ -1,5 +1,5 @@
 
-/* NAV GENEL */
+
 .main-nav {
   position: relative;
   z-index: 1000;
@@ -16,9 +16,9 @@
     height: 120px; 
 }
 .main-nav.fixed .logo-area {
-    height: 90px; /* Sabitlenmiş yüksekliğe uyum sağlar */
+    height: 90px; 
 }
-/* NAV İÇ YAPI: GRID */
+
 .nav-inner {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -35,9 +35,9 @@
   position: relative;
   display: inline-block;
   height: clamp(70px, 8vw, 100px);
-  width: clamp(100%, 20vw, 260px); /* responsive genişlik */
+  width: clamp(100%, 20vw, 260px);
   display: grid;
-  /* Tüm çocuk elementleri aynı ızgara hücresine yerleştir */
+ 
   grid-template-areas: "overlay"; 
   
 }
@@ -56,31 +56,30 @@
  
   margin-right: 100px; 
   padding-left: 15px;
-  z-index: 2; /* Logoyu üstte tutar */
+  z-index: 2;
   
-  /* logo-overlay'in kendisinin bir grid olmasına gerek yok */
+ 
   display: block; 
   width: auto;
   animation: slideInFromRight 1s ease-out forwards;
 }
 
 .logo-overlay-img {
-  /* logo.png'nin gerçek boyutunda kalmasını sağlar */
-  height: auto; /* Yüksekliği içeriğine göre ayarlar */
-  width: auto;  /* Genişliği içeriğine göre ayarlar */
-  max-width: none; /* Üstteki max-width: 100%'i geçersiz kılar (önemli) */
+ 
+  height: auto;
+  width: auto; 
+  max-width: none;
   
-  /* Gerçek boyutu çok büyükse, bir limit koyabilirsiniz (opsiyonel) */
-  /* max-width: 200px; */
+  
 }
 @keyframes slideInFromRight {
   0% {
-    /* Başlangıçta 100 piksel sağda ve tamamen görünmez olsun */
+ 
     transform: translateX(100px); 
     opacity: 0;
   }
   100% {
-    /* Animasyon sonunda orijinal konumunda ve tamamen görünür olsun */
+  
     transform: translateX(0);
     opacity: 1;
   }
@@ -191,7 +190,7 @@
   z-index: 1;
 }
 .nav-link:hover {
-  color: #fff;
+  color: #F69930;
   opacity: 0.8;
 }
 .nav-link:hover::after,
