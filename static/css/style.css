@@ -20,11 +20,11 @@ html, body {
    
     
 }
-/* 1. Top Header'ı saran ana elementin tüm dikey boşluklarını sıfırla */
+
 header.main-header {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
-    line-height: 1; /* Satır yüksekliğini sıfırlayarak boşluk oluşmasını engelle */
+    line-height: 1;
     display: block;
 }
 a {
@@ -35,17 +35,76 @@ a {
     padding-bottom: 0 !important;
 }
 
-/* 3. Banner alanının üst boşluğunu sıfırla */
+
 #full-banner-area {
     margin-top: 0 !important;
     padding-top: 0 !important;
-    /* Bu ikisi genellikle boşluğu kaldırır. */
+    
 }
 .banner-container {
   max-width: 1200px;
   margin: 0 auto;
   
 }
+/*Her Bölüm için*/
+.anim-sol, .anim-sag {
+  opacity: 0;
+  transform: translateX(200px); /* sağdan */
+  transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.4s ease;
+  will-change: transform, opacity;
+  visibility: hidden;
+}
+
+.anim-sol {
+  transform: translateX(-200px); /* soldan */
+}
+
+.anim-sol.aktif,
+.anim-sag.aktif {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/*MEtinler için*/
+.anim-giris {
+  opacity: 0;
+  transition: transform 1.2s ease, opacity 1.2s ease;
+  will-change: transform, opacity;
+  visibility: hidden;
+}
+.anim-giris.aktif {
+  opacity: 1;
+  transform: translate(0, 0);
+  visibility: visible;
+}
+.anim-sag { transform: translateX(200px); }
+.anim-sol { transform: translateX(-200px); }
+.anim-alt { transform: translateY(200px); }
+.anim-ust { transform: translateY(-200px); }
+
+/*Footer logo animasyonu*/
+@keyframes zoomBlink {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.footer-logo-anim {
+  animation: zoomBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
+  display: inline-block;
+}
+
 @media (max-width: 768px) {
   
 }

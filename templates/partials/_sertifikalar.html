@@ -1,0 +1,59 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_sertifikalar.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="py-5 px-2 anim-sag">
+  <div class="container">
+
+    <!-- Üst kısım: Logo + Başlık + Slogan -->
+    <div class="row mb-5 sertifiklar-logo-baslik-slogan gx-3 anim-giris anim-ust">
+      <div class="col-12 col-md-1 logo-container">
+        <img src="{% static 'img/grilogo.svg' %}" alt="Logo" class="logo-img" >
+      </div>
+      <div class="col-12 col-md-6 ">
+        <h2 class="sertifika-baslik-text">İŞ ORTAKLARI VE SERTİFİKALAR</h2>
+      </div>
+      <div class="col-12 col-md-5 anim-giris">
+        <p  class="slogan-text">Önde gelen sektör ortaklarıyla iş birliği yaparak olağanüstü projeler gerçekleştiriyoruz. Sahip olduğumuz sertifikalar, kaliteye, güvenliğe ve profesyonel mükemmeliyete olan bağlılığımızı yansıtıyor.</p>
+      </div>
+    </div>
+
+            <!-- Bölüm 1: İş Ortakları -->
+            <div class="row mb-5 ortaklar-wrapper">
+            <div class="col-12 sertifikalar-ortaklar-text anim-giris anim-sol">
+                <h3 class="mb-3">İş Ortakları</h3>
+                <div class="row g-3">
+                {% for ortak in ortaklar %}
+                <div class="col-6 col-md-3 col-lg-2">
+                <div class="ortak-kart">
+                    
+                    <img src="{{ ortak.logo_url }}" alt="{{ ortak.ad }}" class="kart-icerik">
+                </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+            </div>
+
+            <!-- Bölüm 2: Sertifikalar -->
+            <div class="row mb-5 sertifikalar-wrapper">
+            <div class="col-12 sertifikalar-sertifika-text anim-giris anim-sag">
+                <h3 class="mb-3">Sertifikalar</h3>
+                <div class="row g-3">
+                {% for sertifika in sertifikalar %}
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="sertifika-kart">
+                        
+                        <img src="{{ sertifika.img_url }}" alt="{{ sertifika.ad }}" class="kart-icerik">
+                    </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            </div>
+  </div>
+</section>
+{% endblock %}

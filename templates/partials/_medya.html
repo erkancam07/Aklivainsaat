@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="medya-wrapper">
+<section class="medya-wrapper anim-sol">
   <div class="container-fluid">
     <div class="row medya_ana_satir">
       
@@ -16,11 +16,11 @@
         <div class="row">
           
           <!-- Logo ve Slogan -->
-            <div class="col-md-5 col-12  logo-medya d-flex align-items-center gap-3">
+            <div class="col-md-5 col-12  logo-medya d-flex align-items-center gap-3 anim-giris anim-ust">
               <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-img">
               <span class="medya-text">MEDYA</span>
             </div>
-            <div class="col-md-4 col-12  medya-slogan">
+            <div class="col-md-4 col-12  medya-slogan anim-giris anim-sol">
               <p>Akliva’nın son haberleri, projeleri ve sektör gelişmeleriyle güncel kalın. Medya görünürlüğümüzü keşfedin ve her inşaat çalışmamızda nasıl yenilikçi çözümler sunduğumuzu görün..</p>
             </div>
             
@@ -73,8 +73,9 @@
 
                 <!-- Slider okları -->
                 <div class="col-1 nmedya-slider-buttons">
-                    <img src="{% static 'img/kucukSliderSol.svg' %}" id="sliderPrev" alt="Sol">
-                    <img src="{% static 'img/kucukSliderSag.svg' %}" id="sliderNext" alt="Sağ">
+                    
+                    <img src="{% static 'img/sliderSol-gri.svg' %}" alt="Sol Ok" class="arrow prev" id="sliderPrev">
+                    <img src="{% static 'img/sliderSag-gri.svg' %}" alt="Sağ Ok" class="arrow next" id="sliderNext">
                 </div>
                 <!-- Boşluk -->
                 <div class="col-12 medya-videolar-button d-flex justify-content-center">
@@ -137,16 +138,9 @@
         }
     }
 
-    // 2. Medya Slider İşlevi (Tamamen İzole Edildi)
     function initMedyaSlider() {
-        // Değişkenler artık bu fonksiyonun içindedir (lokaldir).
         const slides = Array.from(document.querySelectorAll('.slider-card'));
         const progress = document.querySelector('.medya-progres-inner');
-        
-        // Medya Slider'ının buton ID'leri, diğer slider'larla çakışıyorsa
-        // (örneğin Haberler Slider'ı ile), HTML'deki ID'leri değiştirmelisiniz!
-        // Varsayılan olarak 'sliderPrev' ve 'sliderNext' ID'lerini kullanıyoruz,
-        // ancak çakışmayı önlemek için bu ID'leri HTML'de 'medya_sliderPrev' vb. yapmanız önerilir.
         const prevBtn = document.getElementById('sliderPrev'); 
         const nextBtn = document.getElementById('sliderNext');
 
@@ -155,7 +149,7 @@
             return;
         }
 
-        let currentIndex = 0; // Bu artık global değil, lokal değişkendir.
+        let currentIndex = 0; // 
 
         function updateSlider() {
             slides.forEach((slide, i) => {
@@ -169,7 +163,7 @@
                 } 
             });
 
-            // Progress bar hesaplaması (1/N, 2/N, ..., N/N)
+            
             const percent = ((currentIndex + 1) / slides.length) * 100;
             progress.style.width = percent + '%';
         }
@@ -196,13 +190,11 @@
         });
     }
 
-    // 3. Tüm işlevleri DOM tamamen yüklendiğinde çağır
+    
     document.addEventListener('DOMContentLoaded', () => {
         initVideoModal();
         initMedyaSlider();
-        
-        // Eğer Haberler Slider'ı varsa, o da buradan çağrılmalıdır:
-        // initHaberSlider();
+
     });
 </script>
 

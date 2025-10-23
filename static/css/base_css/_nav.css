@@ -217,6 +217,20 @@
   width: 48px;
   height: 48px;
 }
+
+
+.contact-visual .visual-wrapper {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.contact-visual:hover .visual-wrapper {
+  transform: scale(1.08);
+}
+
+
 .zemin-img {
   width: 100%;
   height: 100%;

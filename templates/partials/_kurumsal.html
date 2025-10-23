@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<section class="kurumsal-header position-relative">
+<section class="kurumsal-header position-relative anim-sag">
   <div class="container-fluid kurumsal-zemin position-relative px-0">
     
       <!-- Zemin görseli -->
@@ -20,17 +20,17 @@
           <div class="col-12 col-lg-2"></div>
 
           <!-- Orta alan -->
-          <div class="col-12 col-lg-4">
-            <div class="kurumsal-header-block">
+          <div class="col-12 col-lg-4 ">
+            <div class="kurumsal-header-block anim-giris anim-ust">
                 <img src="{% static 'img/grilogo.png' %}" class="kurumsal-logo me-3">
-                <h2 class="kurumsal-label">KURUMSAL</h2>
+                <h2 class="kurumsal-label ">KURUMSAL</h2>
             </div>
                 
-            <div class="kurumsal-slogan-1">
+            <div class="kurumsal-slogan-1 anim-giris anim-sag ">
               Akliva İnşaat, 20 yılı aşkın deneyimiyle güvenli ve modern yaşam alanları sunar.
             </div>
 
-            <div class="kurumsal-slogan-2">
+            <div class="kurumsal-slogan-2 anim-giris anim-alt">
               Akliva Yapı olarak 20 yılı aşkın deneyimimizle müşteri memnuniyetini en değerli ilkemiz kabul ediyoruz. Kaliteyi sürekli geliştirirken güven ve itibarı daima ön planda tutuyoruz. Yeni projelerimizle sizlere sadece konut değil, güvenli ve huzurlu yaşam alanları sunuyoruz.
             </div>
 
@@ -42,17 +42,14 @@
 
           <!-- Sağ alan -->
           <div class="col-12 col-lg-6">
-                  <div class="kurumsal-right-text">
+                  <div class="kurumsal-right-text anim-giris anim-sol">
                       Akliva, mükemmeliyet, dürüstlük ve sürdürülebilir büyüme anlayışıyla hareket eder. Misyonumuz, zamanın testine dayanacak yüksek kaliteli inşaat çözümleri sunmaktır.
                   </div>
                   <div class="kurumsal-slider-wrapper">
-                      <button id="kurumsal_slider-left" class="slider-arrow slider-pos">
-                      <img src="{% static 'img/kucukSliderSol.svg' %}" alt="Sol Ok">
-                      </button>
-
-                      <button id="kurumsal_slider-right" class="slider-arrow slider-pos slider-right-btn">
-                      <img src="{% static 'img/kucukSliderSag.svg' %}" alt="Sağ Ok">
-                      </button>
+                      
+                      
+                      <img src="{% static 'img/sliderSol.png' %}" alt="Sol Ok" class="arrow prev slider-arrow slider-pos" id="kurumsal_slider-left" >
+                      <img src="{% static 'img/sliderSag.png' %}" alt="Sağ Ok" class="arrow next slider-arrow slider-pos slider-right-btn" id="kurumsal_slider-right">
 
                       <div class="slider-content" id="slider-content">
                       <img id="slider-image" src="{% static slider_images.0 %}" alt="Slider Görseli">

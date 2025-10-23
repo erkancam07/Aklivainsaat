@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="base-hakkimizda">
+<section class="base-hakkimizda anim-sol">
     <!--fluid -->
     <div class="container-fluid"> 
         <!--Row -->
@@ -17,16 +17,16 @@
                 <div class="row ust_satir">
                     
                     <!-- 1-1. bölüm -->
-                    <div class="col-12 col-lg-6 sektor-deneyim">
+                    <div class="col-12 col-lg-6 sektor-deneyim anim-giris anim-sol">
                         <div class="people-logo">
                             <img src="{% static 'img/people.png' %}" alt="İnsan Simgesi">
                         </div>
-                        <div class="deneyim-yil">20+Yıl</div>
+                        <div class="deneyim-yil say-anim" data-hedef="20">0+Yıl</div>
                         <div class="deneyim-text">Sektör <br> Deneyimi</div>
                     </div>
                     <!-- /1-1. bölüm -->
                     <!-- 1-2. bölüm -->
-                    <div class="col-12 col-lg-6 biten-projeler">
+                    <div class="col-12 col-lg-6 biten-projeler anim-giris anim-sag">
                         
                         <div class="ucgen-logo">
                             <div class="logo-wrapper">
@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <div class="basari-yil">10+Yıl</div>
+                        <div class="basari-yil say-anim" data-hedef="10">0+Yıl</div>
                         <div class="basari-text">Başarıyla <br> Tamamlanan Projeler</div>
 
                     </div>
@@ -45,25 +45,27 @@
 
                  <!-- iç Row 2. satır-->
                 <div class="row alt_satir">
-                    <div class="col-12 col-lg-4 menmnuniyet">
+                    <div class="col-12 col-lg-4 menmnuniyet anim-giris anim-alt">
                         <div class="memnuniyet-logo">
                             <img src="{% static 'img/memnuniyet.png' %}" alt="Memnuniyet" class="memnuniyet-icon">
                         </div>        
                         <div class="memnuniyet-text-wrapper">
-                            <div class="memnuniyet-oran">%100 Memnuniyet</div>
+                            <div class="memnuniyet-oran say-anim" data-hedef="100"> 
+                                <span class="say-deger">%0</span> Memnuniyet
+                            </div>
                             <div class="memnuniyet-aciklama">Müşteri Odaklı</div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 calisan-sayisi">
+                    <div class="col-12 col-lg-4 calisan-sayisi anim-giris anim-alt">
                          <div class="calisan-logo">
                             <img src="{% static 'img/calisan.png' %}" alt="Çalışan" class="calisan-icon">
                         </div>
                         <div class="calisan-text-wrapper">
-                            <div class="calisan-oran">50+ Çalışan</div>
+                            <div class="calisan-oran say-anim" data-hedef="50">0+ Çalışan</div>
                             <div class="calisan-aciklama">Uzman Kadro</div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 kalite">
+                    <div class="col-12 col-lg-4 kalite anim-giris anim-sag">
                         <div class="kalite-logo">
                             <img src="{% static 'img/guven.png' %}" alt="Güven" class="kalite-icon">
                         </div>

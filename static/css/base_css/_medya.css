@@ -221,11 +221,19 @@ font-family: 'DM Sans', sans-serif;
 
 .nmedya-slider-buttons img {
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
+
+}
+.slider-icon {
+  color: #B1B1B1;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
-/* Progres bar */
+.slider-icon:hover {
+  color: #F69930;
+}/* Progres bar */
 .medya-progres {
   height: 4px;
   background-color: #B1B1B1;

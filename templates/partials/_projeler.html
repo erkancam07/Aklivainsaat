@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/base_css/_projeler.css' %}">
 {% endblock %}
 
-<section id="projects-section" class="bg-light pt-5">
+<section id="projects-section" class="bg-light pt-5 anim-sol">
   <div class="container-fluid bg-light position-relative">
      
     <div class="row">
@@ -25,14 +25,14 @@
 
           <!-- Satır 2: Slogan 1 -->
           <div class="mb-3" style="margin-top: 5rem;">
-            <h3 class="slogan-1">
+            <h3 class="slogan-1 anim-giris anim-sag">
               Güvenle Yükselen <br> Projeler, Hayallerinize <br>Değer Katıyoruz.
             </h3>
           </div>
 
           <!-- Satır 3: Slogan 2 -->
           <div>
-            <p class="slogan-2">
+            <p class="slogan-2 anim-alt anim-sag">
               Yaşam alanlarınızı modern mimari<br>ve sağlam yapılarla buluşturuyoruz
             </p>
           </div>
@@ -43,7 +43,7 @@
         <div class="slider-content-wrapper w-100">
           
           <!-- Açıklama -->
-          <p class="slider-description">
+          <p class="slider-description anim-sag anim-giris">
             Aktiva, mükemmeliyet, dürüstlük ve sürdürülebilir büyüme <br>
             anlayışıyla hareket eder. Misyonumuz, zamanın testine <br>
             dayanacak yüksek kaliteli inşaat çözümleri sunmaktır.
@@ -103,12 +103,8 @@
                 <div class="progress-indicator" id="progress-indicator" style="width: 20%;"></div>
               </div>
 
-              <button id="slider-left" class="slider-arrow">
-                <img src="{% static 'img/kucukSliderSol.svg' %}" alt="Sol Ok">
-              </button>
-              <button id="slider-right" class="slider-arrow">
-                <img src="{% static 'img/kucukSliderSag.svg' %}" alt="Sağ Ok">
-              </button>
+             <img src="{% static 'img/sliderSol-gri.svg' %}" alt="Sol Ok" class="arrow prev" id="solOk">
+            <img src="{% static 'img/sliderSag-gri.svg' %}" alt="Sağ Ok" class="arrow next" id="sagOk">
             </div>
           </div>
 
@@ -142,8 +138,8 @@
         
         // ÖNEMLİ: Eğer bu ID'ler başka bir slider ile çakışıyorsa, 
         // HTML'de bunları 'project-slider-left' vb. olarak değiştirin.
-        const leftBtn = document.getElementById("slider-left"); 
-        const rightBtn = document.getElementById("slider-right");
+        const leftBtn = document.getElementById("solOk"); 
+        const rightBtn = document.getElementById("sagOk");
         
         const progressIndicator = document.getElementById("progress-indicator");
         const currentIndexInfo = document.getElementById("current-index-info");

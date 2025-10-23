@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-<section>
+<section class="anim-sol">
 <div class="container-fluid gorusler-wrapper">
   <div class="row">
     <div class="col-12 col-md-2">
@@ -13,19 +13,19 @@
 
     <div class="col-12 col-md-10">
       <div class="row gorusler-logo-slogan align-items-center">
-        <div class="col-12 col-md-6 gorusler-logo-baslik_wrapper">
+        <div class="col-12 col-md-6 gorusler-logo-baslik_wrapper anim-giris anim-ust">
           <div class="logo-container">
             <img src="{% static 'img/grilogo.svg' %}" alt="Logo" class="logo-img">
           </div>
           <span class="gorusler-logo-title">DEĞERLİ GÖRÜŞLER</span>
         </div>
-        <div class="col-12 col-md-6 gorusler-baslik-slogan">
-          <p class="gorusler-slogan-text">Müşterilerimizin geri bildirimleri, mükemmeliyet anlayışımızı şekillendiriyor. Deneyimlerini okuyun ve Akliva’nın inşaat sektöründe neden güvenilen bir isim olduğunu keşfedin.</p>
+        <div class="col-12 col-md-6 gorusler-baslik-slogan anim-giris anim-sag">
+          <span class="gorusler-slogan-text">Müşterilerimizin geri bildirimleri, mükemmeliyet anlayışımızı şekillendiriyor. Deneyimlerini okuyun ve Akliva’nın inşaat sektöründe neden güvenilen bir isim olduğunu keşfedin.</span>
         </div>
       </div>
 
       <div class="slider-progress-wrapper">
-        <div class="buyuk-slider-container">
+        <div class="buyuk-slider-container anim-giris anim-sol">
           <div class="buyuk-slider-card" id="buyukKart"></div>
         </div>
 
@@ -36,8 +36,9 @@
             <div class="progress-bar">
               <div class="progress-bar-fill"></div>
             </div>
-            <img src="{% static 'img/sliderSol.png' %}" alt="Sol Ok" class="arrow prev" id="solOk">
-            <img src="{% static 'img/sliderSag.png' %}" alt="Sağ Ok" class="arrow next" id="sagOk">
+            <img src="{% static 'img/sliderSol-gri.svg' %}" alt="Sol Ok" class="arrow prev" id="solOk">
+            <img src="{% static 'img/sliderSag-gri.svg' %}" alt="Sağ Ok" class="arrow next" id="sagOk">
+            
           </div>
 
 
@@ -66,7 +67,6 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Slider JS başladı");
 
   const buyukKart = document.getElementById("buyukKart");
   const kucukSlider = document.getElementById("kucukSlider");
@@ -182,8 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderBuyukKart(aktifIndex);
     updateProgressBar();
   }
-
-  console.log("Gelen veri:", gorusler);
 });
 </script>
 {% endblock %}

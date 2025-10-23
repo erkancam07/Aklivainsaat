@@ -1,9 +1,12 @@
 /* Genel wrapper */
 .gorusler-wrapper {
   padding: 0 24px;
+  background-color: #DADADA80;
 }
 
 .gorusler-baslik-slogan{
+   display: flex;
+  align-items: center;
   margin-bottom: 0;
 }
 
@@ -67,7 +70,7 @@
   text-transform: uppercase;
 }
 .gorusler-slogan-text {
-  font-family: DM Sans;
+font-family: DM Sans;
 font-weight: 300;
 font-style: Light;
 font-size: 17px;
@@ -75,6 +78,9 @@ font-size: 17px;
 line-height: 18px;
 letter-spacing: -3%;
 color: #939393;
+margin-top: 10px;
+max-width: 420px;
+  text-align: left;
 }
 
 /* Slider alanı */
@@ -191,7 +197,7 @@ color: #939393;
   position: relative;
   opacity: 1;
    transition: transform 0.3s ease, box-shadow 0.3s ease;
-   
+   color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    
     will-change: transform, box-shadow;
@@ -265,11 +271,12 @@ color: #939393;
   margin-bottom: 10px;
 }
 .kucuk-card .tarih {
-  position: absolute;
-  bottom: 12px;
+  
+  bottom: 5px;
   
   font-size: 14px;
   color: #808285;
+  margin-top: 5px;
 }
 .kucuk-card.gizli {
   opacity: 0;
@@ -327,6 +334,15 @@ color: #939393;
 .arrow:active {
   transform: scale(0.9);
   opacity: 0.7;
+}
+
+.arrow path {
+  stroke: #F69930;
+  transition: stroke 0.3s ease;
+}
+
+.arrow:hover path {
+  stroke: white;
 }
 
 .progress-mobile {

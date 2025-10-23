@@ -191,6 +191,23 @@ def index(request):
         "yildiz_sayisi": 4
     },
 ]
+    ortaklar = [
+        {"ad": "Firma A", "logo_url": "/static/img/is_ortaklari_card.svg"},
+        {"ad": "Firma B", "logo_url": "/static/img/is_ortaklari_card.svg"},
+        {"ad": "Firma C", "logo_url": "/static/img/is_ortaklari_card.svg"},
+         {"ad": "Firma A", "logo_url": "/static/img/is_ortaklari_card.svg"},
+        {"ad": "Firma B", "logo_url": "/static/img/is_ortaklari_card.svg"},
+        {"ad": "Firma C", "logo_url": "/static/img/is_ortaklari_card.svg"},
+    ]
+    sertifikalar = [
+        {"ad": "ISO 9001", "img_url": "/static/img/sertifikalar_card.svg"},
+        {"ad": "CE Belgesi", "img_url": "/static/img/sertifikalar_card.svg"},
+        {"ad": "ISO 9001", "img_url": "/static/img/sertifikalar_card.svg"},
+        {"ad": "CE Belgesi", "img_url": "/static/img/sertifikalar_card.svg"},
+        {"ad": "ISO 9001", "img_url": "/static/img/sertifikalar_card.svg"},
+        {"ad": "CE Belgesi", "img_url": "/static/img/sertifikalar_card.svg"},
+    ]
+    
 
    
     
@@ -203,7 +220,9 @@ def index(request):
         # "gorusler": gorusler,
         "gorusler": gorusler,
         "gorusler_json": json.dumps(gorusler),
-        "range5": range(5)
+        "range5": range(5),
+        "ortaklar": ortaklar,
+        "sertifikalar": sertifikalar,
     }
 
     return render(request, "index.html", context)

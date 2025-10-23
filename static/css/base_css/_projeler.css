@@ -144,7 +144,7 @@
 }
 
 .slider-arrow {
- all: unset; /* Tüm tarayıcı varsayılanlarını sıfırla */
+  all: unset; /* Tüm tarayıcı varsayılanlarını sıfırla */
   display: inline-block;
   cursor: pointer;
   padding: 6px;

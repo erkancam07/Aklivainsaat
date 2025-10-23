@@ -1,0 +1,166 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base_css/_footer.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<footer class="footer-wrapper position-relative anim-sol">
+  <!-- SVG zemin -->
+  <div class="footer-bg-svg"></div>
+
+  <div class="container ">
+    <!-- ÜST ROW -->
+    <div class="row mb-4 footer-logo-menu">
+      <!-- Logo + Adres -->
+      <div class="col-md-3 py-3">
+        <img src="{% static 'img/logo-gri.svg' %}" alt="Logo" width="250" height="53" class="mb-3 footer-logo-anim">
+        <p class="footer-address mt-3">info@aklivayapi.com</p>
+        <p class="footer-address mt-3">Kumköprü, Fetih Cd. No:317/A,</p>
+       <p class="footer-address mt-3">42020 Karatay / Konya</p>
+      </div>
+
+      <!-- Menü -->
+      <div class="col-md-9 pb-3">
+        <div class="row ">
+          <!-- 4 Menü grubu -->
+          <div class="col-6 col-md-3 py-3">
+            <h5 class="footer-menu-title">Kurumsal</h5>
+            <ul class="footer-menu-list">
+              <li>Hakkımızda</li>
+              <li>Vizyon & Misyon</li>
+              <li>Değerlerimiz</li>
+              <li>Ekibimiz</li>
+              <li>Belgeler</li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 py-3">
+            <h5 class="footer-menu-title">Haberler</h5>
+            <ul class="footer-menu-list">
+              <li>Basında Biz</li>
+              <li>Duyurular</li>
+              <li>Sektör Haberleri</li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 py-3">
+            <h5 class="footer-menu-title">Projeler</h5>
+            <ul class="footer-menu-list">
+              <li>Devam Eden Projeler</li>
+              <li>Tamamlanan Projeler</li>
+              <li>Yakında</li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 py-3">
+            <h5 class="footer-menu-title">Yatırım</h5>
+            <ul class="footer-menu-list">
+              <li>E-Katalog</li>
+              <li>Sıkça Sorulan S...</li>
+              <li>Ödeme Seçene...</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORTA ROW -->
+    <div class="row mb-4">
+      <!-- Harita + Buton -->
+      <div class="col-md-3">
+        <div class="map-box mb-3"></div>
+        <button class="footer-button btn-250x45">YOL TARİFİ AL</button>
+      </div>
+
+      <!-- Bilgi Talep Formu -->
+      <div class="col-md-5 text-start">
+        <span class="bilgi-form-baslik">BİLGİ TALEP FORMU</span>
+        <form class="bilgi-form">
+            <div class="mb-4">
+                <label for="ad" class="form-label">Adınız Soyadınız</label>
+                <input type="text" id="ad" class="form-control alt-cizgili-input">
+            </div>
+
+            <div class="row mb-4 gx-2">
+                <div class="col-md-6 px-2 ">
+                  <label for="telefon" class="form-label">Telefon</label>
+                  <input type="text" id="telefon" class="form-control alt-cizgili-input">
+                </div>
+                <div class="col-md-6 ">
+                  <label for="eposta" class="form-label">E-Posta</label>
+                  <input type="email" id="eposta" class="form-control alt-cizgili-input">
+                </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label d-block mb-2">İlgilendiğiniz Daire Tipi</label>
+              <div>
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" id="1+1" class="form-check-input">
+                  <label for="1+1" class="form-check-label">1+1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" id="2+1" class="form-check-input">
+                  <label for="2+1" class="form-check-label">2+1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" id="3+1" class="form-check-input">
+                  <label for="3+1" class="form-check-label">3+1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" id="4+1" class="form-check-input">
+                  <label for="4+1" class="form-check-label">4+1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" id="5+1" class="form-check-input">
+                  <label for="5+1" class="form-check-label">5+1</label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="mb-4">
+                <label for="mesaj" class="form-label">Mesajınız</label>
+                <textarea id="mesaj" class="form-control alt-cizgili-input" rows="3"></textarea>
+            </div>
+
+          
+        </form>
+      </div>
+
+      <div class="col-md-4"> <!--Boş alan --> </div>
+
+    </div>
+
+    <!-- ALT ROW -->
+    <div class="row mb-4 align-items-center">
+      <div class="col-md-3">
+        <img src="{% static 'img/musteri-hizmetleri-gri-logo.svg' %}" alt="Müşteri Hizmetleri">
+      </div>
+      <div class="col-md-4">
+       <button type="submit" form="bilgiForm" class="footer-button btn-350x45">GÖNDER</button>
+      </div>
+      <div class="col-md-5 text-md-center">
+        <p class="footer-social-title">Bizi Takip Edin</p>
+        <div class="footer-social-icons d-flex justify-content-md-center gap-1">
+            <a href="#"><img src="{% static 'img/yt.png' %}" alt="YouTube" width="22.29" height="15.45"></a>
+            <a href="#"><img src="{% static 'img/fb.png' %}" alt="Facebook" width="17.12" height="17"></a>
+            <a href="#"><img src="{% static 'img/x.png' %}" alt="X" width="16" height="15"></a>
+            <a href="#"><img src="{% static 'img/in.png' %}" alt="LinkedIn" width="16" height="16"></a>
+            <a href="#"><img src="{% static 'img/link.png' %}" alt="Website" width="16" height="16"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EN ALT BAR -->
+  <div class="footer-bottom-bar">
+    <div class="container">
+      <div class="row py-3">
+        <div class="col-md-4 text-start text-muted">© Tüm Hakları Saklıdır.</div>
+        <div class="col-md-8 text-start text-muted">
+          Kişisel Verilerin Korunması Politikası · Kullanım Koşulları · Çerez Politikası
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
