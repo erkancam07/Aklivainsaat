@@ -227,3 +227,18 @@ def index(request):
 
     return render(request, "index.html", context)
 
+
+def kurumsal(request):
+    return render(request, "kurumsal.html")
+
+def projeler(request):
+    return render(request, "projeler.html")
+
+def haberler(request):
+    return render(request, "haberler.html")
+
+def yatirim(request):
+    return render(request, "yatirim.html")
+
+def iletisim(request):
+    return render(request, "iletisim.html")

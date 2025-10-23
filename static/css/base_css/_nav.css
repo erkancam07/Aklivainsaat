@@ -6,6 +6,7 @@
   width: 100%;
   transition: all 0.3s ease;
   min-height: 80px;
+  background-color: #dfdfdf; /*Geçici renk silinecek*/
 }
 .main-nav.fixed {
   position: fixed;

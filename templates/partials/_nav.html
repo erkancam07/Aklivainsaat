@@ -52,11 +52,12 @@
     <!-- 2. Menü (sadece masaüstü) -->
     <div class="menu-area-wrapper d-none d-lg-inline-flex">
       <ul class="navbar-nav flex-row menu-area">
-        <li class="nav-item"><a href="/" class="nav-link active">Anasayfa</a></li>
-        <li class="nav-item"><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
-        <li class="nav-item"><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
-        <li class="nav-item"><a href="/projeler" class="nav-link">Projeler</a></li>
-        <li class="nav-item"><a href="/kariyer" class="nav-link">Kariyer</a></li>
+        <li class="nav-item"><a href="{% url 'home'%}" class="nav-link active">Anasayfa</a></li>
+        <li class="nav-item"><a href="{% url 'kurumsal'%}" class="nav-link">Kurumsal</a></li>
+        <li class="nav-item"><a href="{% url 'projeler'%}" class="nav-link">Projeler</a></li>
+        <li class="nav-item"><a href="{% url 'haberler'%}" class="nav-link">Haberler</a></li>
+        <li class="nav-item"><a href="{% url 'yatirim'%}" class="nav-link">Yatırım</a></li>
+        <li class="nav-item"><a href="{% url 'iletisim'%}" class="nav-link">İletişim</a></li>
       </ul>
     </div>
 
@@ -92,11 +93,12 @@
     <button class="close-sidebar" aria-label="Menüyü Kapat">&times;</button>
   </div>
   <ul class="mobile-menu">
-    <li><a href="/">Anasayfa</a></li>
-    <li><a href="/hakkimizda">Hakkımızda</a></li>
-    <li><a href="/hizmetler">Hizmetler</a></li>
-    <li><a href="/projeler">Projeler</a></li>
-    <li><a href="/kariyer">Kariyer</a></li>
+    <li><a href="{% url 'home'%}">Anasayfa</a></li>
+    <li><a href="{% url 'kurumsal'%}">Kurumsal</a></li>
+    <li><a href="{% url 'projeler'%}">Projeler</a></li>
+    <li><a href="{% url 'haberler'%}">Haberler</a></li>
+    <li><a href="{% url 'yatirim'%}">Yatırım</a></li>
+    <li><a href="{% url 'iletisim'%}">İletişim</a></li>
   </ul>
   <div class="mobile-contact-area" style="margin-top: 30px; padding: 10px 12px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
     <a href="tel:03323552223" style="text-decoration: none; display: flex; align-items: center;">
