@@ -1,6 +1,6 @@
 /* Genel wrapper */
 .gorusler-wrapper {
-  padding: 0 24px;
+  padding: 0 0px;
   background-color: #DADADA80;
 }
 
@@ -223,8 +223,8 @@ max-width: 420px;
 }
 .kaybol {
   opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(1);
+  /*transition: opacity 0.3s ease, transform 0.3s ease;*/
 }
 .animasyon {
   opacity: 0;
@@ -311,38 +311,7 @@ max-width: 420px;
   width: 50%;
   height: 100%;
   background-color: #F69930;
-  border-radius: 2px;
-}
-.arrow {
-  width: 36px;
-  height: 36px;
-  padding: 6px;
   
-  border: 2px solid #B1B1B1;
-  border-radius: 50%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  will-change: transform, box-shadow;
-  cursor: pointer;
-}
-
-.arrow:hover {
-   transform: scale(1.1);
-  background-color: #F69930;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.arrow:active {
-  transform: scale(0.9);
-  opacity: 0.7;
-}
-
-.arrow path {
-  stroke: #F69930;
-  transition: stroke 0.3s ease;
-}
-
-.arrow:hover path {
-  stroke: white;
 }
 
 .progress-mobile {

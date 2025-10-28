@@ -22,13 +22,13 @@ def index(request):
             "title": "Revapark Konakları",
             "subtitle": "Lansman Satışları Başladı",
             "button": "Projeyi İncele",
-            "video_url": "https://www.youtube.com/embed/BF9hVS55sIM?autoplay=1&mute=1&rel=0&playsinline=1"
+            "video_url": "/media/tanitim.mp4"
         },
         {
             "title": "Revapark Premium",
             "subtitle": "Yeni Etap Satışları Başladı",
             "button": "Detayları Gör",
-            "video_url": "https://www.youtube.com/embed/DXzDS2IO6aA?autoplay=1&mute=1&rel=0&playsinline=1"
+            "video_url": "/media/tanitim.mp4"
         }
     ]
     kurumsal_slider_images = [
@@ -49,6 +49,10 @@ def index(request):
             "ikon": "takvim-ikonu.png",
             "metin": "Açıklama"
         }, """
+    tanitim_video = {
+        "video_url": "/media/tanitim.mp4",
+        "poster_url": "/media/video-kapak.jpg"
+    }
 
     medya_videolar = [
     {
@@ -223,6 +227,7 @@ def index(request):
         "range5": range(5),
         "ortaklar": ortaklar,
         "sertifikalar": sertifikalar,
+        "tanitim_video": tanitim_video,
     }
 
     return render(request, "index.html", context)

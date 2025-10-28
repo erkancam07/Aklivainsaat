@@ -3,22 +3,22 @@
 <link rel="stylesheet" href="{% static 'css/base_css/_projeler.css' %}">
 {% endblock %}
 
-<section id="projects-section" class="bg-light pt-5 anim-sol">
-  <div class="container-fluid bg-light position-relative">
+<section id="projects-section" class="pt-5 anim-giris anim-sol">
+  <div class="container-fluid position-relative">
      
     <div class="row">
       
-      <!-- Sütun 1: Orijinal içerik (arkaplan siyah) -->
-      <div class="col-12 col-lg-2 content-col text-white">
+      <!-- Sütun 1: arkaplan siyah -->
+      <div class="col-12 col-lg-3">
         
       </div>
 
       <!-- Sütun 2: Başlık ve açıklama -->
-      <div class="col-12 col-lg-4 content-col">
+      <div class="col-12 col-lg-3 content-col">
         <!-- Satır 1: Logo + Başlık -->
         <div class="d-flex align-items-center mb-4">
             <div class="logo-glow-wrapper position-relative d-inline-block">
-              <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-glow-image me-4 fixed-logo-size">
+              <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-glow-image me-1 fixed-logo-size">
             </div>
             <h2 class="fw-bold fs-4 m-0">PROJELER</h2>
           </div>
@@ -39,23 +39,28 @@
       </div>
 
       <!-- Sütun 3: Slider -->
-      <div class="col-12 col-lg-6 slider-col d-flex flex-column align-items-end px-lg-0"> 
-        <div class="slider-content-wrapper w-100">
+      <div class="col-12 col-lg-6 slider-col d-flex flex-column align-items-start "> 
+ 
+                  <!-- Açıklama -->
+                    <span class="slider-description anim-sag anim-giris">
+                        Aktiva, mükemmeliyet, dürüstlük ve sürdürülebilir büyüme <br>
+                        anlayışıyla hareket eder. Misyonumuz, zamanın testine <br>
+                        dayanacak yüksek kaliteli inşaat çözümleri sunmaktır.
+                    </span>
+        <div class="slider-content-wrapper">
           
-          <!-- Açıklama -->
-          <p class="slider-description anim-sag anim-giris">
-            Aktiva, mükemmeliyet, dürüstlük ve sürdürülebilir büyüme <br>
-            anlayışıyla hareket eder. Misyonumuz, zamanın testine <br>
-            dayanacak yüksek kaliteli inşaat çözümleri sunmaktır.
-          </p>
+        
 
           <!-- Slider -->
           <div class="slider-wrapper position-relative overflow-hidden ms-auto">
             <div class="slider-track d-flex">
+
               {% for i in slider_ids %}
               <div class="project-card position-relative">
+                
+
                 <!-- Proje Görseli -->
-                <img src="{% static 'img/slider' %}{{ i }}.jpg" alt="Proje {{ i }}" class="card-img-top project-image">
+                <img src="{% static 'img/slider' %}{{ i }}.jpg" alt="Proje {{ i }}" class="project-image">
 
                 <!-- Bilgilendirici Notlar -->
                 <div class="project-info-overlay">
@@ -69,6 +74,7 @@
                   <h4 class="project-title">Revapark Konakları</h4>
 
                   <div class="project-info-lines">
+                    
                     <!-- Satır 1: Başlangıç + Daire -->
                     <div class="info-line">
                       <img src="{% static 'img/takvim-ikonu.png' %}" alt="Başlangıç" class="icon">
@@ -95,16 +101,29 @@
           </div>
 
           <!-- İlerleme ve Oklar -->
-          <div class="d-flex align-items-center justify-content-start gap-3 w-100 pt-2 progress-and-arrows-group">
-            <span class="fw-bold" id="current-index-info">1 / 5</span>
+          <div class="d-flex align-items-center justify-content-start gap-3 w-100 pt-4 progress-and-arrows-group">
+            {% comment %} <span class="fw-bold" id="current-index-info">1 / 5</span> {% endcomment %}
 
-            <div class="d-flex align-items-center gap-2 flex-grow-1">
+            <div class="d-flex align-items-center gap-3 flex-grow-1">
               <div class="custom-progress-bar">
                 <div class="progress-indicator" id="progress-indicator" style="width: 20%;"></div>
               </div>
 
-             <img src="{% static 'img/sliderSol-gri.svg' %}" alt="Sol Ok" class="arrow prev" id="solOk">
-            <img src="{% static 'img/sliderSag-gri.svg' %}" alt="Sağ Ok" class="arrow next" id="sagOk">
+             {% comment %} <img src="{% static 'img/griSolOk.svg' %}" alt="Sol Ok" class="slider-arrow prev" id="solOk"> {% endcomment %}
+            {% comment %} <img src="{% static 'img/griSagOk.svg' %}" alt="Sağ Ok" class="slider-arrow next" id="sagOk"> {% endcomment %}
+
+              <svg id="solOk" class="slider-arrow prev" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="arrow-shape" d="M20.8077 11.0762C20.492 11.0762 20.1892 11.2022 19.966 11.4265L14.0386 17.3832C13.9275 17.4939 13.8393 17.6257 13.7792 17.7708C13.719 17.916 13.688 18.0717 13.688 18.229C13.688 18.3863 13.719 18.542 13.7792 18.6872C13.8393 18.8323 13.9275 18.9641 14.0386 19.0748L19.966 25.0315C20.0762 25.1431 20.2073 25.2318 20.3518 25.2922C20.4962 25.3527 20.6512 25.3839 20.8077 25.3839C20.9642 25.3839 21.1191 25.3527 21.2636 25.2922C21.408 25.2318 21.5391 25.1431 21.6493 25.0315C21.7605 24.9207 21.8486 24.789 21.9088 24.6438C21.969 24.4986 22 24.3429 22 24.1856C22 24.0284 21.969 23.8726 21.9088 23.7275C21.8486 23.5823 21.7605 23.4505 21.6493 23.3398L16.5518 18.229L21.6493 13.1182C21.8726 12.8939 21.998 12.5896 21.998 12.2724C21.998 11.9551 21.8726 11.6509 21.6493 11.4265C21.4261 11.2022 21.1234 11.0762 20.8077 11.0762Z" fill="currentColor"/>
+                <circle cx="18" cy="18" r="17" transform="matrix(-1 0 0 1 36 0)" stroke="#B1B1B1" stroke-width="2"/>
+              </svg>
+
+              <svg id="sagOk" class="slider-arrow next" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g transform="scale(-1,1) translate(-36,0)">
+                <path class="arrow-shape" d="M20.8077 11.0762C20.492 11.0762 20.1892 11.2022 19.966 11.4265L14.0386 17.3832C13.9275 17.4939 13.8393 17.6257 13.7792 17.7708C13.719 17.916 13.688 18.0717 13.688 18.229C13.688 18.3863 13.719 18.542 13.7792 18.6872C13.8393 18.8323 13.9275 18.9641 14.0386 19.0748L19.966 25.0315C20.0762 25.1431 20.2073 25.2318 20.3518 25.2922C20.4962 25.3527 20.6512 25.3839 20.8077 25.3839C20.9642 25.3839 21.1191 25.3527 21.2636 25.2922C21.408 25.2318 21.5391 25.1431 21.6493 25.0315C21.7605 24.9207 21.8486 24.789 21.9088 24.6438C21.969 24.4986 22 24.3429 22 24.1856C22 24.0284 21.969 23.8726 21.9088 23.7275C21.8486 23.5823 21.7605 23.4505 21.6493 23.3398L16.5518 18.229L21.6493 13.1182C21.8726 12.8939 21.998 12.5896 21.998 12.2724C21.998 11.9551 21.8726 11.6509 21.6493 11.4265C21.4261 11.2022 21.1234 11.0762 20.8077 11.0762Z"  fill="currentColor"/>
+                <circle cx="18" cy="18" r="17" stroke="#B1B1B1" stroke-width="2"/>
+                </g>
+              </svg>
+
             </div>
           </div>
 
@@ -116,13 +135,14 @@
           </div>
         </div>
       </div>
+      <!-- /Sütun 3: Slider -->
     </div>
 
+     
+  </div>
     <div class="bottom-divider-wrapper-projeler">
       <div class="bottom-divider-line-projeler"></div>
-    </div>    
-  </div>
-    
+    </div>   
 </section>
 
 
@@ -130,163 +150,161 @@
 
 {% block extra_js %}
 <script>
-// Proje Slider Kodunun Tamamen İzole Edilmiş Hali
-    function initProjectSlider() {
-        // Değişkenler artık lokal kapsamda kalır.
-        const wrapper = document.querySelector(".slider-wrapper");
-        const track = document.querySelector(".slider-track");
-        
-        // ÖNEMLİ: Eğer bu ID'ler başka bir slider ile çakışıyorsa, 
-        // HTML'de bunları 'project-slider-left' vb. olarak değiştirin.
-        const leftBtn = document.getElementById("solOk"); 
-        const rightBtn = document.getElementById("sagOk");
-        
-        const progressIndicator = document.getElementById("progress-indicator");
-        const currentIndexInfo = document.getElementById("current-index-info");
-        
-        const cards = track ? track.querySelectorAll(".project-card") : null;
-        if (!cards || cards.length === 0) return; // Eleman yoksa dur.
+(function () {
+  const CARD_WIDTH = 610;
+  const GAP = 45;
+  const DESIRED_VISIBLE_COUNT = 1.65;
 
-        const cardCount = cards.length;
-        let currentIndex = 0;
-        
-        // CSS'ten gelen sabit değerler
-        const CARD_WIDTH = 610; 
-        const GAP = 32; 
-        
-        // Masaüstünde 1.7 kart görünür. Mobil'de 1 kart.
-        function getVisibleCardCount() {
-            if (window.innerWidth >= 992) {
-                return 1.7; 
-            }
-            return 1;
-        }
-        
-        // Tıklama başına kaydırma miktarı (adım)
-        function calculateStep() {
-            if (window.innerWidth >= 992) {
-                // MASAÜSTÜ: 1 tam kart ve 32px boşluk kadar kay.
-                return CARD_WIDTH + GAP; 
-            } else {
-                // MOBİL: Responsive genişlik + 32px boşluk kadar kay.
-                const firstCard = cards[0];
-                const dynamicWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-                return dynamicWidth + GAP;
-            }
-        }
+  function getVisibleCardCount() {
+    return window.innerWidth >= 992 ? DESIRED_VISIBLE_COUNT : 1;
+  }
 
-        function updateSlider() {
-            const wrapperWidth = wrapper.getBoundingClientRect().width;
-            const trackWidth = track.scrollWidth;
-            const visibleCount = getVisibleCardCount();
-            const step = calculateStep();
-            
-            let actualMaxIndex;
-            let totalSteps;
-            let offset;
-
-            if (window.innerWidth >= 992) {
-                // Masaüstü (1.7 Kart Görünür)
-                // actualMaxIndex, currentIndex'in alabileceği son tam kayma endeksidir.
-                actualMaxIndex = Math.floor(cardCount - visibleCount); 
-                // totalSteps, progress bar için toplam dilim sayısını belirler (0. adım dahil).
-                totalSteps = Math.max(1, actualMaxIndex + 1);
-                
-                if (currentIndex >= actualMaxIndex) {
-                    // SON ADIM: Kaymayı tam sona hizala (fazla kaymayı önler)
-                    offset = -(trackWidth - wrapperWidth - GAP);
-                    if (offset > 0) offset = 0; // Eğer kaydırmaya gerek yoksa 0'da kal.
-                } else {
-                    // DİĞER ADIMLAR: Normal 1 kart + gap kadar kay
-                    offset = -(currentIndex * step);
-                }
-
-            } else {
-                // Mobil (1 Kart Görünür)
-                actualMaxIndex = cardCount - 1; 
-                totalSteps = cardCount;
-                offset = -(currentIndex * step);
-            }
-            
-            // Transform uygula
-            track.style.transform = `translateX(${offset}px)`;
-            
-            // Butonları ve Progress Bar'ı Güncelleme
-            if (leftBtn) leftBtn.disabled = currentIndex === 0;
-            if (rightBtn) rightBtn.disabled = currentIndex >= actualMaxIndex;
-
-            if (progressIndicator && totalSteps > 0) {
-                // Progress bar, (Mevcut Index + 1) / Toplam Adım Sayısı * 100 oranında çalışır.
-                const progressPercent = ((currentIndex + 1) / totalSteps) * 100;
-                progressIndicator.style.width = `${progressPercent}%`;
-            }
-
-            if (currentIndexInfo) {
-                currentIndexInfo.textContent = `${currentIndex + 1} / ${Math.max(1, totalSteps)}`;
-            }
-        }
-
-        // Buton event'ları
-        if (rightBtn) {
-            rightBtn.addEventListener("click", () => {
-                const visibleCount = getVisibleCardCount();
-                const maxIndex = window.innerWidth >= 992 ? Math.floor(cardCount - visibleCount) : cardCount - 1;
-
-                if (currentIndex < maxIndex) {
-                    currentIndex++;
-                    updateSlider();
-                }
-            });
-        }
-
-        if (leftBtn) {
-            leftBtn.addEventListener("click", () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateSlider();
-                }
-            });
-        }
-
-        // Yeniden boyutlandırma (responsive)
-        window.addEventListener("resize", () => {
-            // Küçük bir gecikme eklemek, tarayıcının yeni boyutları işlemesine zaman tanır.
-            setTimeout(() => {
-                const visibleCount = getVisibleCardCount();
-                const newMaxIndex = window.innerWidth >= 992 ? Math.floor(cardCount - visibleCount) : cardCount - 1;
-                
-                // Index'i yeni maksimum değere göre ayarla
-                if (currentIndex > newMaxIndex) {
-                    currentIndex = newMaxIndex;
-                }
-                if (currentIndex < 0) {
-                    currentIndex = 0; 
-                }
-                updateSlider();
-            }, 100); 
-        });
-
-        // İlk yüklemede başlat
-        // Kodun çalışması için bir DOMContentLoaded olayına sarmalıyoruz, bu nedenle setTimeout'a gerek yok.
-        updateSlider();
+  function calculateStep(cards) {
+    if (window.innerWidth >= 992) {
+      return CARD_WIDTH + GAP;
+    } else {
+      const firstCard = cards?.[0];
+      return firstCard ? firstCard.getBoundingClientRect().width + GAP : 0;
     }
-    
-    // Filtreleme Kodunun İzole Edilmiş Hali
-    function initFilterLinks() {
-        document.querySelectorAll('.filter-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.filter-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+  }
+function calculateOffset(cards, index) {
+  let offset = 0;
+  for (let i = 0; i < index; i++) {
+    offset += cards[i].getBoundingClientRect().width + GAP;
+  }
+  return offset;
+}
+ function updateSlider(state) {
+  const { wrapper, track, cards, cardCount, leftBtn, rightBtn, progressIndicator, currentIndexInfo } = state.elements;
+  const visibleCount = getVisibleCardCount();
+  const step = calculateStep(cards);
+
+  let { currentIndex } = state;
+  const wrapperWidth = wrapper.getBoundingClientRect().width;
+  const trackWidth = track.scrollWidth;
+
+  let actualMaxIndex, totalSteps, offset;
+
+  if (window.innerWidth >= 992) {
+    actualMaxIndex = Math.floor(cardCount - visibleCount);
+    totalSteps = Math.max(1, actualMaxIndex + 1);
+    currentIndex = Math.max(0, Math.min(currentIndex, actualMaxIndex));
+    offset = currentIndex >= actualMaxIndex ? -(trackWidth - wrapperWidth) : -(currentIndex * step);
+  } else {
+    actualMaxIndex = cardCount - 1;
+    totalSteps = cardCount;
+    currentIndex = Math.max(0, Math.min(currentIndex, actualMaxIndex));
+
+    // ✅ Mobilde offset doğrudan kartın konumuna göre hesaplanır
+    const targetCard = cards[currentIndex];
+    offset = targetCard ? -targetCard.offsetLeft : 0;
+  }
+
+  track.style.transform = `translateX(${offset}px)`;
+  state.currentIndex = currentIndex;
+
+  cards.forEach(card => card.classList.remove('current-active'));
+  if (cards[currentIndex]) cards[currentIndex].classList.add('current-active');
+
+  if (leftBtn) leftBtn.disabled = currentIndex === 0;
+  if (rightBtn) rightBtn.disabled = currentIndex >= actualMaxIndex;
+
+  if (progressIndicator && totalSteps > 0) {
+    const progressPercent = ((currentIndex + 1) / totalSteps) * 100;
+    progressIndicator.style.width = `${progressPercent}%`;
+  }
+
+  if (currentIndexInfo) {
+    currentIndexInfo.textContent = `${currentIndex + 1} / ${Math.max(1, totalSteps)}`;
+  }
+}
+
+
+  function initProjectSlider() {
+    const elements = {
+      wrapper: document.querySelector(".slider-wrapper"),
+      track: document.querySelector(".slider-track"),
+      leftBtn: document.getElementById("solOk"),
+      rightBtn: document.getElementById("sagOk"),
+      progressIndicator: document.getElementById("progress-indicator"),
+      currentIndexInfo: document.getElementById("current-index-info"),
+      cards: null,
+      cardCount: 0
+    };
+
+    elements.cards = elements.track?.querySelectorAll(".project-card") || [];
+    if (!elements.cards.length || !elements.wrapper || !elements.track) return;
+
+    elements.cardCount = elements.cards.length;
+
+   let trackWidth;
+if (window.innerWidth >= 992) {
+  trackWidth = (CARD_WIDTH * elements.cardCount) + (GAP * (elements.cardCount - 1));
+  elements.cards.forEach(card => {
+    card.style.minWidth = `${CARD_WIDTH}px`;
+  });
+} else {
+  const cardWidths = Array.from(elements.cards).map(card => card.getBoundingClientRect().width);
+  const totalCardWidth = cardWidths.reduce((sum, w) => sum + w, 0);
+  trackWidth = totalCardWidth + (GAP * (elements.cardCount - 1));
+}
+elements.track.style.width = `${trackWidth}px`;
+
+    const state = {
+      currentIndex: 0,
+      elements: elements
+    };
+
+    if (elements.rightBtn) {
+      elements.rightBtn.addEventListener("click", () => {
+        const maxIndex = window.innerWidth >= 992
+          ? Math.floor(elements.cardCount - getVisibleCardCount())
+          : elements.cardCount - 1;
+        if (state.currentIndex < maxIndex) {
+          state.currentIndex++;
+          updateSlider(state);
+        }
+      });
     }
 
-    // Tüm izole fonksiyonları DOM yüklendiğinde çağır.
-    document.addEventListener("DOMContentLoaded", function () {
-        initProjectSlider(); // Yeni Proje Slider'ı
-        initFilterLinks(); // Yeni Filtreleme
-        // initHaberSlider(); // Eğer varsa, diğer slider'ları da buradan çağırın
+    if (elements.leftBtn) {
+      elements.leftBtn.addEventListener("click", () => {
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          updateSlider(state);
+        }
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      setTimeout(() => {
+        const visibleCount = getVisibleCardCount();
+        const newMaxIndex = window.innerWidth >= 992
+          ? Math.floor(elements.cardCount - visibleCount)
+          : elements.cardCount - 1;
+        state.currentIndex = Math.max(0, Math.min(state.currentIndex, newMaxIndex));
+        updateSlider(state);
+      }, 100);
     });
+
+    updateSlider(state);
+  }
+
+  function initFilterLinks() {
+    document.querySelectorAll('.filter-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.filter-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initProjectSlider();
+    initFilterLinks();
+  });
+})();
+
 </script>
 {% endblock %}

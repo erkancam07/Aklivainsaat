@@ -1,0 +1,367 @@
+.ana_satir {
+  display: flex;
+  justify-content: center;
+  padding-left: 20px;
+
+}
+
+.hakkimizda-content {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.hakkimizda-content{
+  padding-top: 150px;
+  padding-bottom: 150px;
+
+}
+
+.deneyim-yil,
+.deneyim-text {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.sektor-deneyim {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* küçük ekranda taşma olursa satır atar */
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 30px;
+
+  border-right: 2px solid rgba(217, 217, 217, 1);
+  border-bottom: 2px solid rgba(217, 217, 217, 1);
+  border-radius: 2px;
+}
+
+.people-logo img {
+  width: 71px;
+  height: 71px;
+  object-fit: contain;
+}
+
+.deneyim-yil {
+ font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-style: normal; /* "Medium" font-style değil, ağırlık tanımıdır */
+  font-size: 100px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  color: rgba(246, 153, 48, 1);
+}
+
+.deneyim-text {
+   font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-style: normal; /* "Light" font-style değil, ağırlık tanımıdır */
+  font-size: 32px;
+  line-height: 35px;
+  letter-spacing: 0;
+  color: rgba(147, 147, 147, 1);
+}
+
+/*Biten Projeler */
+.biten-projeler {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* küçük ekranda taşma olursa satır atar */
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+    padding-bottom: 23px;
+    border-bottom: 2px solid rgba(217, 217, 217, 1);
+}
+.logo-wrapper {
+    position: relative;
+   width: 78px;
+  height: 78px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+}
+
+.arka-logo {
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  margin-left:  10px;
+  
+}
+
+.ust-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+   max-width: 30px;
+  max-height: 19px;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  margin-left:  10px;
+}
+.basari-yil {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 100px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  color: rgba(246, 153, 48, 1);
+}
+
+.basari-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 35px;
+  letter-spacing: 0;
+  color: rgba(147, 147, 147, 1);
+
+
+}
+
+/*Memnuniyet*/
+.menmnuniyet {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  padding-top: 20px;
+  padding-left: 0;
+  border-right: 2px solid rgba(217, 217, 217, 1);
+  
+}
+
+.memnuniyet-logo {
+  flex-shrink: 0;
+}
+
+.memnuniyet-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.memnuniyet-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* alt hizalama */
+  flex: 1;
+  min-width: 0;
+  padding-top: 40px;
+}
+
+.memnuniyet-oran {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  color: rgba(246, 153, 48, 1);
+}
+
+.memnuniyet-aciklama {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: 0;
+  color: rgba(147, 147, 147, 1);
+}
+
+/*Çalışan Bölüm*/
+.calisan-sayisi {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  padding-top: 20px;
+  padding-left: 20px;
+
+  border-right: 2px solid rgba(217, 217, 217, 1);
+  
+}
+
+.calisan-logo {
+  flex-shrink: 0;
+}
+
+.calisan-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.calisan-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  padding-top: 40px;
+}
+
+.calisan-oran {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  color: rgba(246, 153, 48, 1);
+}
+
+.calisan-aciklama {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: 0;
+  color: rgba(147, 147, 147, 1);
+}
+
+/*Kalite Bölümü*/
+.kalite {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.kalite-logo {
+  flex-shrink: 0;
+}
+
+.kalite-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.kalite-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  padding-top: 40px;
+}
+
+.kalite-oran {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  color: rgba(246, 153, 48, 1);
+}
+
+.kalite-aciklama {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: 0;
+  color: rgba(147, 147, 147, 1);
+}
+
+.bottom-divider-wrapper-hakkimizda {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bottom-divider-line-hakkimizda {
+  width: 612px;
+  height: 6px;
+  background-color: #f69930;
+  border-radius: 5px;
+  margin-left: calc(100% * 0.01 / 12);
+}
+
+@media (max-width: 991px) {
+  .sektor-deneyim {
+     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-right: none;
+  }
+
+  .deneyim-yil {
+    font-size: 64px;
+    line-height: 28px;
+  }
+
+  .deneyim-text {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  /* Bitenm Projeler*/
+   .biten-projeler {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+  }
+
+  .basari-yil {
+    font-size: 64px;
+    line-height: 28px;
+  }
+
+ .basari-text {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  /*Memnuniyet*/
+   .menmnuniyet {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-right: none;
+    border-bottom: 2px solid rgba(217, 217, 217, 1);
+  }
+
+  .memnuniyet-text-wrapper {
+    align-items: center;
+  }
+  .calisan-sayisi {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-right: none;
+    border-bottom: 2px solid rgba(217, 217, 217, 1);
+  }
+
+  .calisan-text-wrapper {
+    align-items: center;
+  }
+  .kalite {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid rgba(217, 217, 217, 1);
+  }
+
+  .kalite-text-wrapper {
+    align-items: center;
+  }
+}

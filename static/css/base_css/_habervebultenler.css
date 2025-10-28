@@ -1,17 +1,42 @@
-/*Logo ve başlıklar*/
+.haber-icerik-orta-alan {
+    max-width: 1085px; /* Sizin istediğiniz 1085px genişliği burada tanımlıyoruz */
+    width: 100%;       /* Kendi genişliğini sarmalayan col'un genişliğine ayarlar */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. İç İçe Row'ların Marjinlerini Sıfırlama (Zorunlu Bootstrap Düzeltmesi) */
+/* Haberler ve Bültenler alanı zaten offsetlenmiş bir row'un içinde, bu nedenle iç row'ların 
+   negatif marjini sorunu geri getirmemesi için sıfırlanmalıdır. */
+.haber-icerik-orta-alan .row {
+    margin-left: 15px !important; 
+    margin-right: 0;
+}
+.logo-padding-sifirla{
+  padding-left: 0;
+}
+
+
+/*******/
 .haber-wrapper {
   padding-top: 20px;
   padding-bottom: 100px;
   background-color: #F5F3F3;
+  
+  
+}
+.haber-ana-div{
+  margin-left: 50px;
 }
 .logo-baslik-slogan {
   margin-top: 20px;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
+  padding: 0;
 }
 .logo-container {
   position: relative;
-  width: 63.29px;
-  height: 29.74px;
+  width: 63.29px !important;
+  height: 29.74px !important;
   overflow: hidden;
   display: inline-block;
 }
@@ -59,6 +84,13 @@
   line-height: 35px;
   color: #000000;
 }
+.haber-slogan {
+    width: 425px; 
+    height: 73px;
+    margin-top: 40px !important; 
+     margin-bottom: 0 !important; 
+     padding: 0;
+}
 
 .slogan-text {
   font-family: 'DM Sans', sans-serif;
@@ -67,7 +99,6 @@
   line-height: 18px;
   letter-spacing: -0.03em;
   color: #939393;
-  margin-top: 10px;
 }
 
 /*başlıklar */
@@ -83,7 +114,7 @@
   /*Slider alanı*/
   .haber-slider-container {
     display: flex;
-    gap: 21px;
+    gap: 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding-bottom: 8px;
@@ -96,36 +127,45 @@
 
 
 .haber-card {
-  flex: 0 0 48%;
-  max-width: 48%;
-  height: auto;
-  box-sizing: border-box;
-  height: 100%;
-  max-height: 459px;
+    /* 1. KART GENİŞLİĞİNİ SABİTLE (İstenen 345px) */
+    /* Flexbox'ın kartı sıkıştırmasını önlemek için min/max/flex-basis'i 345px'e ayarlıyoruz. */
+    flex: 0 0 345px;
+    width: 345px;
+    max-width: 345px; 
+    
+    /* 2. YÜKSEKLİĞİ SABİTLE (İstenen 459px) */
+    height: 459px; 
+    max-height: 459px;
+    
+    /* Eski yüzdelik (50%) ve flex: 0 0 50% kurallarını kaldırıyoruz. */
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    box-sizing: border-box; /* Zaten vardı, iyi bir kural */
+    
+    /* İçerik düzenlemesi */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 0px 1px 1px 0px #0000001A;
-  padding: 18px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 0px #0000001A;
+    padding: 18px;
+    flex-shrink: 0;
 }
 
 .haber-resim {
-  width: 100%;
-  max-width: 310px;
-  height: 100%;
-  max-height: 210px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 12px;
-  align-self: center;
+    /* Resim genişliğini kartın içindeki padding'i çıkararak hesaplayalım.
+       (345px kart - 18px sol padding - 18px sağ padding = 309px)
+       Veya basitçe, kartın genişliğini kullanın ve align-self ile ortalayın.
+       Siz max-width: 310px istemişsiniz, bunu koruyalım. */
+    width: 100%; /* Resmin her zaman kartın içine sığmasını sağlar */
+    max-width: 310px;
+    height: auto; /* Yüksekliği otomatik yapalım ki bozulmasın */
+    max-height: 210px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    align-self: center; /* Resmin ortalanmasını sağlar */
 }
 
 .konum-icon {
@@ -218,15 +258,7 @@
   transition: width 0.3s ease;
 }
 
-.slider-arrow {
-  width: 20px !important;
-  height: 20px !important;
-  border: 2px solid #B1B1B1
-}
-
-.slider-arrow:hover {
-  background-color: #F69930;
-}
+ 
 /*Bültenler*/
 .bulten-card {
   width: 100%;
@@ -342,6 +374,14 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
+  .haber-icerik-orta-alan .row {
+    margin-left: 0px !important; 
+    margin-right: 0;
+    padding: 0 15px;
+}
+.section-heading{
+  padding-left: 15px;
+}
 }
 @media (max-width: 768px) {
   .haber-slider-container {
@@ -358,4 +398,9 @@
   .bulten-button {
     max-width: 100%;
   }
+  .haber-slogan {
+        width: 100%; 
+        height: auto;
+        margin-top: 10px !important; 
+    }
 }

@@ -10,14 +10,23 @@
   <div class="row ana-satir">
     
     <!-- boş alan için -->
-     <div class="col-12 col-lg-2 "> </div>
+     <div class="col-12 col-lg-3 bosluk-1920" style="height: 1;"> 
+
+     </div>
         <!-- slider alan -->
-    <div class="col-12 col-lg-4 video-wrapper">
-    <video class="video-player" controls poster="{% static 'img/video-kapak.jpg' %}">
-        <source src="{% static 'video/tanitim.mp4' %}" type="video/mp4">
-        Tarayıcınız video etiketini desteklemiyor.
-    </video>
-    </div>
+    
+      <div class="col-12 col-lg-3 video-wrapper">
+        <div class="video-play-img">
+          <video class="video-player" muted playsinline poster="{{ tanitim_video.poster_url }}">
+            <source src="{{ tanitim_video.video_url }}" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+          </video>
+           <div class="video-play-overlay" onclick="this.previousElementSibling.play(); this.style.display='none';">
+            <img src="/static/img/play-icon.svg" alt="Play" class="play-icon">
+          </div>
+        </div>
+      </div>
+    
 
       
 
@@ -28,7 +37,8 @@
             <h2 class="sag-baslik">AKLİVA TANITIM FİLMİ</h2>
         </div>
         <div class="col-12 satir-aciklama anim-giris anim-sol">
-          <p class="sag-aciklama">Kaliteyle güven inşa ediyoruz</p>
+          <p class="sag-aciklama">Kaliteyle güven</p>
+          <p class="sag-aciklama">inşa ediyoruz</p>
         </div>
         <div class="col-12 satir-slogan anim-giris anim-sag">
           <p class="sag-slogan">Akliva İnşaat</p>
@@ -36,7 +46,7 @@
       </div>
     </div>
     <!-- boş alan için -->
-    <div class="col-12 col-lg-3 ">  </div>
+    <div class="col-12 col-lg-3 bosluk-1920 ">  </div>
     
   </div>
     <div class="bottom-divider-wrapper-tanitim">

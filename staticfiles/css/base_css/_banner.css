@@ -1,0 +1,356 @@
+/* Temel sıfırlama */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Banner alanı */
+#video-banner {
+  position: relative;
+  width: 100vw;
+  height: 100vh; /* ← Bu satır kritik */
+  margin-top: -305px; /* nav yüksekliği kadar yukarı çek */
+  aspect-ratio: 16 / 9; /* Mobilde sabit oran */
+  padding: 0;
+  overflow: hidden;
+  background-image: url("/static/img/banner_zemin.svg"); /* ← zemin görseli */
+  background-color: rgba(150, 150, 150, 0.2); /* yarı saydam kırmızı */
+  
+
+}
+
+/* Slider kapsayıcı */
+.video-slider-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border: none;
+}
+
+/* Her video slaytı */
+.video-slide {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  border: none;
+  
+}
+
+.video-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Video iframe */
+.video-slide iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+  
+  transform: scale(1.2); /* %5 büyütme  bu şekilde çalışıyopr boşluklar yok oluyor */
+
+}
+
+/* Navigasyon ikonları */
+.banner-slider-nav {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+#slide-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  padding-left: 42px;
+  padding-bottom: 10px;
+}
+#slide-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 64px;
+  line-height: 100%;
+  /*letter-spacing: 0.1em;*/
+  margin-bottom: 1rem;
+  padding-left: 42px;
+  padding-bottom: 30px;
+  color: #fff;
+  
+  
+}
+
+#slider-button {
+  width: 150px;
+  height: 50px;
+  /*white-space: nowrap;            /* Yazı alt satıra geçmesin */
+  overflow: hidden;
+  background-color: transparent;  /* Saydam zemin */
+  border: 2px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;     
+  z-index: 20;                /* px-4 etkisini sıfırla */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+#slider-button:hover {
+ background-color: #F69930;
+  color: #fff;
+}
+/* banner bottom start */
+.banner-bottom-content {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+/* .banner-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+   grid-template-rows: auto 150px; 
+   align-items: start;
+  justify-items: start;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+ */
+
+.text-block {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+/*  text-align: center;*/
+}
+/* Buton ve slider ikonları yan yana */
+.text-block #slider-button,
+.text-block #prev-slide,
+.text-block #next-slide {
+  display: inline-block;
+  vertical-align: middle;
+}
+.cta-group {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Buton ile ikonlar arası boşluk */
+  margin-top: 8px;
+}
+
+
+/* Aralarına boşluk */
+.text-block .cta-button {
+  margin-right: 16px;
+}
+
+.text-block #prev-slide {
+  margin-right: 8px;
+}
+
+
+
+/* Slider ikonları boyutlandırma */
+#prev-slide,
+#next-slide {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.bottom-right-group {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  max-height: 10%;
+  
+  padding: 1rem;
+  z-index: 10;
+ 
+}
+.slider-arrows-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;   /* ← içerikler sola yaslanır */
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  position: relative;
+  transform: translateY(-50%);
+  padding-left: 42px;
+  z-index: 20;
+}
+.slider-arrow {
+  width: 36px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.slider-arrow:hover {
+  transform: scale(1.1);
+}
+/* Sarı kavisli alan */
+.curved-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40vw;
+  height: 30vh;
+  background: url("/static/img/bant.png")no-repeat;  
+  /*background: url("{% static 'img/banner-kavis.png' %}") no-repeat;*/
+  background-size: contain;
+  background-position: bottom right;
+  z-index: 20;
+  pointer-events: none;
+  
+}
+
+.slider-icons {
+    position: relative;
+    
+  grid-column: 3;
+  grid-row: 2;
+  display: flex;
+ 
+  align-items: left;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+}
+
+.slider-icons img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
+}
+@media (max-width: 1400px) {
+  #slide-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 48px;
+}
+}
+
+
+/* Mobil uyum */
+@media (max-width: 768px) {
+  
+    #video-banner {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-top: -120px; /* nav yüksekliği + ekstra boşluk */
+    padding-top: 0;
+  z-index: 1;
+  }
+   .video-slide iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9; /* aynı oranla uyumlu */
+    object-fit: cover;
+  }
+   .banner-bottom-content {
+    padding: 1rem;
+  }
+ 
+
+  .banner-slider-nav {
+    bottom: 20px;
+    gap: 15px;
+  }
+  
+    .slider-arrow {
+    width: 28px;
+  }
+  .curved-overlay {
+    width: 50vw;
+    height: 55vh;
+    background-size: contain;
+    background-position: bottom right;
+  }
+  #slide-subtitle {
+    font-size: 16px !important;
+    line-height: 110%;
+    padding: 0;
+    padding-bottom: 4px !important;
+  }
+
+  #slide-title {
+    font-size: 24px !important;
+    
+    font-family: 'DM Sans';
+    line-height: 110%;
+    padding: 0;
+    padding-bottom: 12px !important;
+  }
+
+  #slider-button {
+    width: 100px !important;
+    height: 36px !important;
+    font-size: 12px !important;
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 0.5rem !important;
+  }
+  .slider-arrows-wrapper {
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+   .col-6.col-lg-5 {
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+   #video-banner {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-top: -150px; /* nav yüksekliği + ekstra boşluk */
+    padding-top: 0;
+  z-index: 1;
+  }
+}

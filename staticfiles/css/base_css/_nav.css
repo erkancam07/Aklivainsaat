@@ -1,0 +1,587 @@
+
+/* Top Header */
+.top-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: calc(100vw * (52 / 2044));
+  min-height: calc(100vw * (52 / 2044));
+  background-color: #343434;
+  color: #fff;
+  transition: all 0.3s ease;
+  z-index: 999;
+  
+  
+}
+.top-header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  height: 0;
+  overflow: hidden;
+}
+
+.top-header .container-fluid {
+  height: 100%;
+}
+.top-header .row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.catalog-icon {
+  width: 20px;
+  height: 20px;
+  width: clamp(16px, 2vw, 20px);
+  height: clamp(16px, 2vw, 20px);
+}
+.catalog-text-wrapper{
+  padding-left: 50px;
+}
+.catalog-text {
+  color: #fff;
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 500;
+  text-decoration: none;
+}
+.catalog-text:hover {
+  opacity: 0.8;
+}
+
+/* Sosyal + Dil + Arama */
+.header-right {
+  display: flex;
+  align-items: center;
+   gap: clamp(4px, 1vw, 10px);
+  flex-wrap: nowrap;
+  min-width: 0;
+  flex-shrink: 1;
+  padding-left: 0 !important;
+}
+.header-right > div {
+  max-width: 100%;
+  overflow: hidden;
+}
+.social-icons img {
+   width: clamp(16px, 2vw, 18px);
+  height: clamp(16px, 2vw, 18px);
+}
+.language-select {
+  display: flex;
+  gap: 6px;
+   font-size: clamp(12px, 1.5vw, 16px);
+  font-weight: 500;
+}
+.language-select .lang-tr {
+  display: flex;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #F69930;
+}
+
+.language-select a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.6;
+}
+.language-select a:hover,
+.language-select .active {
+  opacity: 1;
+}
+.search-area img {
+   width: clamp(16px, 2vw, 18px);
+  height: clamp(16px, 2vw, 18px);
+  transition: transform 0.3s ease;
+}
+.search-area:hover {
+transform: scale(1.1);
+}
+
+
+/* Nav */
+.main-nav {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+  transition: all 0.3s ease;
+  min-height: 80px;
+  background-color: transparent;
+}
+.main-nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  backdrop-filter: blur(6px);
+  height: 120px;
+}
+.main-nav.fixed .logo-area {
+  height: 90px;
+}
+.main-nav .row {
+   height: clamp(50px, 8vw, 100px);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* Logo */
+.logo-area {
+   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: clamp(12px, 4vw, 50px);
+}
+.logo-overlay-img {
+width: clamp(120px, 13vw, 255px);
+  aspect-ratio: 255 / 54;
+  object-fit: contain;
+  height: auto;
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+/* Menü */
+.menu-area-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ortalama */
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.menu-area {
+  display: flex;
+  gap: clamp(4px, 2vw, 8px);
+  list-style: none;
+   margin: 0 auto;
+  padding: 0 5px;
+  
+}
+.menu-area .nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+   line-height: 100%;
+   letter-spacing: 0;
+  padding: 6px 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+.nav-link {
+  position: relative;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #F69930;
+  opacity: 0.8;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.nav-link.active:visited,
+.nav-link.active:focus,
+.nav-link.active:hover {
+  color: var(--primary-color);
+}
+
+.menu-underline-icon {
+  display: block;
+  width: 0;
+  height: 20px;
+  background-image: url('/static/img/menu_aktif_icon.svg');
+  background-repeat: no-repeat;
+  background-size: 50px 20px;
+  background-position: left center;
+  overflow: hidden;
+  transition: width 0.4s ease;
+  margin: 4px auto 0;
+  
+
+}
+.nav-link:hover .menu-underline-icon,
+.nav-link.active .menu-underline-icon {
+  width: 50px;
+}
+
+/* .nav-inner {
+  position: relative;background-color: transparent;
+  min-height: 120px;
+  overflow: hidden;
+  padding: 0;
+}
+
+
+.nav-bg {
+  position: absolute;
+  width: 100vw; 
+  max-width: 1900px; 
+  height: auto;
+  
+  aspect-ratio: 1900 / 220; 
+  top: -5.75vw;
+  left: 0px;
+  transform: rotate(0deg);
+  
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  
+} */
+.nav-inner {
+  position: relative;
+ /* min-height: calc(100vw * (320 / 2044));  yaklaşık 15.65vw */
+  height: calc(100vw * (320 / 2044)); /* ≈ 15.65vw */
+  background-image: url('/static/img/nav-zemin.svg');
+  background-size: 100vw auto;
+  background-position: -7.4vw -3vw; /* sola ve yukarı taşması için yaptım*/
+  background-repeat: no-repeat;
+  background-color: transparent;
+  overflow: visible;
+  z-index: 0;
+}
+
+/* Müşteri Hizmetleri */
+.contact-area-wrapper {
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+}
+.contact-area {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+}
+.contact-visual {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+.zemin-img {
+  width: 100%;
+  height: 100%;
+}
+.ikon-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+}
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+.customer-service {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.phone-number {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Hamburger */
+.navbar-toggler {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hamburger-icon {
+width: clamp(20px, 5vw, 28px);
+  height: auto;
+}
+
+/* Mobil Sidebar */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  display: none;
+}
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(260px, 85vw, 300px);
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 10001;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-sidebar.open {
+  transform: translateX(0);
+}
+.mobile-overlay.active {
+  display: block;
+}
+.mobile-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mobile-menu a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.mobile-menu a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.mobile-contact-area {
+  margin-top: 30px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-contact-area a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.mobile-contact-area img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  filter: invert(100%);
+}
+
+.hamburger-wrapper {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 8px;
+}
+@media (max-width:1199px) {
+   .top-header {
+    height: 40px;
+  }
+  .menu-area {
+    gap: clamp(2px, 1vw, 6px); /* daha dar boşluk */
+  }
+  .menu-area .nav-link {
+    font-size: clamp(13px, 1.2vw, 15px);
+    padding: 2px 2px;
+  }
+   .menu-underline-icon {
+    height: 16px;
+    background-size: 50px 16px;
+    margin-top: 2px;
+  }
+   .logo-area {
+    padding-left: clamp(8px, 2vw, 24px);
+  }
+
+  .logo-overlay-img {
+    max-width: 180px;
+    height: calc(40px * (100vw / 1920));
+    margin-top: -10px;
+  }
+  .catalog-text-wrapper{
+  padding-left: 20px;
+}
+}
+/*iki medya arasında */
+@media (min-width: 768px) and (max-width: 991px) {
+    
+    .header-right {
+    
+        padding-left: 150px !important;
+        
+     
+    }
+    .contact-area-wrapper {
+        width: 100%;
+        padding-left: 150px !important;
+     
+     
+    }
+}
+
+
+
+/* Responsive */
+@media (max-width: 991px) {
+  .top-header {
+    height: 40px;
+  }
+  .nav-orta-bosluk{
+     min-height: 1px;
+  }
+.contact-visual {
+        width: 40px; 
+        height: 40px;
+    }
+    .ikon-img {
+        width: 20px; 
+        height: 20px;
+    }
+  
+}
+@media (max-width: 768px) {
+  .logo-overlay-img {
+    height: 40px;
+  }
+   
+  .catalog-text-wrapper {
+    padding-left: 15px;
+    justify-content: start;
+  }
+  
+  .header-right {
+    justify-content: start;
+    padding-left: 0;
+  }
+  .contact-visual {
+        width: 35px; 
+        height: 35px;
+    }
+    .ikon-img {
+        width: 15px; 
+        height: 15px;
+    }
+}
+@media (max-width: 576px) {
+  .top-header {
+    height: 35px;
+    width: 500px;
+  }
+  .header-right{
+    
+    justify-content: flex-start !important;
+    padding-right: 0 !important;
+    padding-left: 40px !important;
+  }
+  .catalog-icon,
+.social-icons img,
+.search-area img {
+  width: clamp(14px, 1.5vw, 18px);
+  height: clamp(14px, 1.5vw, 18px);
+}
+  .nav-inner {
+  
+    height: 150px; /* sabit minimum görünürlük */
+    width: 500px;
+    background-size: 100% 100%;
+     background-position: -3vw -12vw; /* sola ve yukarı taşması için yaptım*/
+  
+    
+  }
+  .main-nav .col-2 {
+    min-height: 1px; /* görünürlük için */
+  }
+  .logo-area {
+    position: relative;
+    padding-left: 35px;
+    min-height: 20px;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .logo-overlay-img {
+    
+    height: clamp(28px, 6vw, 40px);
+    max-width: 200px;
+    
+  }
+  .catalog-text-wrapper {
+    padding-left: 35px;
+    min-height: 20px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .contact-area-wrapper {
+    padding: 4px 0px;
+    padding-left: 40px;
+    justify-content: start;
+  }
+
+  .language-select {
+  font-size: clamp(10px, 1.2vw, 14px);
+}
+.language-select .lang-tr {
+  font-size: clamp(10px, 1.2vw, 14px);
+}
+
+  
+
+  .contact-area {
+    gap: 6px;
+  }
+
+  .contact-visual {
+        width: 30px; 
+        height: 30px;
+    }
+    .ikon-img {
+        width: 15px; 
+        height: 15px;
+    }
+
+  .customer-service {
+    font-size: clamp(11px, 2vw, 14px);
+  }
+
+  .phone-number {
+    font-size: clamp(10px, 2vw, 13px);
+  }
+}
+
+/* Animasyonlar */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes logoAppear {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

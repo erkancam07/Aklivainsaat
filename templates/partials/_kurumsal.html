@@ -17,12 +17,12 @@
      </div>
      <div class="row gy-0">
           <!-- Sol boşluk -->
-          <div class="col-12 col-lg-2"></div>
+          <div class="col-12 col-lg-3"></div>
 
           <!-- Orta alan -->
-          <div class="col-12 col-lg-4 ">
-            <div class="kurumsal-header-block anim-giris anim-ust">
-                <img src="{% static 'img/grilogo.png' %}" class="kurumsal-logo me-3">
+          <div class="col-12 col-lg-3 kurumsal-baslik-slogan">
+            <div class="kurumsal-header-block anim-giris anim-sol">
+                <img src="{% static 'img/grilogo.png' %}" class="kurumsal-logo me-1">
                 <h2 class="kurumsal-label ">KURUMSAL</h2>
             </div>
                 
@@ -41,15 +41,15 @@
           <!-- Orta alan Bitimi-->
 
           <!-- Sağ alan -->
-          <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-6 slider-slogan">
                   <div class="kurumsal-right-text anim-giris anim-sol">
                       Akliva, mükemmeliyet, dürüstlük ve sürdürülebilir büyüme anlayışıyla hareket eder. Misyonumuz, zamanın testine dayanacak yüksek kaliteli inşaat çözümleri sunmaktır.
                   </div>
                   <div class="kurumsal-slider-wrapper">
+                     
                       
-                      
-                      <img src="{% static 'img/sliderSol.png' %}" alt="Sol Ok" class="arrow prev slider-arrow slider-pos" id="kurumsal_slider-left" >
-                      <img src="{% static 'img/sliderSag.png' %}" alt="Sağ Ok" class="arrow next slider-arrow slider-pos slider-right-btn" id="kurumsal_slider-right">
+                      <img src="{% static 'img/sliderSol.png' %}" alt="Sol Ok" class="prev slider-arrow slider-pos" id="kurumsal_slider-left" >
+                      <img src="{% static 'img/sliderSag.png' %}" alt="Sağ Ok" class="next slider-arrow slider-pos slider-right-btn" id="kurumsal_slider-right">
 
                       <div class="slider-content" id="slider-content">
                       <img id="slider-image" src="{% static slider_images.0 %}" alt="Slider Görseli">
@@ -62,7 +62,7 @@
         <div class="bottom-divider-wrapper-kurumsal">
           <div class="bottom-divider-line-kurumsal"></div>
         </div>    
-  </div>
+  </div></div>
 </section>
 {% endblock %}
 

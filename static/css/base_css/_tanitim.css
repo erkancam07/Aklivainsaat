@@ -1,16 +1,23 @@
 .ana-satir {
-    position: relative;
+  position: relative;
+  height: 511px;
+  min-height: 511px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 85px;
+  padding-bottom: 85px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 .tanitim-wrapper {
-    position: relative;
+  position: relative;
   background-color: rgba(38, 38, 38, 1);
   background-image: url("/static/img/tanitim-zemin.png");
-
+  padding: 0;
+  margin: 0;
   background-repeat: no-repeat;
   background-size: contain; /* veya cover */
   background-position: right center; /* istediğin konuma göre ayarlanabilir */
@@ -18,17 +25,18 @@
 
 /*Video Bölümü*/
 .video-wrapper {
-  max-width: 609px;
-  aspect-ratio: 609 / 343;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 0 auto;
+  position: relative;
+  overflow: visible;
   padding: 0;
+  
 }
 
 .video-player {
-  width: 100%;
-  height: 100%;
+ width: 609px;
+  height: 343px;
+  position: absolute;
+  top: 0;
+  left: 0;
   object-fit: cover;
   border-radius: 20px;
   display: block;
@@ -39,6 +47,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+}
+.sag-icerik {
+  margin-right: -45px;
 }
 .sag-baslik {
   font-family: 'DM Sans', sans-serif;
@@ -98,22 +110,121 @@
   display: block;
 }
 
-/* Responsiv ayarları */
-@media (max-width: 1200px) {
+.video-play-img {
+ position: relative;
+  width: 609px;
+  height: 343px;
+  margin-left: -45px;
+  overflow: visible;
+}
+
+.video-play-overlay {
+position: absolute;
+  top: 50%;
+  left: calc(50% - 10px); 
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.play-icon {
+  width: 64px;
+  height: 64px;
+  opacity: 0.8;
+}
+@media (max-width: 1919px) {
+  .bosluk-1920 {
+    display: none !important;
+  }
+ .video-player{
+  left: -200px;
+ }
+ .video-play-overlay {
+    left: 10%; /* sola kaydırma yok artık */
+    transform: translate(-10%, -50%);
+  }
+ 
   .sag-baslik {
-    font-size: 22px;
-    line-height: 40px;
+    font-size: 26px;
+    line-height: 26px;
   }
 
   .sag-aciklama {
-    font-size: 42px;
-    line-height: 45px;
+    font-size: 30px;
+    line-height: 30px;
   }
 
   .sag-slogan {
-    font-size: 32px;
+    font-size: 22px;
+    line-height: 22px;
+  }
+ 
+}
+/* Responsiv ayarları */
+@media (max-width: 1199px) {
+  .ana-satir{
+    height: auto;
+    min-height: auto;
+  }
+  .video-wrapper {
+    margin-left: 0;
+    overflow: hidden;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .video-play-img {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .video-player {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .video-play-overlay {
+    left: 50%; /* sola kaydırma yok artık */
+    transform: translate(-50%, -50%);
+  }
+ 
+    .sag-alan {
+    min-height: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sag-icerik {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .sag-baslik {
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  .sag-aciklama {
+    font-size: 26px;
     line-height: 30px;
   }
+
+  .sag-slogan {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
   
 }
 @media (max-width: 991px) {
@@ -137,10 +248,51 @@
     max-width: 600px;
   }
 
-  .sag-baslik,
-  .sag-aciklama,
+  .sag-alan {
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .sag-baslik {
+    font-size: 20px;
+    line-height: 32px;
+    text-align: r;
+  }
+
+  .sag-aciklama {
+    font-size: 36px;
+    line-height: 40px;
+    text-align: right;
+  }
+
   .sag-slogan {
+    font-size: 28px;
+    line-height: 32px;
     text-align: right;
   }
   
+}
+@media (max-width: 767px) {
+  .video-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    
+  }
+
+  .video-play-img {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+  }
+  .video-play-overlay {
+    left: 50%; 
+  }
+
+  .video-player {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-radius: 12px;
+  }
 }

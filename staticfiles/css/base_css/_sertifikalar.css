@@ -1,0 +1,151 @@
+.logo-container {
+ position: relative;
+  width: 90px; /* logoya + animasyona alan */
+  height: 29.74px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.logo-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 100%;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 100%
+  ); 
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  transform: skewX(-20deg) translateX(-100%);
+  animation: logoShineLine 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.logo-img {
+  width: 63px;
+  height: 29px;
+ display: block;
+  position: relative;
+  z-index: 1;
+}
+@keyframes logoShineLine {
+  0% {
+    transform: skewX(-20deg) translateX(-100%);
+  }
+  100% {
+    transform: skewX(-20deg) translateX(200%);
+  }
+}
+
+.sertifika-baslik-text{
+font-family: DM Sans;
+font-weight: 500;
+font-style: Medium;
+font-size: 30px;
+
+line-height: 35px;
+letter-spacing: 0%;
+text-transform: uppercase;
+color: #000000;
+margin-top: 10px;
+}
+.sertifiklar-logo-baslik-slogan{
+display: flex;
+align-items: flex-start;
+
+
+}
+.slogan-text{
+font-family: DM Sans;
+font-weight: 300;
+font-style: Light;
+font-size: 17px;
+
+line-height: 18px;
+letter-spacing: -3%;
+}
+
+.sertifikalar-ortaklar-text {
+font-family: DM Sans;
+font-weight: 500;
+font-style: Medium;
+font-size: 18px;
+color: #939393;
+line-height: 100%;
+letter-spacing: 0%;
+text-transform: uppercase;
+padding-top: 40px;
+}
+
+.sertifikalar-sertifika-text {
+    color: #939393;
+    font-family: DM Sans;
+font-weight: 500;
+font-style: Medium;
+font-size: 18px;
+
+line-height: 100%;
+letter-spacing: 0%;
+text-transform: uppercase;
+
+}
+
+
+.ortak-kart,
+.sertifika-kart {
+  position: relative;
+  width: 160px;
+  height: 120px;
+  margin: 0 auto;
+  overflow: hidden; /* 👈 bu satır kritik */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: kartFadeIn 0.6s ease-out both;
+  margin: 0;
+  display: inline-block;
+}
+
+.kart-zemin {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0;
+}
+
+.kart-icerik {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: 2;
+  margin: 0;
+}
+
+/* Hover efekti */
+.ortak-kart:hover,
+.sertifika-kart:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes kartFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

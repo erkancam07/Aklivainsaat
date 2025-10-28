@@ -15,8 +15,8 @@ html, body {
 #video-banner {
   position: relative;
   width: 100vw;
-  height: 100vh; /* ← Bu satır kritik */
-  margin-top: -100px; /* nav yüksekliği kadar yukarı çek */
+  height: 1100px;
+  margin-top: -305px; /* nav yüksekliği kadar yukarı çek */
   aspect-ratio: 16 / 9; /* Mobilde sabit oran */
   padding: 0;
   overflow: hidden;
@@ -94,7 +94,7 @@ html, body {
   letter-spacing: 0;
   margin-bottom: 0.5rem;
   color: #fff;
-  padding-left: 42px;
+  margin-left: -50px;
   padding-bottom: 10px;
 }
 #slide-title {
@@ -105,7 +105,7 @@ html, body {
   line-height: 100%;
   /*letter-spacing: 0.1em;*/
   margin-bottom: 1rem;
-  padding-left: 42px;
+  margin-left: -50px;
   padding-bottom: 30px;
   color: #fff;
   
@@ -194,8 +194,8 @@ html, body {
 /* Slider ikonları boyutlandırma */
 #prev-slide,
 #next-slide {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
 }
 .bottom-right-group {
@@ -219,19 +219,10 @@ html, body {
   height: 100%;
   position: relative;
   transform: translateY(-50%);
-  padding-left: 42px;
+  margin-left: -50px;
   z-index: 20;
 }
-.slider-arrow {
-  width: 36px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
 
-.slider-arrow:hover {
-  transform: scale(1.1);
-}
 /* Sarı kavisli alan */
 .curved-overlay {
   position: absolute;
@@ -248,25 +239,7 @@ html, body {
   
 }
 
-.slider-icons {
-    position: relative;
-    
-  grid-column: 3;
-  grid-row: 2;
-  display: flex;
- 
-  align-items: left;
-  justify-content: flex-end;
-  height: 100%;
-  width: 100%;
-}
 
-.slider-icons img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  cursor: pointer;
-}
 @media (max-width: 1400px) {
   #slide-title {
   font-family: 'DM Sans', sans-serif;
@@ -276,6 +249,33 @@ html, body {
 }
 }
 
+@media (max-width: 992px) {
+  .banner-bottom-content {
+    padding: 0 !important;
+  }
+  #slide-subtitle {
+    font-size: 12px !important;
+    line-height: 90%;
+    padding: 0;
+    padding-bottom: 2px !important;
+    margin: 0;
+  }
+
+  #slide-title {
+    font-size: 18px !important;
+    margin: 0;
+    font-family: 'DM Sans';
+    line-height: 100%;
+    padding: 0;
+    padding-bottom: 20px !important;
+  }
+  .slider-arrows-wrapper {
+    padding-left: 0;
+    padding-top: 25px;
+    margin-bottom: 0;
+    margin: 0;
+  }
+}
 
 /* Mobil uyum */
 @media (max-width: 768px) {
@@ -283,7 +283,7 @@ html, body {
     #video-banner {
     height: auto;
     aspect-ratio: 16 / 9;
-    margin-top: -12px; /* nav yüksekliği + ekstra boşluk */
+    margin-top: -120px; /* nav yüksekliği + ekstra boşluk */
     padding-top: 0;
   z-index: 1;
   }
@@ -303,9 +303,7 @@ html, body {
     gap: 15px;
   }
   
-    .slider-arrow {
-    width: 28px;
-  }
+  
   .curved-overlay {
     width: 50vw;
     height: 55vh;
@@ -317,11 +315,12 @@ html, body {
     line-height: 110%;
     padding: 0;
     padding-bottom: 4px !important;
+    margin: 0;
   }
 
   #slide-title {
     font-size: 24px !important;
-    
+    margin: 0;
     font-family: 'DM Sans';
     line-height: 110%;
     padding: 0;
@@ -339,8 +338,19 @@ html, body {
   .slider-arrows-wrapper {
     padding-left: 0;
     margin-bottom: 0;
+    margin: 0;
   }
    .col-6.col-lg-5 {
     margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+   #video-banner {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-top: -150px; /* nav yüksekliği + ekstra boşluk */
+    padding-top: 0;
+  z-index: 1;
   }
 }

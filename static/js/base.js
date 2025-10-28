@@ -31,18 +31,35 @@ document.addEventListener("DOMContentLoaded", function () {
         const sure = 1500; // ms
         const basla = performance.now();
 
-        function saydir(t) {
-          const ilerleme = Math.min((t - basla) / sure, 1);
-          const deger = Math.floor(ilerleme * hedef);
-          if (el.textContent.includes("%")) {
-            el.textContent = `%${deger}`;
-          } else if (el.textContent.includes("+")) {
-            el.textContent = `${deger}+Yıl`;
-          } else {
-            el.textContent = `${deger}`;
-          }
-          if (ilerleme < 1) requestAnimationFrame(saydir);
-        }
+function saydir(t) {
+  const ilerleme = Math.min((t - basla) / sure, 1);
+  const deger = Math.floor(ilerleme * hedef);
+  const format = el.dataset.format;
+  const span = el.querySelector(".say-deger");
+
+  let metin = "";
+
+  if (format === "percent") {
+    metin = `%${deger} Memnuniyet`;
+  } else if (format === "plus-year") {
+    metin = `${deger}+Yıl`;
+  } else if (format === "plus") {
+    metin = `${deger}+`;
+  } else if (format === "plus-calisan") {
+    metin = `${deger}+ Çalışan`;
+  } else {
+    metin = `${deger}`;
+  }
+
+  if (span) {
+    span.textContent = metin;
+  } else {
+    el.textContent = metin;
+  }
+
+  if (ilerleme < 1) requestAnimationFrame(saydir);
+}
+
 
         requestAnimationFrame(saydir);
         observer.unobserve(el); // tekrar tetiklenmesin

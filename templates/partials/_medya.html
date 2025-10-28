@@ -5,91 +5,104 @@
 
 {% block content %}
 <section class="medya-wrapper anim-sol">
-  <div class="container-fluid">
-    <div class="row medya_ana_satir">
-      
-      <!-- Sol boşluk -->
-      <div class="col-12 col-lg-2"></div>
+    <div class="container-fluid">
+        <div class="row medya_ana_satir">
+            
+            <div class="col-12 col-md-2 col-lg-3 icerik-satiri "></div>
 
-      <!-- İçerik alanı -->
-      <div class="col-12 col-lg-10 medya-icerik-wrapper">
-        <div class="row">
-          
-          <!-- Logo ve Slogan -->
-            <div class="col-md-5 col-12  logo-medya d-flex align-items-center gap-3 anim-giris anim-ust">
-              <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-img">
-              <span class="medya-text">MEDYA</span>
-            </div>
-            <div class="col-md-4 col-12  medya-slogan anim-giris anim-sol">
-              <p>Akliva’nın son haberleri, projeleri ve sektör gelişmeleriyle güncel kalın. Medya görünürlüğümüzü keşfedin ve her inşaat çalışmamızda nasıl yenilikçi çözümler sunduğumuzu görün..</p>
+            <div class="col-12 col-md-10 col-lg-9 medya-icerik-wrapper">
+                <div class="row ">
+                    
+                    <div class="col-md-5 col-12 logo-medya d-flex align-items-center gap-1 anim-giris anim-sol">
+                        <img src="{% static 'img/grilogo.png' %}" alt="Logo" class="logo-img">
+                        <span class="medya-text">MEDYA</span>
+                    </div>
+                    <div class="col-md-4 col-12 medya-slogan anim-giris anim-sol">
+                        <p>Akliva’nın son haberleri, projeleri ve sektör gelişmeleriyle güncel kalın. Medya görünürlüğümüzü keşfedin ve her inşaat çalışmamızda nasıl yenilikçi çözümler sunduğumuzu görün..</p>
+                    </div>
+                    <div class="col-md-3 d-none d-md-block medya-slogan-bosalan"></div>
+
+                    <div class="col-12 slider-baslik-text">
+                        <h2 class="slider-baslik-heading">Sahadan Genel Görüntüler</h2>
+                    </div>
+
+                    <div class="col-12 medya-slider-wrapper d-flex">
+                        
+                        <div class="slider-main-area-wrapper"> 
+                            
+                            <div class="slider-main-card">
+                                {% for video in medya_videolar %}
+                                <div class="slider-card-content anim-giris anim-sol" 
+                                    onclick="acVideo('{{ video.video_url }}')" 
+                                    data-index="{{ forloop.counter0 }}">
+                                    
+                                    <div class="slider-video-wrapper">
+                                        <img src="https://img.youtube.com/vi/{{ video.video_id }}/mqdefault.jpg" 
+                                            data-video-id="{{ video.video_id }}" 
+                                            alt="{{ video.baslik }}" 
+                                            class="slider-img">
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="slider-metin-alani">
+                                <h3 id="active-slider-baslik" class="slider-baslik"></h3>
+                                <div id="active-slider-meta" class="slider-meta">
+                                    <img id="active-slider-icon" class="slider-icon" alt="ikon">
+                                    <span id="active-slider-metin" class="slider-metin"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medya-slider-mini-viewport">
+                            <div class="medya-slider-mini">
+                                {% for video in medya_videolar %}
+                                <div class="slider-mini-card" 
+                                    data-index="{{ forloop.counter0 }}">
+                                    <div class="slider-mini-img-wrapper">
+                                        <img src="https://img.youtube.com/vi/{{ video.video_id }}/mqdefault.jpg"
+                                            data-video-id="{{ video.video_id }}" 
+                                            alt="{{ video.baslik }}">
+                                    </div>
+                                    <h4 class="mini-slider-baslik">{{ video.baslik }}</h4>
+                                    <div class="mini-slider-meta">
+                                        <img src="{% static 'img/' %}{{ video.ikon }}" class="mini-slider-icon" alt="ikon">
+                                        <span class="mini-slider-metin">{{ video.metin }}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 row medya-alt-kontrol">
+                        
+                        <div class="col-md-8 col-12 medya-progres"> 
+                            <div class="medya-progres-inner"></div>
+                        </div>
+
+                        <div class="col-md-4 col-12 nmedya-slider-buttons d-flex align-items-center justify-content-start"> 
+                            <svg id="sliderPrev" class="slider-arrow prev" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="arrow-shape" d="M20.8077 11.0762C20.492 11.0762 20.1892 11.2022 19.966 11.4265L14.0386 17.3832C13.9275 17.4939 13.8393 17.6257 13.7792 17.7708C13.719 17.916 13.688 18.0717 13.688 18.229C13.688 18.3863 13.719 18.542 13.7792 18.6872C13.8393 18.8323 13.9275 18.9641 14.0386 19.0748L19.966 25.0315C20.0762 25.1431 20.2073 25.2318 20.3518 25.2922C20.4962 25.3527 20.6512 25.3839 20.8077 25.3839C20.9642 25.3839 21.1191 25.3527 21.2636 25.2922C21.408 25.2318 21.5391 25.1431 21.6493 25.0315C21.7605 24.9207 21.8486 24.789 21.9088 24.6438C21.969 24.4986 22 24.3429 22 24.1856C22 24.0284 21.969 23.8726 21.9088 23.7275C21.8486 23.5823 21.7605 23.4505 21.6493 23.3398L16.5518 18.229L21.6493 13.1182C21.8726 12.8939 21.998 12.5896 21.998 12.2724C21.998 11.9551 21.8726 11.6509 21.6493 11.4265C21.4261 11.2022 21.1234 11.0762 20.8077 11.0762Z" fill="currentColor"/>
+                                <circle cx="18" cy="18" r="17" transform="matrix(-1 0 0 1 36 0)" stroke="#B1B1B1" stroke-width="2"/>
+                            </svg>
+
+                            <svg id="sliderNext" class="slider-arrow next" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="scale(-1,1) translate(-36,0)">
+                                <path class="arrow-shape" d="M20.8077 11.0762C20.492 11.0762 20.1892 11.2022 19.966 11.4265L14.0386 17.3832C13.9275 17.4939 13.8393 17.6257 13.7792 17.7708C13.719 17.916 13.688 18.0717 13.688 18.229C13.688 18.3863 13.719 18.542 13.7792 18.6872C13.8393 18.8323 13.9275 18.9641 14.0386 19.0748L19.966 25.0315C20.0762 25.1431 20.2073 25.2318 20.3518 25.2922C20.4962 25.3527 20.6512 25.3839 20.8077 25.3839C20.9642 25.3839 21.1191 25.3527 21.2636 25.2922C21.408 25.2318 21.5391 25.1431 21.6493 25.0315C21.7605 24.9207 21.8486 24.789 21.9088 24.6438C21.969 24.4986 22 24.3429 22 24.1856C22 24.0284 21.969 23.8726 21.9088 23.7275C21.8486 23.5823 21.7605 23.4505 21.6493 23.3398L16.5518 18.229L21.6493 13.1182C21.8726 12.8939 21.998 12.5896 21.998 12.2724C21.998 11.9551 21.8726 11.6509 21.6493 11.4265C21.4261 11.2022 21.1234 11.0762 20.8077 11.0762Z" class="arrow-shape" fill="currentColor"/>
+                                <circle cx="18" cy="18" r="17" stroke="#B1B1B1" stroke-width="2"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="col-12 medya-videolar-button d-flex justify-content-center">
+                        <button class="tum-videolari-button">TÜM VİDEOLARI GÖRÜNTÜLEYİN</button>
+                    </div>
+
+                </div>
             </div>
             
-            <div class="col-md-3 d-none d-md-block  medya-slogan-bosalan">
-             
-            </div>
-
-          <!-- Slider başlık metni -->
-          <div class="col-12 slider-baslik-text">
-            <h2 class="slider-baslik-heading">Sahadan Genel Görüntüler</h2>
-          </div>
-
-          <!-- Slider alanı -->
-        <!--  {% comment %}  <div class="col-12 medya-slider">
-            {% for video in medya_videolar %}
-            <div class="slider-card">
-                <img src="https://img.youtube.com/vi/{{ video.video_id }}/hqdefault.jpg" alt="Kapak görseli">
-                
-                
-
-                <h3 class="slider-baslik">{{ video.baslik }}</h3>
-                <div class="slider-meta">
-                    <img src="{% static 'img/' %}{{ video.ikon }}" class="slider-icon" alt="ikon">
-                    <span class="slider-metin">{{ video.metin }}</span>
-                </div>
-            </div>
-            {% endfor %}
-          </div> {% endcomment %} -->
-
-            <div class="col-12 medya-slider">
-            {% for video in medya_videolar %}
-            <div class="slider-card" onclick="acVideo('{{ video.video_url }}')">
-                <div class="slider-video-wrapper">
-                    <img src="https://img.youtube.com/vi/{{ video.video_id }}/maxresdefault.jpg" alt="{{ video.baslik }}" class="slider-img">
-
-                </div>
-
-                <h3 class="slider-baslik">{{ video.baslik }}</h3>
-                <div class="slider-meta">
-                    <img src="{% static 'img/' %}{{ video.ikon }}" class="slider-icon" alt="ikon">
-                    <span class="slider-metin">{{ video.metin }}</span>
-                </div>
-            </div>
-            {% endfor %}
-            </div>
-            <div class="row ">
-                <div class="col-8 medya-progres">
-                    <div class="medya-progres-inner"></div>
-                </div>
-
-                <!-- Slider okları -->
-                <div class="col-1 nmedya-slider-buttons">
-                    
-                    <img src="{% static 'img/sliderSol-gri.svg' %}" alt="Sol Ok" class="arrow prev" id="sliderPrev">
-                    <img src="{% static 'img/sliderSag-gri.svg' %}" alt="Sağ Ok" class="arrow next" id="sliderNext">
-                </div>
-                <!-- Boşluk -->
-                <div class="col-12 medya-videolar-button d-flex justify-content-center">
-                  <button class="tum-videolari-button">TÜM VİDEOLARI GÖRÜNTÜLEYİN</button>
-              </div>
-            </div>
-
-</div>
-
         </div>
-      </div>
-
     </div>
-  </div>
 </section>
 
 <div id="videoModal" class="video-modal">
@@ -98,16 +111,28 @@
     <iframe id="videoFrame" class="video-frame" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
+{% endblock %}
 
+{% block extra_js %}
 <script>
- // 1. Video Modal İşlevleri (Global Erişim İçin 'window'a Bağlandı)
-    // Bu, HTML'deki 'onclick="acVideo(url)"' yapısının çalışmasını sağlar.
+    // Django verilerini JavaScript'e taşıma (Büyük slider metinleri için hala gerekli)
+    const RAW_VIDEO_DATA = [
+        {% for video in medya_videolar %}
+        {
+            baslik: "{{ video.baslik|escapejs }}",
+            ikon: "{{ video.ikon|escapejs }}",
+            metin: "{{ video.metin|escapejs }}",
+            url: "{{ video.video_url|escapejs }}"
+        },
+        {% endfor %}
+    ];
+    
+    // Modal Fonksiyonları (Aynı)
     function initVideoModal() {
-        // Kontrolsüz global erişimden kaçınmak için fonksiyonları window objesine bağlıyoruz.
         window.acVideo = function(url) {
             const modal = document.getElementById("videoModal");
             const frame = document.getElementById("videoFrame");
-            if (!modal || !frame) return; // Eleman yoksa hata vermeden dur.
+            if (!modal || !frame) return; 
             frame.src = url + "?autoplay=1";
             modal.style.display = "flex";
         }
@@ -115,22 +140,20 @@
         window.kapatVideo = function() {
             const modal = document.getElementById("videoModal");
             const frame = document.getElementById("videoFrame");
-            if (!modal || !frame) return; // Eleman yoksa hata vermeden dur.
+            if (!modal || !frame) return; 
             frame.src = "";
             modal.style.display = "none";
         }
 
-        // Klavye ESC tuşu ile kapatma
         document.addEventListener('keydown', function(e) {
             if (e.key === "Escape") {
                 window.kapatVideo();
             }
         });
 
-        // Modal'ın dışına tıklayarak kapatma
         const modal = document.getElementById("videoModal");
         if(modal) {
-             modal.addEventListener("click", function(e) {
+            modal.addEventListener("click", function(e) {
                 if (e.target === this) {
                     window.kapatVideo();
                 }
@@ -138,49 +161,105 @@
         }
     }
 
+    // Büyük Slider Metinlerini Güncelleme Fonksiyonu
+    function updateTextContent(currentIndex, videos) {
+        if (!videos || videos.length === 0) return;
+
+        const video = videos[currentIndex];
+        
+        const baslikElement = document.getElementById('active-slider-baslik');
+        const ikonElement = document.getElementById('active-slider-icon');
+        const metinElement = document.getElementById('active-slider-metin');
+
+        if (baslikElement && ikonElement && metinElement) {
+             baslikElement.textContent = video.baslik;
+             ikonElement.src = "{% static 'img/' %}" + video.ikon; 
+             ikonElement.alt = video.ikon;
+             metinElement.textContent = video.metin;
+        } 
+    }
+
+    // Slider Fonksiyonu
     function initMedyaSlider() {
-        const slides = Array.from(document.querySelectorAll('.slider-card'));
+        const mainCards = Array.from(document.querySelectorAll('.slider-main-card .slider-card-content'));
+        const miniSliderContainer = document.querySelector('.medya-slider-mini');
+        const miniCards = Array.from(document.querySelectorAll('.slider-mini-card'));
         const progress = document.querySelector('.medya-progres-inner');
         const prevBtn = document.getElementById('sliderPrev'); 
         const nextBtn = document.getElementById('sliderNext');
 
-        if (!slides.length || !progress || !prevBtn || !nextBtn) {
-            console.warn("Medya Slider elementleri bulunamadı. Slider başlatılmadı.");
-            return;
-        }
+        if (!mainCards.length || !miniSliderContainer || !prevBtn || !nextBtn) return;
 
-        let currentIndex = 0; // 
+        let currentIndex = 0; 
+        
+        const MINI_CARD_WIDTH = 340;
+        const CARD_MARGIN = 24;
+        const MINI_CARD_TOTAL_WIDTH = MINI_CARD_WIDTH + CARD_MARGIN;
+        
+        const START_OFFSET = (miniCards.length > 1) ? 1 : 0; 
+        const DEFAULT_IMAGE_URL = "{% static 'img/default-video-bg.jpg' %}"; 
 
-        function updateSlider() {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active', 'hidden');
+        // Resim yükleme hatası durumu (Fallback)
+        document.querySelectorAll('.slider-img, .slider-mini-card img').forEach(img => {
+            img.onerror = function() {
+                 this.src = DEFAULT_IMAGE_URL;
+                 this.onerror = null; 
+             };
+        });
+        // Küçük kartların içindeki resimler için de onerror ekleyelim
+        document.querySelectorAll('.slider-mini-img-wrapper img').forEach(img => {
+            img.onerror = function() {
+                 this.src = DEFAULT_IMAGE_URL;
+                 this.onerror = null;
+            };
+        });
 
-                if(i < currentIndex) {
-                    slide.classList.add('hidden');
-                } 
-                else if(i === currentIndex) {
-                    slide.classList.add('active');
-                } 
+        function updateSlider(initialLoad = false) {
+            // Aktif kartları belirle
+            mainCards.forEach((card, i) => {
+                card.classList.remove('active');
+                if (i === currentIndex) {
+                    card.classList.add('active');
+                }
             });
 
+            miniCards.forEach((card, i) => {
+                card.classList.remove('active');
+                if (i === currentIndex) {
+                    card.classList.add('active');
+                }
+            });
+
+            // Büyük Slider Metinlerini Güncelle
+            updateTextContent(currentIndex, RAW_VIDEO_DATA);
+
+            // Kaydırma Mantığı
+            let targetIndex = currentIndex;
+            if (initialLoad && miniCards.length > 1) {
+                 targetIndex = START_OFFSET;
+            } else if (!initialLoad) {
+                 targetIndex = currentIndex; 
+            }
+
+            const shiftAmount = -(targetIndex * MINI_CARD_TOTAL_WIDTH);
+            miniSliderContainer.style.transform = `translateX(${shiftAmount}px)`;
             
-            const percent = ((currentIndex + 1) / slides.length) * 100;
+            // Progress Bar
+            const percent = ((currentIndex + 1) / mainCards.length) * 100;
             progress.style.width = percent + '%';
         }
 
-        // Başlangıç ayarı
-        updateSlider();
-
-        // İleri butonu
+        
+        // Buton ve Kart Listener'ları
         nextBtn.addEventListener('click', (e) => { 
             e.preventDefault(); 
-            if(currentIndex < slides.length - 1) {
+            if(currentIndex < mainCards.length - 1) {
                 currentIndex++; 
                 updateSlider();
             }
         });
 
-        // Geri butonu
+        
         prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
             if(currentIndex > 0) {
@@ -188,15 +267,24 @@
                 updateSlider();
             }
         });
+
+        miniCards.forEach((card, i) => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (i !== currentIndex) {
+                    currentIndex = i;
+                    updateSlider();
+                }
+            });
+        });
+        
+        updateSlider(true); // Small slider'ı başlangıçta kaydırılmış başlat
     }
 
     
     document.addEventListener('DOMContentLoaded', () => {
         initVideoModal();
         initMedyaSlider();
-
     });
 </script>
-
-
 {% endblock %}

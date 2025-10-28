@@ -1,39 +1,52 @@
-#projects-section,
-.container-fluid,
-.row{
+.slider-main-container{
+  background-color: #EDEDED;
+}
+#projects-section
+{
   margin: 0;
   padding: 0;
+  
 }
+.slider-content-wrapper {
+    width: 1040px !important; 
+    max-width: 1040px !important;
+    margin-left: -35px;
+}
+
 .slider-wrapper {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
   position: relative;
-  padding-right: 32px; /* gap kadar boşluk bırak */
+  
+  
 }
 
 .slider-track {
   display: flex;
-  gap: 32px;
+  
+  gap: 45px;
   transition: transform 0.5s ease;
   min-width: max-content;
   will-change: transform;
+ 
 }
 
 .project-card {
   position: relative;
-  flex-shrink: 0;
-  width: 610px;
-  height: 413px;
-  overflow: hidden;
-  padding: 0;
-  border-radius: 4px;
+    flex-shrink: 0;
+  
+    max-width: 610px; 
+    width: 100%;
+    height: 413px;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 4px;
 }
 
 .project-image {
   width: 100%;
-  max-width: 610px;
-  height: auto;
+  height: 413px;
   max-height: 413px;
   object-fit: cover;
   border-radius: 20px;
@@ -51,6 +64,11 @@
   z-index: 2;
   pointer-events: none;
 }
+.project-card.current-active .project-button {
+    
+    background-color: #f69930 !important; 
+}
+
 
 /* Konum üstte sabit */
 .project-location {
@@ -99,11 +117,12 @@
   position: absolute;
   bottom: 62px;
   right: 16px;
-  width: 241px;
+  min-width: 150px;
+  width: 240px;
   height: 48px;
-  background-color: #f69930;
+  background-color:#808285;
   color: white;
-  padding: 8px 32px;
+  padding: 8px 30px;
   border-radius: 8px;
   font-weight: 500;
   text-decoration: none;
@@ -115,14 +134,27 @@
 }
 
 .project-button:hover {
-  background-color: #e0881f;
+    background-color: #6a6b6d;
+}
+
+
+.project-card.current-active .project-button {
+    background-color: #f69930;
+}
+
+
+.project-card.current-active .project-button:hover {
+    background-color: #e0881f;
 }
 
 
 .slider-col {
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: -15px;
 }
 
 /* Progress bar dış kapsayıcı */
@@ -143,91 +175,105 @@
   transition: width 0.3s ease;
 }
 
-.slider-arrow {
-  all: unset; /* Tüm tarayıcı varsayılanlarını sıfırla */
-  display: inline-block;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 50%;
-  transition: transform 0.4s ease;
-}
-
-.slider-arrow:hover {
-  border-color: #f69930;
-  transform: scale(1.15) rotate(-3deg);
-  box-shadow: 0 4px 12px rgba(246, 153, 48, 0.3);
-}
-
-.slider-arrow img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  transition: transform 0.4s ease;
-}
-
-.slider-arrow:hover img {
-  transform: scale(1.15) rotate(-3deg);
-}
 
 
-.slider-description {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #6c757d;
-  max-width: 740px;        /* slider görseliyle hizalanır */
-  text-align: left;
-  margin-left: auto;       /* sağa yaslanır */
-  margin-right: 0;
-  padding-right: 0px;
-  word-break: break-word;
+.slider-description {  
+
+    color: #6c757d;
+    text-align: left; 
+    word-break: break-word;
+    font-family: DM Sans;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 17px;
+    line-height: 18px;
+    letter-spacing: -3%;
+
+
+    max-width: 100%;
+    
+   
+    margin-left: 120px;   
+    margin-right: 0;     
+    padding-right: 0px;
+    padding-bottom: 50px;
 }
 
 #project-filter {
   display: flex;
-  gap: 48px;
-  flex-wrap: wrap;
+    flex-direction: row;
+    gap: 50px;
   margin-top: 32px;
-  justify-content: start;
+  justify-content: flex-start !important;
+  padding-left: 0 !important; /* Sol padding varsa sıfırla */
+  width: 100%;
+}
+#project-filter .filter-link {
+   
+    width: 170px;
+    
+    flex-shrink: 0; 
+    
+   
+    display: block; 
+   
 }
 
 .filter-link {
   position: relative;
   display: inline-block;
-  width: 172px;
+  width: auto;
   text-align: left;
   font-weight: 500;
   color: #6c757d;
   text-decoration: none;
   padding-bottom: 12px;
-  border-bottom: none !important; /* aktif sınıftan gelen çizgiyi engelle */
-  box-shadow: none !important;    /* varsa kaldır */
-  outline: none !important;       /* varsa kaldır */
+  padding-right: 0;
+  flex-shrink: 0;
+  border-bottom: none !important; 
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 /* Alt çizgi */
+.filter-link {
+    /* ::after sözde elementinin konumlanması için gerekli */
+    position: relative; 
+    /* Metin rengi değişikliği için geçiş efekti */
+    transition: color 0.3s ease;
+}
+
 .filter-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: #ededed; /* pasif renk */
-  border-radius: 2px;
-  transform: scaleX(1);
-  transform-origin: left;
-  transition: transform 0.4s ease, background-color 0.3s ease;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ededed; /* pasif renk */
+    border-radius: 2px;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.4s ease, background-color 0.3s ease;
 }
 
-/* Hover’da küçülür */
+/* Hover’da küçülür ve metin rengi değişir */
+.filter-link:hover {
+    color: #f69930; 
+}
+
 .filter-link:hover::after {
-  transform: scaleX(0.4);
+    transform: scaleX(0.4);
 }
 
-/* Aktif olan link: çizgi sabit ve turuncu */
+/* Aktif olan link: çizgi sabit ve turuncu, metin rengi turuncu */
+.filter-link.active {
+    color: #f69930;
+}
+
 .filter-link.active::after {
-  background-color: #f69930;
-  transform: scaleX(1);
+    background-color: #f69930;
+    transform: scaleX(1);
 }
 
 .bottom-divider-wrapper-projeler {
@@ -252,22 +298,22 @@
   display: block;
 }
 .content-col {
-  padding-left: 3rem; /* varsayılan */
+  margin-left: -50px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;   /* Dikeyde ortala */
-  height: 100%;    
+  flex-direction:column;
+  padding-left: 0;
+  height: 100%;      
 
 }
 .slogan-1 {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans';
   font-weight: 500;
-  font-style: normal; /* "Medium" yerine 500 zaten karşılığıdır */
+  font-style: Medium; 
   font-size: 36px;
-  line-height: 1.12; /* 112% */
+  line-height: 1.12; 
   letter-spacing: 0;
-  margin-bottom: 16px; /* isteğe bağlı spacing */
-  color: #000; /* veya Figma’daki renk */
+  margin-bottom: 16px;
+  color: #000; 
 }
 .slogan-2{
   font-family: 'DM Sans', sans-serif;
@@ -316,63 +362,120 @@
     left: 125%;
   }
 }
-
-/* Responsive ayarlamalar */
-@media (max-width: 991.98px) {
- .bottom-divider-line {
-        /* Yatayda tam ortalama */
+@media (min-width: 992px) {
+    
+    
+    .slider-main-container { 
+        max-width: 743px;
+       
         margin-left: auto;
         margin-right: auto;
     }
-  #projects-section .row {
-    justify-content: center !important;
-    text-align: center;
-  }
-
-  #projects-section .content-col,
-  #projects-section .slider-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center !important;
-    text-align: center;
-  }
-
-  #projects-section .slider-content-wrapper {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #projects-section .filters-row {
-    justify-content: center !important;
-  }
-
-  
-
-  .project-card {
-    width: calc(100vw - 3rem);
+   
+    
+}
+/* Responsive ayarlamalar */
+@media (max-width: 991.98px) {
+  .slider-main-container {
+    width: 100%;
     max-width: 100%;
-    height: 360px;
-    position: relative;
-    overflow: hidden;
-    margin-right: 0 !important;
+    margin: 0;
+  }
+
+  .slider-description {
+    width: 100%;
+    height: 100%;
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+  }
+
+  #projects-section,
+  #projects-section .slider-col,
+  .content-col {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-left: 0 !important;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left !important;
+  }
+
+  .content-col {
+    padding-left: 20px;
+    margin-left: 20px;
+  }
+
+  .slider-content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-right: 0 !important;
   }
 
   .slider-wrapper {
     width: 100%;
     overflow-x: hidden;
+    margin: 0 !important;
+    padding-right: 0 !important;
   }
 
   .slider-track {
     gap: 32px;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .project-card {
+    width: calc(100vw - 3rem) !important;
+    min-width: calc(100vw - 3rem) !important;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 0 !important;
+    flex-shrink: 0;
+  }
+
+  .project-card:last-child {
+    margin-right: 0 !important;
   }
 
   .progress-and-arrows-group {
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  .custom-progress-bar {
+    max-width: none;
+    flex-grow: 1;
+    margin: 0 10px;
+  }
+
+  #current-index-info {
+    flex-shrink: 0;
   }
 
   .filters-row {
     justify-content: start !important;
+  }
+
+  #project-filter {
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+
+  #project-filter .filter-link {
+    width: auto;
+    min-width: 100px;
+    flex-grow: 1;
   }
 
   .project-info-overlay {
@@ -400,7 +503,7 @@
     height: 14px;
   }
 
- .project-button {
+  .project-button {
     bottom: 16px;
     padding: 6px 12px;
     font-size: 0.85rem;
@@ -410,51 +513,19 @@
 }
 
 
-#project-filter{
-  padding-bottom: 20px;
-}
-/* Filtre Linkleri */
-#project-filter a {
-  color: #6c757d;
-  text-decoration: none;
-  font-weight: 500;
-  
-}
-
-#project-filter a.active {
-  color: #f69930;
-  border-bottom: 2px solid #f69930;
-}
-
-/* Butonlar */
-.btn-warning {
-  background-color: #f69930;
-  border-color: #f69930;
-  color: white;
-}
-
-.btn-light:hover:not(:disabled) {
-  background-color: #f69930;
-  border-color: #f69930;
-}
-
-.btn-light:hover:not(:disabled) img {
-  filter: brightness(0) invert(1);
-}
-
-.btn-light:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 @media (max-width: 767.98px) {
   .bottom-divider-wrapper {
   margin: 0;
   left: 0;
   right: 0;
 }
+.progress-and-arrows-group {
+        /* 767px altında da yatayda kalmasını garanti eder */
+        flex-direction: row; 
+        align-items: center;
+    }
   .custom-progress-bar {
-    max-width: 100%;
+    max-width: none;
   }
 
   .project-card {
@@ -479,13 +550,9 @@
     width: auto;
     height: auto;
   }
-  .progress-and-arrows-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
-  }
+  
 
- 
+  
   .filter-link {
     width: 120px;
     font-size: 0.9rem;
@@ -496,28 +563,75 @@
   }
 
   #project-filter {
-    gap: 32px;
-    justify-content: center;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 0 1rem;
+    justify-content: start;
+    gap: 24px;
+    -webkit-overflow-scrolling: touch;
   }
- .slider-description {
-    text-align: center;
-    max-width: 100%;
-    margin: 0;
-    padding: 0 12px;
-  }
+  #project-filter::-webkit-scrollbar {
+        display: none;
+    }
+    #project-filter {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+.filter-link {
+        /* Tekrar içeriğe göre genişlemesini sağlar */
+        width: auto; 
+        min-width: 120px; /* Minimum genişlik verilebilir */
+    }
+ 
   .slogan-1{
     margin-top: 10px;
+    
   }
   .slogan-2{
-    text-align: center;
+    text-align:start;
     margin: 0,10px;
-    padding: 0 ;
+    
   }
   .content-col {
-    justify-content: center;
+    justify-content: flex-start;
     padding: 0;
     margin-top: 0px;
+    padding-left: 30px;
   }
 }
 
 
+@media (max-width: 578px) {
+    #project-filter {
+      
+        overflow-x: auto; 
+        flex-wrap: nowrap; 
+        justify-content: flex-start; 
+        gap: 16px;
+        padding: 0 1rem;
+    }
+
+    .filter-link {
+        font-size: 0.85rem; 
+        padding-bottom: 8px;
+        min-width: 100px; 
+    }
+
+    
+    .filter-link::after {
+        height: 3px; 
+    }
+     .slider-content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .slider-description {
+    margin-left: 0 !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
